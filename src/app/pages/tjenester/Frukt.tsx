@@ -1,5 +1,17 @@
 import { ServicePage, ServicePageData } from "../../components/ServicePage";
-import heroImg from "../../../images/frukt/frukt2.png";
+import packehallImg from "../../../images/frukt/frukt2.png";
+import pakkerImg from "../../../images/frukt/frukt.png";
+import heroFruktImg from "../../../images/hero/web/hero-frukt.jpg";
+import teamImg from "../../../images/hele_gjengen.jpg";
+import lunsjCardImg from "../../../images/lunsj/lunsj.png";
+import gokurvenImg from "../../../images/frukt/cards/gokurven.jpg";
+import knaskekurvenImg from "../../../images/frukt/cards/knaskekurven.jpg";
+import hverdagskurvenImg from "../../../images/frukt/cards/hverdagskurven.jpg";
+import superkurvenImg from "../../../images/frukt/cards/superkurven.jpg";
+/* NOTE: the Rullekurven photo has green promo text burned into it. Replace
+   with the brochure's clean Rullekurven photo when it is available. */
+import rullekurvenImg from "../../../images/frukt/cards/rullekurven.jpg";
+import smoothiekurvenImg from "../../../images/frukt/cards/smoothiekurven.jpg";
 
 const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 
@@ -8,76 +20,176 @@ export const fruktData: ServicePageData = {
   badge: "Helse & Trivsel",
   title: (
     <>
-      Kurver med{" "}
-      <span className="text-[#0078C4] italic font-light">
-        jobbfrukt og grønnsaker
-      </span>{" "}
-      levert i hele Oslo
+      Frukt
     </>
   ),
+  subtitle: "Fruktkurv og jobbfrukt levert på jobben i Oslo",
   intro:
-    "Bestill fruktkurver levert i hele Oslo. Våre kurver passer perfekt til kontor, gaver og spesielle anledninger. Velg størrelse og leveringstid, vi ordner resten.",
-  image: heroImg,
-  imageAlt: "Fruktkurv fra Helt Opplagt",
+    "Helt Opplagt leverer fruktkurver og faste fruktabonnement til bedrifter i Oslo og Stor-Oslo. Vi hjelper dere å velge riktig kurv, mengde og leveringsrytme etter antall ansatte, budsjett og hvor ofte dere ønsker påfyll.",
+  image: packehallImg,
+  imageAlt: "Fruktkurv fra Helt Opplagt levert på et kontor",
+  heroImage: heroFruktImg,
   brochureUrl:
     "https://heltopplagt.no/application/files/7317/6785/9195/HeltOpplagt_Fruktbrosjyre_januar_2026_web.pdf",
-  subServices: [
+
+  heroPoints: [
+    { label: "Gir umiddelbar energi og økt konsentrasjon" },
+    { label: "Et sunt gode til dine ansatte" },
+    { label: "Tilpass kurven etter behov" },
+    { label: "Fra cirka 6 kroner per person per dag" },
+  ],
+
+  explainer: {
+    heading: "Hva tilbyr vi?",
+    body: [
+      "Vi leverer først og fremst faste fruktavtaler, der kurvtype, mengde og leveringsfrekvens tilpasses arbeidsplassen.",
+      "Leveringsområdet strekker seg fra Drammen - Gardermoen - Lillestrøm - Fredrikstad - Sandvika - Oslo og alt i mellom. ",
+      "For å sikre kvalitet på frukten vår, vurderer smakspanelet vårt hver uke frukten som skal brukes i kommende leveranser. Frukten pakkes så tett opp mot levering som mulig, og kvaliteten kontrolleres underveis.",
+    ],
+
+    image: pakkerImg,
+    imageAlt:
+      "Ansatt med hårnett og forkle som setter sammen en fruktkurv i pakkehallen",
+  },
+
+  catalogs: [
     {
-      slug: "fruktkurv",
-      title: "Velg din fruktkurv",
-      description:
-        "Vi leverer flere ulike kurver med jobbfrukt og grønnsaker. Bestill et fruktabonnement til din bedrift og velg en fruktkurv som passer til dere. Velg mellom Hverdagskurven, Go’kurven, Superkurven, Knaskekurven og Rullekurven.",
-      image: `${thumbs}/8fe101beb0e2e3ccd7b255e2957a1ac8.jpg`,
-      content: [
+      heading: "Hvilken fruktkurv passer bedriften deres?",
+      proof:
+        "Det finnes ikke én fruktkurv som passer alle. Noen vil ha klassisk frukt til lavest mulig pris. Andre ønsker større variasjon, grønnsaker, nøtter eller smoothie.",
+
+      layout: "grid",
+      items: [
         {
-          type: "bullets",
-          heading: "Visste du at frukt:",
-          items: [
-            "gir umiddelbar energi og økt konsentrasjon?",
-            "på arbeidsplassen øker trivselen og yteevnen?",
-            "styrker immunforsvaret og reduserer korttidsfraværet?",
-            "er et lønnsomt og godt synlig gode til dine ansatte?",
-            "gir positiv og varig energi som holder lenger enn energien fra kaker og sjokolade?",
-          ],
+          name: "Hverdagskurven",
+          tag: "Rimelig",
+          description:
+            "For bedrifter som ønsker klassisk basisfrukt til lavest mulig pris. Fra ca. 6 kr per person per dag.",
+          image: hverdagskurvenImg,
+          to: "/tjenester/frukt/hverdagskurven",
         },
         {
-          type: "cards",
-          heading: "Velg din fruktkurv:",
-          items: [
-            {
-              title: "Hverdagskurven",
-              description: "Priseksempel 12 pers: ca 6,- pr hode / dag",
-              image: `${thumbs}/a34edd7c2592381df8dcfa444f2055c0.jpg`,
-            },
-            {
-              title: "Knaskekurven",
-              description: "Priseksempel 10 pers: ca 11,- pr hode / dag",
-              image: `${thumbs}/e11c93ca2acda77f28dc85d6fcfbbbc4.jpg`,
-            },
-            {
-              title: "Superkurven",
-              description: "Priseksempel 12 pers: ca 11,- pr hode / dag",
-              image: `${thumbs}/9dc25befdd6ba298943344f1b5453847.jpg`,
-            },
-            {
-              title: "Go’kurven",
-              description: "Priseksempel 12 pers: ca 8,- pr hode / dag",
-              image: `${thumbs}/96803673f7a94df5f3913f6f4a4cf2bc.jpg`,
-            },
-            {
-              title: "Rullekurven",
-              description: "Priseksempel 12 pers: ca 9,- pr hode / dag",
-              image: `${thumbs}/2b069cde48e3d0e523b00bd639165d78.png`,
-            },
-            {
-              title: "Smoothiekurven",
-              description: "Priseksempel 12 pers: ca 11,- pr hode / dag",
-              image: `${thumbs}/bf97eb8f29a91dc54881f086962d7fab.jpg`,
-            },
-          ],
+          name: "Knaskekurven",
+          tag: "Spennende",
+          description:
+            "For dere som ønsker frukt kombinert med grønnsaker og nøtter. Fra ca. 11 kr per person per dag.",
+          image: knaskekurvenImg,
+          to: "/tjenester/frukt/knaskekurven",
+        },
+        {
+          name: "Go'kurven",
+          tag: "Populær",
+          description:
+            "For bedrifter som ønsker god variasjon uten å gå opp til premiumutvalget. Fra ca. 8 kr per person per dag.",
+          image: gokurvenImg,
+          to: "/tjenester/frukt/gokurven",
+        },
+
+        {
+          name: "Superkurven",
+          tag: "Eksotisk",
+          description:
+            "For bedrifter som ønsker størst mulig variasjon med sesongvarer, mer eksotisk frukt, grønt og nøtter. Fra ca. 11 kr per person per dag.",
+          image: superkurvenImg,
+          to: "/tjenester/frukt/superkurven",
+        },
+        {
+          name: "Rullekurven",
+          description:
+            "For bedrifter som vil variere mellom ulike kurvtyper fra uke til uke. Fra ca. 9 kr per person per dag.",
+          image: rullekurvenImg,
+          to: "/tjenester/frukt/rullekurven",
+        },
+        {
+          name: "Smoothiekurven",
+          description:
+            "Fruktkurv med basisfrukt og smoothie. Ideell for de som liker både å spise og drikke frukt. Priseksempel 12 pers: ca 11,- pr hode / dag.",
+          image: smoothiekurvenImg,
+          to: "/tjenester/frukt/smoothiekurven",
         },
       ],
     },
+    {
+      heading: "Jobbsmoothie",
+      proof:
+        "Vi leverer to ulike varianter hver uke.",
+      layout: "feature",
+      reverse: true,
+      items: [
+        {
+          name: "Jobbsmoothie",
+          description:
+            "Våre spennende, næringsrike og ferske smoothies er laget fra bunnen av på vårt eget kjøkken med ekte frukt og bær. De er utviklet med fokus på sunn energi, og er fulle av antioksidanter og vitaminer.",
+          image: `${thumbs}/84880641e437bfb7b441396f2b721a9d.jpg`,
+        },
+      ],
+      link: { label: "Les mer om jobbsmoothie", to: "/tjenester/frukt/jobbsmoothie" },
+    },
+  ],
+
+  faqHeading: "Ofte stilte spørsmål om frukt på jobben",
+
+  faq: [
+    {
+      question: "Er fruktlevering bare tilgjengelig som abonnement?",
+      answer:
+        "Helt Opplagt leverer først og fremst faste fruktavtaler til bedrifter. Vi kan også hjelpe med enkeltleveranser når kapasiteten tillater det.",
+    },
+    {
+      question: "Hvor mye frukt trenger dere på jobben?",
+      answer:
+        "Riktig mengde avhenger først og fremst av hvor mange som faktisk er på kontoret, hvor ofte dere ønsker levering og hvor mye frukt som normalt blir spist. Har dere hybridarbeid, bør dere derfor ta utgangspunkt i normal kontortilstedeværelse - ikke totalt antall ansatte",
+    },
+    {
+      question: "Kan dere levere frukt samme dag?",
+      answer:
+        "Det kan enkelte ganger være mulig, avhengig av tidspunkt, kapasitet og kjørerute. Vi kan derfor ikke garantere levering samme dag. Ta kontakt, så sjekker vi hva vi kan få til.",
+    },
+    {
+      question: "Hva koster frukt på jobben?",
+      answer:
+        "Prisen avhenger av kurvtype, størrelse og leveringsfrekvens. Våre eksisterende priseksempler starter på omtrent 6 kroner per person per dag.",
+    },
+    {
+      question: "Hvor ofte kan vi få levert frukt?",
+      answer:
+        "Vi har daglige utkjøringer og tilpasser leveringsrytmen etter behov og avtale.",
+    },
+  ],
+
+  hideSubServiceCards: true,
+
+  readMoreHeading: "Les mer",
+  readMore: [
+    {
+      label: "Våre fruktrutiner",
+      description:
+        "Gode rutiner på renhold og hygiene er selve nøkkelen til at våre kunder alltid mottar sunn, frisk og velsmakende frukt, hver dag.",
+      to: "/tjenester/frukt/vare-fruktrutiner",
+      image: `${thumbs}/3660ed1a222d7d3dde58c2ee0b824500.jpg`,
+    },
+    {
+      label: "Jobbsmoothie",
+      description: "Våre spennende, næringsrike og ferske smoothies er laget fra bunnen av på vårt eget kjøkken med ekte frukt og bær.",
+      to: "/tjenester/frukt/jobbsmoothie",
+      image: `${thumbs}/0f4e0649d2119d89e9f23b17cfc2ae78.jpg`,
+    },
+    {
+      label: "Vårt samfunnsansvar",
+      description:
+        "Vi har alltid hatt stort fokus på miljøtiltak. Vi er en miljøfyrtårnbedrift som prioriterer miljøet i alt vi gjør.",
+      to: "/ansvar",
+      image: teamImg,
+    },
+    {
+      label: "Lunsj",
+      description: "Lønnsomme og velsmakende lunsjordninger for 5 personer og oppover.",
+      to: "/tjenester/lunsj",
+      image: lunsjCardImg,
+    },
+  ],
+
+  subServices: [
     {
       slug: "jobbsmoothie",
       title: "Jobbsmoothie",
@@ -88,7 +200,7 @@ export const fruktData: ServicePageData = {
         {
           type: "text",
           paragraphs: [
-            "De er utviklet med fokus på sunn energi, og er fulle av antioksidanter og vitaminer. På den måten sørger man for at hele bedriften er frisk, effektiv og Helt Opplagt — hele dagen. Vi leverer også til arrangementer og events.",
+            "De er utviklet med fokus på sunn energi, og er fulle av antioksidanter og vitaminer. På den måten sørger man for at hele bedriften er frisk, effektiv og Helt Opplagt, hele dagen. Vi leverer også til arrangementer og events.",
           ],
         },
         {
@@ -138,7 +250,7 @@ export const fruktData: ServicePageData = {
           items: [
             "Gir energi og lavere sykefravær",
             "Perfekt hvis du vil imponere i møter",
-            "Del noe godt — erstatt litt av kaffedrikken",
+            "Del noe godt, erstatt litt av kaffedrikken",
           ],
         },
         {
@@ -180,6 +292,107 @@ export const fruktData: ServicePageData = {
             "Bilparken er nøye planlagt i forhold til utslipp.",
             "Alt avfall kildesorteres: Frukt som sorteres ut av vår strenge kvalitetskontroll, men som fremdeles er brukbar, blir gitt bort til lokale barnehager og organisasjoner. Frukt som ikke lenger kan benyttes gis bort som heste- og grisefôr, eller gjenvinnes som biogass.",
             "Økologisk frukt blir benyttet såfremt det er tilgjengelig.",
+          ],
+        },
+      ],
+    },
+
+    {
+      slug: "gokurven",
+      title: "Go'kurven",
+      variantOf: "fruktkurver",
+      description:
+        "Go'kurven™ er vårt mest populære alternativ, da den er både rimelig, variert og spennende.",
+      image: gokurvenImg,
+      content: [
+        {
+          type: "text",
+          paragraphs: [
+            "Go'kurven™ er vårt mest populære alternativ, da den er både rimelig, variert og spennende. Dere får friske fruktkurver bestående av eple, sitrus, banan, pære, drue, plomme og nektarin, variert etter sesong og tilgang. I tillegg får dere en gang i blant nøtter, cherrytomater eller eksotisk frukt som en hyggelig overraskelse.",
+            "Leveres i kurver à ca. 6 kg, 9 kg og 15 kg.",
+          ],
+        },
+      ],
+    },
+    {
+      slug: "knaskekurven",
+      title: "Knaskekurven",
+      variantOf: "fruktkurver",
+      description:
+        "Knaskekurven™ er et sunt og spennende alternativ som er skapt for kos.",
+      image: knaskekurvenImg,
+      content: [
+        {
+          type: "text",
+          paragraphs: [
+            "Et sunt og spennende alternativ som er skapt for kos. Inneholder epler, pærer, bananer, sitrus, druer, minigulrøtter, cherrytomater, reddiker, sukkererter og nøtter. Ønsker dere en fruktkurv med masse spennende innhold, er dette kurven for dere!",
+            "Leveres i kurver à ca. 5,5 kg og 8 kg."
+          ],
+        },
+      ],
+    },
+    {
+      slug: "hverdagskurven",
+      title: "Hverdagskurven",
+      variantOf: "fruktkurver",
+      description:
+        "Den perfekte fruktkurven for dere som ønsker å oppnå helsefordelen ved å benytte frukt og samtidig holde prisen på det minimale.",
+      image: hverdagskurvenImg,
+      content: [
+        {
+          type: "text",
+          paragraphs: [
+            "Den perfekte fruktkurven for dere som ønsker å oppnå helsefordelen ved frukt til en lav pris. Hverdagskurven består av tre ulike typer basefrukt, der det varieres mellom eple, pære, banan og sitrus",
+            "Leveres i kurver à ca. 6 kg, 9 kg og 15 kg.",
+          ],
+        },
+      ],
+    },
+    {
+      slug: "superkurven",
+      title: "Superkurven",
+      variantOf: "fruktkurver",
+      description:
+        "Superkurven™ er vårt flaggskip, for dere som ønsker «alt» i deres jobbfrukt!",
+      image: superkurvenImg,
+      content: [
+        {
+          type: "text",
+          paragraphs: [
+            "Inneholder frukt som eple, pære, banan, sitrus og druer. Toppes med eksotisk frukt og sesongfrukt som plommer, nektariner, jordbær, kiwi, sharon, melon og lignende, samt nøtter og tørkede frukter. Innholdet i kurven varierer fra uke til uke, og etter sesong og tilgang"
+          ],
+        },
+      ],
+    },
+    {
+      slug: "rullekurven",
+      title: "Rullekurven",
+      variantOf: "fruktkurver",
+      description:
+        "Rullekurven™ er for dere som ønsker mer variasjon, eller ganske enkelt ikke klarer å bestemme dere.",
+      image: rullekurvenImg,
+      content: [
+        {
+          type: "text",
+          paragraphs: [
+            "Rullekurven er for dere som ønsker mer variasjon, eller ganske enkelt ikke klarer å bestemme dere. Varierer fra uke til uke mellom de fire ulike typene fruktkurv, og kan leveres i to størrelser – stor og liten.",
+          ],
+        },
+      ],
+    },
+    {
+      slug: "smoothiekurven",
+      title: "Smoothiekurven",
+      variantOf: "fruktkurver",
+      description:
+        "Fruktkurv med basisfrukt og smoothie. Ideell for de som liker både å spise og drikke frukt.",
+      image: smoothiekurvenImg,
+      content: [
+        {
+          type: "text",
+          paragraphs: [
+            "Fruktkurv med basisfrukt og smoothie. Ideell for de som liker både å spise og drikke frukt. Våre hjemmelagede kvalitetssmoothier inneholder kun sunne og ferske ingredienser.",
+            "Leveres i kurver i to størrelser.",
           ],
         },
       ],

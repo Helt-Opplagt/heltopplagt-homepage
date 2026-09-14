@@ -1,183 +1,182 @@
-import { Target, Users, Heart, Award, ArrowUpRight } from "lucide-react";
-import { Link } from "react-router";
-import { PageHero, SectionHeader } from "../components/PageHero";
-import { CtaSection } from "../components/CtaSection";
-import heleGjengenImg from "../../images/hele_gjengen.jpg";
+import { ArrowUpRight } from "lucide-react";
+import { CONTAINER, Kicker, Pill } from "../components/site";
+import { Head } from "../components/ServicePage";
+import buildingImg from "../../images/div/web/ho-015.jpg";
+import { useDocumentMeta } from "../../lib/use-document-meta";
 
 const stats = [
-  { value: "200+", label: "Fornøyde bedrifter" },
-  { value: "50+", label: "Dedikerte medarbeidere" },
-  { value: "6", label: "Tjenester under ett tak" },
-  { value: "98%", label: "Kundetilfredshet" },
+  { value: "1985", label: "Grunnlagt som Euromiljø" },
+  { value: "320+", label: "Ansatte i konsernet" },
+  { value: "50 000+", label: "Ansatte mottar tjenestene våre" },
+  { value: "1000+", label: "Bedrifter i Oslo og Stor-Oslo" },
+  { value: "15 000", label: "Serveres lunsj hver dag" },
+
 ];
 
 const values = [
   {
-    icon: Target,
-    title: "Vårt oppdrag",
-    description:
-      "Å levere fremragende fasilitetsløsninger som gjør hverdagen enklere for våre kunder.",
+    title: "Vi dyrker samhold",
+    body: "Hos oss har alle et ansvar for å skape et inkluderende arbeidsmiljø hvor vi presterer, har det moro sammen og bryr oss om hverandre. Vi har tro på våre medarbeidere, noe som gjenspeiles i vår flate struktur og satsning på mennesker som kan og vil arbeide for vårt fellesskap. Hos oss har vi et mangfold som viser hverandre tillit og respekt.",
   },
   {
-    icon: Users,
-    title: "Teamet vårt",
-    description:
-      "Over 50 dedikerte medarbeidere med erfaring og kompetanse innen fasilitetsforvaltning.",
+    title: "Vi er nysgjerrige",
+    body: "Vi lærer av våre feil, og skaper nye og bedre løsninger. For å kunne lære av og med hverandre har vi et åpent sinn, og mot til å dele og stille spørsmål. Vi utforsker fremtiden og de muligheter som ligger i den.",
   },
   {
-    icon: Heart,
-    title: "Våre verdier",
-    description:
-      "Kvalitet, pålitelighet og kundetilfredshet står i sentrum av alt vi gjør.",
-  },
-  {
-    icon: Award,
-    title: "Vår visjon",
-    description:
-      "Å være den foretrukne partneren for fasilitetsløsninger i Oslo-området.",
+    title: "Vi skaper kvalitet",
+    body: "Vi jobber for å knytte til oss de rette menneskene med den riktige kompetansen. Samtidig ønsker vi der det er mulig å rekruttere internt, for å ta vare på og videreutvikle mennesker, kunnskap og erfaring. Vi er fleksible og har en evne til å snu oss raskt for å gi en unik kundeservice og opprettholde kvaliteten vi har lovet.",
   },
 ];
 
-const milestones = [
+const timeline = [
   {
-    period: "Starten",
-    title: "En enkel idé",
-    text: "Helt Opplagt ble grunnlagt med en visjon om å tilby profesjonelle tjenester som gjør hverdagen enklere for bedrifter i Oslo-området.",
+    year: "1985",
+    title: "Startet som Euromiljø",
+    body: "Euromiljø ble etablert i 1985, og har i alle årene jobbet med økt trivsel, effektivitet og for enda flere langtidsfriske mennesker hos bedrifter og offentlig sektor på østlandet. Det startet med ren luft med rett temperatur; med luftrensere, kjøling og varmepumper med tilhørende leie- og serviceavtaler.",
   },
   {
-    period: "Veksten",
-    title: "Fra én tjeneste til seks",
-    text: "Fra en liten oppstart har vi vokst til å bli en av regionens ledende leverandører, med over 200 fornøyde kunder og mer enn 50 dedikerte medarbeidere.",
+    year: "Midt på nittitallet",
+    title: "Jobbfrukt",
+    body: "Midt på nittitallet startet vi levering av fruktkurver, eller jobbfrukt; lett tilgjengelig frukt på arbeidsplassen. Tjenesten er i dag blitt vanlig og inngår hos svært mange bedrifter som en viktig faktor for de ansattes trivsel og helse.",
   },
   {
-    period: "I dag",
-    title: "Alt under ett tak",
-    text: "I dag tilbyr vi et bredt spekter av abonnementsbaserte tjenester — fra kantinedrift og catering til renhold og inneklima. Vår styrke ligger i evnen til å tilpasse løsninger til hver enkelt kundes behov.",
+    year: "1999",
+    title: "Sunn lunsj",
+    body: "1999 startet vi med levering av sunn lunsj til små og mellomstore bedrifter. Lunsjtjenesten ble senere utvidet med kantinedrift med personell, samt varmmat, catering, overtids- og julemat fra vårt eget kjøkken.",
+  },
+  {
+    year: "2007",
+    title: "Helt Opplagt på jobben",
+    body: "Navnet Euromiljø er beholdt som firmanavn, men fra 2007 begynte vi å bruke profilnavnet Helt Opplagt på jobben.",
+  },
+  {
+    year: "2011",
+    title: "Nytt bygg på Bjørnholt",
+    body: "I 2011 fikk vi ferdigstilt vårt nye bygg på Bjørnholt, bygget spesielt for våre virksomheter. Vi fikk med dette flotte vekstmuligheter.",
+  },
+
+  {
+    year: "2016",
+    title: "Rett Hjem",
+    body: "I denne ånd kjøpte vi Rett Hjem i 2016 for å kunne tilby bedrifter også netthandel av lunsj, catering etc. Videre overtok vi også en «Seniortjeneste», nå kalt Rett Hjem PLUSS, med levering av dagligvarer og middagsmat til eldre.",
+  },
+  {
+    year: "I dag",
+    title: "Drøyt 320 ansatte",
+    body: "Vi har hele veien hatt jevn og fin vekst, og i Helt Opplagt har vi nå drøyt 320 ansatte. Vi er stolte av våre fine og lojale medarbeidere som gjør service på rundt 1200 luftrensere og varmepumper hver måned, produserer og leverer rundt 3500 fruktkurver per uke, og serverer lunsj til over 15 000 mennesker hver dag.",
   },
 ];
 
 export function OmOssPage() {
-  return (
-    <div className="min-h-screen bg-white">
-      <PageHero
-        eyebrow="Om oss"
-        title={
-          <>
-            Menneskene bak det{" "}
-            <span className="text-[#0078C4] italic font-light">
-              helt opplagte
-            </span>{" "}
-            valget
-          </>
-        }
-        description="Vi er en markedsorientert leverandør av abonnementsbaserte tjenester innen helse og trivsel på arbeidsplassen — med kvalitet og service i ryggmargen."
-        image={heleGjengenImg}
-        imageAlt="Hele gjengen i Helt Opplagt"
-        chip={{ label: "Teamet", value: "Hele gjengen" }}
-      />
+  useDocumentMeta(
+    "Om oss",
+    "Helt Opplagt på jobben er en markedsorientert leverandør av løpende abonnementsbaserte tjenester innen helse og trivsel på arbeidsplassen. Vi leverer jobbfrukt, catering, renhold, kantine og ren luft til over 50 000 ansatte i bedrifter i Oslo."
+  );
 
-      {/* Stats bar */}
-      <section className="border-b border-gray-200 bg-white">
-        <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className={`py-10 text-center ${
-                index > 0 ? "lg:border-l border-gray-200" : ""
-              }`}
-            >
-              <p className="text-3xl lg:text-4xl font-bold text-[#0078C4] tracking-tight mb-1">
-                {stat.value}
-              </p>
-              <p className="text-sm text-gray-500">{stat.label}</p>
-            </div>
-          ))}
+  return (
+    <div className="min-h-dvh bg-white">
+      <section className="relative isolate overflow-hidden bg-cloud text-navy">
+        <span
+          aria-hidden="true"
+          className="livery-puzzle aspect-[100/129] -right-20 -bottom-12 w-44 rotate-[12deg] bg-brand/10 lg:-right-10 lg:w-64"
+        />
+        <div className={`${CONTAINER} relative z-10 py-14 lg:py-20`}>
+          <Kicker>Om oss</Kicker>
+          <h1 className="mt-4 max-w-[46rem] font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
+            Om Helt Opplagt på jobben
+          </h1>
+          <p className="mt-5 max-w-[42rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
+            Sammen skal vi være det Helt Opplagte valg for en sunnere, renere og
+            enklere hverdag! Helt Opplagt på jobben er en markedsorientert
+            leverandør av løpende abonnementsbaserte tjenester innen helse og
+            trivsel på arbeidsplassen.
+          </p>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1280px] mx-auto px-8">
-          <SectionHeader
-            eyebrow="Hvem vi er"
-            title={
-              <>
-                Et team som brenner for
-                <br />
-                førsteklasses service
-              </>
-            }
-            action={
-              <Link
-                to="/karriere"
-                className="border-[1.5px] border-gray-200 text-gray-700 px-5 py-2.5 rounded-md text-[13px] font-medium hover:border-[#0078C4] hover:text-[#0078C4] transition-all inline-flex items-center gap-1.5"
+      <section className="border-b border-navy/5 bg-white">
+        <div className={`${CONTAINER} py-10 lg:py-12`}>
+          <dl className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+            {stats.map((s) => (
+              <div key={s.label} className="flex flex-col">
+                <dt className="order-2 mt-1 text-[13px] leading-snug text-navy/55">
+                  {s.label}
+                </dt>
+                <dd className="font-lato text-[34px] font-light leading-none text-brand">
+                  {s.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 lg:py-24">
+        <div
+          className={`${CONTAINER} grid items-center gap-12 lg:grid-cols-2 lg:gap-20`}
+        >
+          <div className="relative mx-auto w-full max-w-[36rem] lg:max-w-none">
+            <div className="aspect-[3/2] overflow-hidden rounded-2xl">
+              <img
+                src={buildingImg}
+                alt="Helt Opplagt på jobben sitt bygg på Bjørnholt i Oslo"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+          <div>
+            <Head
+              title="En samarbeidspartner for trivsel, helse og effektivitet"
+              proof="Gjennom høy kvalitet, presise leveranser, nærhet til kundene, høy servicegrad og riktige priser skal vi være markedets foretrukne samarbeidspartner i våre nisjer."
+            />
+            <p className="mt-6 text-[15px] leading-[1.7] text-navy/65 lg:text-[16px]">
+              Vi tror på menneskene, og vi bryr oss om deg. Gjennom våre verdier
+              får vi mennesker til å blomstre, trives og gjøre et godt stykke
+              arbeid.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.7] text-navy/65 lg:text-[16px]">
+              Vi er stolte av å identifisere oss som en virksomhet med god
+              kultur og rutiner for å fremme likestilling og hindre
+              diskriminering på arbeidsplassen. I våre stillingsannonser
+              oppfordrer vi kvalifiserte søkere til å søke uansett alder, kjønn,
+              legning og kulturell bakgrunn.
+            </p>
+            <div className="mt-8">
+              <Pill
+                href="https://karriere.heltopplagt.com/"
+                variant="outline"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Jobb hos oss
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
-            }
-          />
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <div
-                  key={index}
-                  className="group border border-gray-200 rounded-2xl p-7 hover:border-[#0078C4]/40 hover:shadow-[0_12px_32px_rgba(0,120,196,0.08)] transition-all duration-300"
-                >
-                  <div className="w-12 h-12 bg-[#f5f9fc] rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#0078C4] transition-colors duration-300">
-                    <Icon
-                      className="w-6 h-6 text-[#0078C4] group-hover:text-white transition-colors duration-300"
-                      strokeWidth={1.75}
-                    />
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 tracking-tight mb-2">
-                    {value.title}
-                  </h3>
-                  <p className="text-[15px] text-gray-600 leading-relaxed">
-                    {value.description}
-                  </p>
-                </div>
-              );
-            })}
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+              </Pill>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* History timeline */}
-      <section className="py-24 bg-[#f5f9fc] border-y border-gray-200">
-        <div className="max-w-[1280px] mx-auto px-8 grid lg:grid-cols-[1fr_1.6fr] gap-14">
-          <div>
-            <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#0078C4] mb-2.5">
-              Vår historie
-            </p>
-            <h2 className="text-3xl lg:text-[40px] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5">
-              Fra idé til
-              <br />
-              komplett leverandør
-            </h2>
-            <p className="text-[17px] text-gray-600 leading-relaxed">
-              Vi er stolte av arbeidet vårt, og forpliktet til å fortsette å
-              levere den høye kvaliteten kundene våre forventer av oss.
-            </p>
-          </div>
-
-          <div className="space-y-0">
-            {milestones.map((milestone, index) => (
+      <section className="relative isolate overflow-hidden bg-cloud py-16 lg:py-24">
+        <span
+          aria-hidden="true"
+          className="livery-puzzle-outline aspect-[100/129] -left-14 -top-8 w-36 -rotate-[12deg] bg-brand/20 lg:-left-8 lg:w-52"
+        />
+        <div className={`${CONTAINER} relative z-10`}>
+          <Head
+            title="Verdiene våre"
+            proof="Samhold, nysgjerrighet og kvalitet skal gjøre oss i stand til å løfte hverandre til topp prestasjoner i alle ledd."
+          />
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {values.map((v) => (
               <div
-                key={index}
-                className="relative pl-10 pb-10 last:pb-0 border-l border-gray-300 last:border-l-transparent ml-2"
+                key={v.title}
+                className="rounded-[1.5rem] bg-white p-7 shadow-[0_1px_2px_rgba(13,43,64,0.06)]"
               >
-                <span className="absolute -left-[9px] top-0 w-[17px] h-[17px] rounded-full bg-white border-[3px] border-[#0078C4]" />
-                <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#0078C4] mb-1.5">
-                  {milestone.period}
-                </p>
-                <h3 className="text-xl font-bold text-gray-900 tracking-tight mb-2">
-                  {milestone.title}
+                <h3 className="font-lato text-[20px] font-bold text-navy">
+                  {v.title}
                 </h3>
-                <p className="text-[15px] text-gray-600 leading-relaxed max-w-[540px]">
-                  {milestone.text}
+                <p className="mt-3 text-[15px] leading-relaxed text-navy/65">
+                  {v.body}
                 </p>
               </div>
             ))}
@@ -185,7 +184,92 @@ export function OmOssPage() {
         </div>
       </section>
 
-      <CtaSection />
+      <section className="bg-white py-16 lg:py-24">
+        <div className={CONTAINER}>
+          <Head
+            title="Historikk"
+            proof="Helt Opplagt begynte som Euromiljø."
+          />
+          <ol className="mt-10 max-w-[820px] border-l-2 border-brand/20 pl-8">
+            {timeline.map((t) => (
+              <li key={t.year} className="relative pb-10 last:pb-0">
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-white bg-brand shadow-[0_0_0_1px_rgba(0,119,190,0.3)]"
+                />
+                <p className="text-[13px] font-semibold uppercase tracking-[0.08em] text-brand">
+                  {t.year}
+                </p>
+                <h3 className="mt-1.5 font-lato text-[19px] font-bold text-navy">
+                  {t.title}
+                </h3>
+                <p className="mt-2 max-w-[58ch] text-[15px] leading-relaxed text-navy/65">
+                  {t.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="bg-cloud py-16 lg:py-20">
+        <div className={CONTAINER}>
+          <Head
+            title="Hvorfor er Helt Opplagt det smarteste valget?"
+            proof="Helt Opplagt leverer mange tjenester under samme tak. Med samlevering blir det mange synergier våre kunder tjener på. Ikke minst er det også gunstig for miljøet."
+          />
+        </div>
+      </section>
+
+      <section className="relative isolate overflow-hidden bg-sand py-16 lg:py-20">
+        <span
+          aria-hidden="true"
+          className="livery-puzzle aspect-[100/129] -right-16 -bottom-12 w-40 rotate-[15deg] bg-amber/15 lg:-right-8 lg:w-56"
+        />
+        <div className={`${CONTAINER} relative z-10`}>
+          <Head
+            title="Åpenhetsloven"
+            proof="Vi tar ansvar for menneskerettigheter og arbeidsforhold i vår virksomhet og leverandørkjede."
+          />
+          <p className="mt-6 max-w-[68ch] text-[15px] leading-[1.7] text-navy/70">
+            Åpenhetsloven trådte i kraft 1. juli 2022 for å forebygge brudd på
+            menneskerettigheter og uanstendige arbeidsforhold. Vi har derfor
+            gjennomført aktsomhetsvurderinger basert på OECD-retningslinjer, og
+            vil gjøre dette årlig. Ingen faktiske negative konsekvenser for
+            menneskerettigheter eller uanstendige arbeidsforhold har blitt
+            identifisert i vår aktsomhetsvurdering.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Pill
+              href="https://heltopplagt.no/download_file/view/494/180"
+              variant="outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Redegjørelse – konsernet
+              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </Pill>
+            <Pill
+              href="https://heltopplagt.no/download_file/view/495/180"
+              variant="outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Redegjørelse – Euromiljø Natur AS
+              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </Pill>
+            <Pill
+              href="https://heltopplagt.no/download_file/view/458"
+              variant="outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Supplier code of conduct
+              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </Pill>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

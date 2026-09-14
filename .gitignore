@@ -4,5 +4,7 @@ dist
 *.local
 .env
 .env.*
-.impeccable/
-.playwright-mcp/
+.impeccable
+.playwright-mcp
+DESIGN.md
+PRODUCT.md

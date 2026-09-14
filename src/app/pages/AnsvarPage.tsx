@@ -1,159 +1,156 @@
-import {
-  Leaf,
-  Recycle,
-  Heart,
-  Users,
-  Sprout,
-  ShieldCheck,
-} from "lucide-react";
-import { PageHero, SectionHeader } from "../components/PageHero";
-import { CtaSection } from "../components/CtaSection";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router";
+import { CONTAINER, Kicker, Pill } from "../components/site";
+import { Head } from "../components/ServicePage";
+import { useDocumentMeta } from "../../lib/use-document-meta";
 
-const initiatives = [
+const miljoTiltak = [
   {
-    icon: Leaf,
-    title: "Bærekraftig innkjøp",
-    description:
-      "Vi prioriterer lokale og økologiske leverandører for alle våre produkter. Over 80% av våre råvarer kommer fra norske produsenter.",
-  },
-  {
-    icon: Recycle,
-    title: "Avfallshåndtering",
-    description:
-      "Vi har implementert omfattende kildesortering og resirkulering i alle våre kantiner. Matavfall komposteres eller brukes til biogassproduksjon.",
-  },
-  {
-    icon: Heart,
-    title: "Sosialt ansvar",
-    description:
-      "Vi donerer overskuddsmat til lokale veldedighetsorganisasjoner og støtter sosiale prosjekter i Oslo-området.",
-  },
-  {
-    icon: Users,
-    title: "Ansattes velferd",
-    description:
-      "Vi investerer i våre ansatte gjennom opplæring, gode arbeidsforhold og muligheter for karriereutvikling.",
-  },
-];
-
-const goals = [
-  "Redusere matsvinn med 50% innen 2027",
-  "100% fornybar energi i alle våre fasiliteter innen 2026",
-  "Kun bruk av miljøvennlige rengjøringsprodukter",
-  "Samarbeide med minst 5 nye lokale leverandører årlig",
-  "Donere minimum 1000 måltider til trengende per år",
-];
-
-const certifications = [
-  {
-    icon: Sprout,
     title: "Miljøfyrtårn",
-    description: "Miljøsertifisering",
+    body: "Et systematisk arbeid med miljøtiltak i hverdagen, samt et fokus på miljø fra alle våre ansatte, gjorde oss til en Miljøfyrtårn-sertifisert bedrift i 2014. Helt Opplagts miljøgruppe, bestående av ansatte fra alle avdelinger i organisasjonen, har i lengre tid jobbet med å kvalitetssikre våre miljøtiltak slik at vi til enhver tid reduserer vår virksomhets ytre miljøpåvirkninger.",
   },
   {
-    icon: ShieldCheck,
-    title: "HACCP",
-    description: "Mattrygghet",
+    title: "Miljøvennlige kurver",
+    body: "Vi administrerer, pakker, og frakter våre produkter til deg uten å belaste miljøet. Vi benytter utelukkende miljøvennlige, flettede gjenbrukskurver laget av en familiebedrift i en liten landsby i fjellene på Filippinene.",
+  },
+  {
+    title: "Kildesortering",
+    body: "Alle avdelinger kildesorterer avfall. All papp komprimeres i vår komprimator og leveres til gjenbruk. Vi er stolte over at vi kan returnere over 1 tonn emballasje i uken.",
+  },
+  {
+    title: "Kvalitetskontroll av frukt og grønnsaker",
+    body: "Frukt som sorteres ut i vår strenge kvalitetskontroll, og som er fullt brukbar, gis til barnehager og organisasjoner som Fattighuset og Gatebarnas far. Frukt som ikke passer til dette, går til heste- og grisefôr samt biogass.",
+  },
+  {
+    title: "CO2-nøytral virksomhet",
+    body: "Helt Opplagt er også en CO2-nøytral virksomhet. Årlig lager vi et klimaregnskap for virksomheten (i henhold til GHG-protokollen) og kjøper inn FN-godkjente CO2-kvoter for å kompensere for alle våre utslipp. Vi er stolte av å kunne støtte Gold Standard-prosjektet i Mali, der lokalbefolkningen utstyres med lokalt produserte energieffektive og rentbrennende kjøkkenovner.",
+  },
+  {
+    title: "Gjenbruk av energi",
+    body: "I forbindelse med at vi ferdigstilte og flyttet inn i vårt eget bygg, har vi kunnet planlegge alt fra starten av og all oppvarming er basert på gjenbruk av energi fra forbrenningsanlegget på Klemetsrud. All kjøling til våre 11 kjøle- og fryserom gjøres med energigjerrig varmepumpeteknologi.",
+  },
+  {
+    title: "Vaskbare filtre til inneklima",
+    body: "I vår inneklimaavdeling skifter vi nær 20.000 filtre hvert år ute hos våre kunder. I stedet benytter vi vaskbare filtre, og våre serviceteknikere reiser ut til kundene med rene filtre og returnerer med skitne filtre som vi vasker her i vår vaskehall, som igjen benyttes hos våre kunder. År ut og år inn omtrent som med panteflasker.",
+  },
+  {
+    title: "Elbiler, hybridbiler og miljømål for 2030",
+    body: "Vårt fokus på bærekraft og ønsket om å spare miljøet der det er mulig gjør at vi har satt oss et hårete mål om å ha nullutslipp på all transport innen 2030. De første hel-elektriske varebilene er nå både bestilt og tatt i bruk og vi har bygget ny ladeinfrastruktur og ladebokser til hele bilparken. Innkjøp av rene fossilbiler til transportavdelingen er nå historie!",
+  },
+];
+
+const sosialt = [
+  {
+    title: "Arbeidstrening",
+    body: "I tråd med vår sosiale profil har vi utviklet et samarbeid med arbeidsmarkedsbedrifter på Østlandet. Dette gir deg som kunde muligheten til å få pakket dine fruktkurver av en bedrift med varig tilrettelagte arbeidsplasser (en VTA-bedrift), samtidig som våre svært høye krav på frukt-, temperatur- og kvalitetskontroll opprettholdes. Gjennom dette kan vi levere kurver pakket av Stiftelsen Radarveien avdeling Skredderstua arbeidssenter.",
+  },
+  {
+    title: "Nettverk etter soning",
+    body: "Vi i Helt Opplagt har stor tro på mennesket, også de som trenger en ny sjanse. Vi er stolt av samarbeidet vi har fått til med Røde Kors i Oslo. Røde Kors plukker ut passende personer og disse starter i praksisplasser hos oss, samtidig som de får oppfølging av Røde Kors sine frivillige. Dersom arbeidsforholdet fungerer ansetter vi personen fast her hos oss.",
+  },
+  {
+    title: "Norskkurs hos Helt Opplagt",
+    body: "Vi i Helt Opplagt ønsker at alle våre ansatte skal ha like forutsetninger på jobb og i samfunnet generelt. Derfor tilbyr vi sammen med Folkeuniversitetet norskkurs med gratis lærebøker til 45 av våre ansatte. I tillegg til språkkunnskaper ser man effekter som skaper et sterkt fellesskap mellom de ansatte imellom og oss i Helt Opplagt.",
+  },
+  {
+    title: "Vi jobber for å rekke en hånd til de ukrainske flyktningene",
+    body: "Vi er i dialog med den ukrainske ambassade, NAV og europratsya.com for å hurtigst mulig kunne hjelpe de som nå krysser landegrensen vår ved å tilby arbeid, interne fadderordninger og norskkurs. Vi håper dette kan skape noe forutsigbarhet og trygghet. Vi kan ikke hjelpe alle, men vi skal gjøre vårt for å hjelpe de vi har ressurser til.",
   },
 ];
 
 export function AnsvarPage() {
+  useDocumentMeta(
+    "Samfunnsansvar",
+    "Vi i Helt Opplagt vet at vi ikke kan redde verden på egenhånd, men vi ønsker å bidra der vi kan, og håper å inspirere andre til å gjøre det samme."
+  );
+
   return (
-    <div className="min-h-screen bg-white">
-      <PageHero
-        eyebrow="Samfunnsansvar"
-        title={
-          <>
-            Ansvar for miljø,{" "}
-            <span className="text-[#0078C4] italic font-light">
-              mennesker og samfunn
-            </span>
-          </>
-        }
-        description="Hos Helt Opplagt er bærekraft en naturlig del av alt vi gjør — fra råvarene vi kjøper inn til menneskene som leverer tjenestene."
-      />
-
-      {/* Initiatives */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1280px] mx-auto px-8">
-          <SectionHeader
-            eyebrow="Våre initiativer"
-            title={
-              <>
-                Konkrete tiltak,
-                <br />
-                ikke bare fine ord
-              </>
-            }
-          />
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {initiatives.map((initiative, index) => {
-              const Icon = initiative.icon;
-              return (
-                <div
-                  key={index}
-                  className="group border border-gray-200 rounded-2xl p-8 hover:border-[#0078C4]/40 hover:shadow-[0_12px_32px_rgba(0,120,196,0.08)] transition-all duration-300"
-                >
-                  <div className="w-12 h-12 bg-[#f5f9fc] rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#0078C4] transition-colors duration-300">
-                    <Icon
-                      className="w-6 h-6 text-[#0078C4] group-hover:text-white transition-colors duration-300"
-                      strokeWidth={1.75}
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 tracking-tight mb-2.5">
-                    {initiative.title}
-                  </h3>
-                  <p className="text-[15px] text-gray-600 leading-relaxed">
-                    {initiative.description}
-                  </p>
-                </div>
-              );
-            })}
+    <div className="min-h-dvh bg-white">
+      <section className="relative isolate overflow-hidden bg-cloud text-navy">
+        <span
+          aria-hidden="true"
+          className="livery-puzzle aspect-[100/129] -right-20 -bottom-12 w-44 rotate-[12deg] bg-lime/15 lg:-right-10 lg:w-64"
+        />
+        <div className={`${CONTAINER} relative z-10 py-14 lg:py-20`}>
+          <Kicker>Samfunnsansvar</Kicker>
+          <h1 className="mt-4 max-w-[46rem] font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
+            Vårt samfunnsansvar
+          </h1>
+          <p className="mt-5 max-w-[42rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
+            Vi i Helt Opplagt vet at vi ikke kan redde verden på egenhånd, men
+            vi ønsker å bidra der vi kan, og håper å inspirere andre til å gjøre
+            det samme. Vi har alltid hatt stort fokus på miljøtiltak. Vi tenker
+            på miljøet både i forhold til klima og natur, men også i et sosialt
+            perspektiv.
+          </p>
+          <div className="mt-7">
+            <Pill
+              href="https://heltopplagt.no/download_file/view/455/236"
+              variant="outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Les klimaregnskapet vårt
+              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </Pill>
           </div>
         </div>
       </section>
 
-      {/* Goals */}
-      <section className="bg-[rgb(17,31,55)] py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="max-w-[1280px] mx-auto px-8 grid lg:grid-cols-[1fr_1.4fr] gap-14 relative z-[2]">
-          <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-0.5 bg-[#0078C4]" />
-              <span className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#66aedc]">
-                Våre mål
-              </span>
-            </div>
-            <h2 className="text-3xl lg:text-[40px] font-bold text-white tracking-tight leading-[1.1] mb-5">
-              Dette har vi
-              <br />
-              forpliktet oss til
-            </h2>
-            <p className="text-[16px] text-white/55 leading-relaxed">
-              Målene våre er konkrete og målbare — og vi rapporterer åpent på
-              fremdriften.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            {goals.map((goal, index) => (
+      <section className="bg-white py-16 lg:py-24">
+        <div className={CONTAINER}>
+          <Head
+            title="Miljø"
+            proof="Vi søker hele tiden etter nye metoder for å gjøre miljøet enda bedre – det er vårt miljøansvar!"
+          />
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-7">
+            {miljoTiltak.map((t) => (
               <div
-                key={index}
-                className="flex items-center gap-5 bg-white/[0.05] border border-white/10 rounded-xl px-6 py-5 hover:bg-white/[0.08] transition-colors"
+                key={t.title}
+                className="rounded-[1.5rem] bg-cloud/60 p-7"
               >
-                <span className="text-[15px] font-bold text-[#0078C4] bg-white/[0.06] border border-white/10 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">
-                  0{index + 1}
-                </span>
-                <p className="text-[15px] text-white/85 leading-relaxed">
-                  {goal}
+                <h3 className="font-lato text-[19px] font-bold text-navy">
+                  {t.title}
+                </h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-navy/65">
+                  {t.body}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Link
+              to="/aktuelt/helt-opplagt-samarbeider-med-ford-pa-veien-mot-nullutslipp"
+              className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand"
+            >
+              Les om overgangen til elektriske varebiler
+              <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative isolate overflow-hidden bg-sand py-16 lg:py-24">
+        <span
+          aria-hidden="true"
+          className="livery-puzzle aspect-[100/129] -left-16 -bottom-12 w-40 -rotate-[15deg] bg-amber/15 lg:-left-8 lg:w-60"
+        />
+        <div className={`${CONTAINER} relative z-10`}>
+          <Head
+            title="Mennesker og samfunn"
+            proof="Vi i Helt Opplagt har stor tro på mennesket, også de som trenger en ny sjanse."
+          />
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-7">
+            {sosialt.map((t) => (
+              <div
+                key={t.title}
+                className="rounded-[1.5rem] bg-white p-7 shadow-[0_1px_2px_rgba(13,43,64,0.06)]"
+              >
+                <h3 className="font-lato text-[19px] font-bold text-navy">
+                  {t.title}
+                </h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-navy/65">
+                  {t.body}
                 </p>
               </div>
             ))}
@@ -161,43 +158,39 @@ export function AnsvarPage() {
         </div>
       </section>
 
-      {/* Certifications */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1280px] mx-auto px-8">
-          <div className="text-center mb-14">
-            <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#0078C4] mb-2.5">
-              Dokumentert kvalitet
-            </p>
-            <h2 className="text-3xl lg:text-[40px] font-bold text-gray-900 tracking-tight leading-[1.1]">
-              Sertifiseringer og standarder
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {certifications.map((certification, index) => {
-              const Icon = certification.icon;
-              return (
-                <div
-                  key={index}
-                  className="border border-gray-200 rounded-2xl p-8 text-center hover:border-[#0078C4]/40 hover:shadow-[0_12px_32px_rgba(0,120,196,0.08)] transition-all duration-300"
-                >
-                  <div className="w-14 h-14 bg-[#f5f9fc] rounded-xl flex items-center justify-center mx-auto mb-5">
-                    <Icon className="w-7 h-7 text-[#0078C4]" strokeWidth={1.75} />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 tracking-tight mb-1.5">
-                    {certification.title}
-                  </h3>
-                  <p className="text-[15px] text-gray-600">
-                    {certification.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+      <section className="bg-white py-16 lg:py-20">
+        <div className={CONTAINER}>
+          <Head
+            title="Sertifiseringer og medlemskap"
+          />
+          <ul className="mt-8 grid max-w-[820px] grid-cols-1 gap-4 sm:grid-cols-3">
+            {[
+              {
+                name: "Miljøfyrtårn",
+                detail: "Sertifisert siden 2014",
+              },
+              {
+                name: "Grønt Punkt",
+                detail: "Medlem, med EL-returavtale",
+              },
+              {
+                name: "GLOBALG.A.P.",
+                detail: "Fruktleverandørene våre er tilknyttet",
+              },
+            ].map((c) => (
+              <li
+                key={c.name}
+                className="rounded-[1.5rem] border border-navy/10 p-6 text-center"
+              >
+                <p className="font-lato text-[18px] font-bold text-navy">
+                  {c.name}
+                </p>
+                <p className="mt-1 text-[13px] text-navy/55">{c.detail}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
-
-      <CtaSection />
     </div>
   );
 }

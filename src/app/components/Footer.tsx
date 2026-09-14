@@ -1,34 +1,35 @@
 import { Mail } from "lucide-react";
 import { Link } from "react-router";
 import logoSrc from "../../images/logo.png";
+import { CONTAINER, Pill } from "./site";
+import { SERVICES } from "./livery";
 
-const serviceLinks = [
-  { label: "Frukt", to: "/tjenester/frukt" },
-  { label: "Kantine", to: "/tjenester/kantine" },
-  { label: "Lunsj", to: "/tjenester/lunsj" },
-  { label: "Renhold", to: "/tjenester/renhold" },
-  { label: "Inneklima", to: "/tjenester/inneklima" },
-  { label: "Catering", to: "/tjenester/catering" },
-];
-const companyLinks = [
+const companyLinks: { label: string; to?: string; href?: string }[] = [
   { label: "Om oss", to: "/om-oss" },
   { label: "Referanser", to: "/referanser" },
   { label: "Aktuelt", to: "/aktuelt" },
-  { label: "Karriere", to: "/karriere" },
+  { label: "Ansvar", to: "/ansvar" },
+  { label: "Karriere", href: "https://karriere.heltopplagt.com/" },
   { label: "Kontakt", to: "/kontakt" },
 ];
 
+const HEADING =
+  "mb-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-white/45";
+
 export function Footer() {
   return (
-    <footer className="bg-neutral text-neutral-content">
-      {/* Main grid */}
-      <div className="footer sm:footer-horizontal max-w-[1280px] mx-auto px-8 pt-[72px] pb-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_2fr_1.4fr] gap-10 lg:gap-12">
-        {/* Brand col */}
-        <aside>
-          <img src={logoSrc} alt="Helt Opplagt" className="h-[30px] object-contain brightness-0 invert mb-5" />
-          <p className="text-sm text-neutral-content/45 leading-[1.75] max-w-[280px] mb-7">
-            Profesjonelle fasilitetsløsninger for arbeidsplassen — kantine,
-            renhold, frukt og mer.
+    <footer className="bg-navy text-white">
+      <div
+        className={`${CONTAINER} grid grid-cols-2 gap-x-6 gap-y-10 py-12 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr] lg:gap-10 lg:py-20`}
+      >
+        <div className="col-span-2 lg:col-span-1">
+          <img
+            src={logoSrc}
+            alt="Helt Opplagt"
+            className="mb-6 h-8 object-contain brightness-0 invert"
+          />
+          <p className="mb-7 max-w-[300px] text-[14px] leading-[1.7] text-white/60">
+            Det Helt Opplagte valg for en sunnere, renere og enklere hverdag!
           </p>
           <div className="flex gap-2">
             {[Mail].map((Icon, i) => (
@@ -40,57 +41,95 @@ export function Footer() {
               </div>
             ))}
           </div>
-        </aside>
-
-        {/* Link columns — side by side on all screen sizes */}
-        <div className="grid grid-cols-2 gap-8">
-          <nav className="flex flex-col gap-0.5">
-            <h6 className="footer-title text-neutral-content/30">Tjenester</h6>
-            {serviceLinks.map((s) => (
-              <Link key={s.to} to={s.to} className="link link-hover text-neutral-content/55 text-sm">
-                {s.label}
-              </Link>
-            ))}
-          </nav>
-
-          <nav className="flex flex-col gap-0.5">
-            <h6 className="footer-title text-neutral-content/30">Selskapet</h6>
-            {companyLinks.map((l) => (
-              <Link key={l.to} to={l.to} className="link link-hover text-neutral-content/55 text-sm">
-                {l.label}
-              </Link>
-            ))}
-          </nav>
         </div>
 
-        {/* Contact col */}
-        <div className="bg-neutral-content/[0.04] rounded-xl px-6 py-7 md:col-span-2 lg:col-span-1">
-          <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-neutral-content/30 mb-[18px]">
-            Kontakt
-          </p>
-          {[
-            { label: "E-post", val: "bli@heltopplagt.no" },
-            { label: "Telefon", val: "02346" },
-            { label: "Adresse", val: "Oslo, Norge" },
-          ].map((item, i) => (
-            <div key={i} className="mb-4">
-              <p className="text-[10px] font-semibold tracking-[0.08em] uppercase text-neutral-content/30 mb-0.5">
-                {item.label}
-              </p>
-              <p className="text-sm text-neutral-content/70">{item.val}</p>
-            </div>
+        <nav className="flex flex-col gap-2.5">
+          <h2 className={HEADING}>Tjenester</h2>
+          {SERVICES.map((s) => (
+            <Link
+              key={s.href}
+              to={s.href}
+              className="text-[14px] text-white/70 transition-colors hover:text-aqua"
+            >
+              {s.name}
+            </Link>
           ))}
-          <Link to="/kontakt" className="btn btn-primary btn-sm w-full mt-2">
-            Send oss en melding
-          </Link>
+        </nav>
+
+        <nav className="flex flex-col gap-2.5">
+          <h2 className={HEADING}>Selskapet</h2>
+          {companyLinks.map((l) =>
+            l.href ? (
+              <a
+                key={l.label}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[14px] text-white/70 transition-colors hover:text-aqua"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <Link
+                key={l.label}
+                to={l.to!}
+                className="text-[14px] text-white/70 transition-colors hover:text-aqua"
+              >
+                {l.label}
+              </Link>
+            )
+          )}
+        </nav>
+
+        <div className="col-span-2 lg:col-span-1">
+          <h2 className={HEADING}>Kontakt</h2>
+          <a
+            href="tel:02346"
+            className="flex items-center gap-3 py-1.5 text-[15px] font-semibold text-white transition-colors hover:text-aqua"
+          >
+            <Phone className="h-4 w-4 text-aqua" strokeWidth={2.25} />
+            02346
+          </a>
+          <a
+            href="mailto:bli@heltopplagt.no"
+            className="flex items-center gap-3 py-1.5 text-[14px] text-white/70 transition-colors hover:text-aqua"
+          >
+            <Mail className="h-4 w-4 text-aqua" strokeWidth={2} />
+            bli@heltopplagt.no
+          </a>
+          <p className="mt-1.5 text-[14px] text-white/50">
+            Slimeveien 2b, 1275 Oslo
+          </p>
+          <Pill to="/kontakt" className="mt-6">
+            Kontakt oss
+          </Pill>
+          <p className="mt-6 max-w-[300px] text-[13px] leading-[1.7] text-white/50">
+            Prøv også vårt søsterselskap{" "}
+            <a
+              href="https://retthjem.no"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-white/70 transition-colors hover:text-aqua"
+            >
+              Rett Hjem
+            </a>
+            . Rett Hjem er en dagligvarebutikk på nett som leverer absolutt alt
+            en bedrift trenger til lunsj, møter, event, overtid etc. i
+            Stor-Oslo.
+          </p>
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-neutral-content/[0.06] px-8 py-[18px]">
-        <div className="max-w-[1280px] mx-auto flex justify-between items-center flex-wrap gap-2">
-          <p className="text-xs text-neutral-content/25">
-            &copy; {new Date().getFullYear()} Helt Opplagt AS. Alle rettigheter reservert.
+      <div className="border-t border-white/10">
+        <div
+          className={`${CONTAINER} flex flex-wrap items-center justify-between gap-2 py-6`}
+        >
+          <p className="text-[12px] text-white/45">
+            &copy; {new Date().getFullYear()} Helt Opplagt. Alle rettigheter
+            reservert.
+          </p>
+          <p className="payoff-marker font-payoff text-[15px] font-bold text-white/60">
+            Helt Opplagt på jobben
           </p>
         </div>
       </div>

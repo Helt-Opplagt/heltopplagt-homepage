@@ -1,5 +1,7 @@
 import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import heroImg from "../../../images/renhold/renhold.png";
+import openingImg from "../../../images/hero/web/hero-renhold.jpg";
+import explainerImg from "../../../images/div/web/vinduspuss.jpg";
 
 const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 
@@ -8,17 +10,129 @@ export const renholdData: ServicePageData = {
   badge: "Arbeidsmiljø",
   title: (
     <>
-      Godt renhold bidrar til{" "}
-      <span className="text-[#0078C4] italic font-light">
-        større trivsel
-      </span>{" "}
-      og et bedre arbeidsmiljø
+      Renhold
     </>
   ),
+  subtitle: "Godt renhold og kontorvask bidrar til større trivsel og et bedre arbeidsmiljø",
   intro:
-    "Våre 100 profesjonelle medarbeidere ønsker seg flere nye oppdragssteder. Ønsker du at dine kollegaer skal få et rent innemiljø? Da er Helt Opplagt Rent løsningen for deg!",
+    "Vi har over 100 profesjonelle medarbeidere som ønsker seg flere nye oppdragssteder. Ønsker du at dine kollegaer skal få et rent innemiljø? Da er Helt Opplagt Rent løsningen for deg!",
   image: heroImg,
   imageAlt: "Renhold fra Helt Opplagt",
+  heroImage: openingImg,
+  /* Ingen renholdsbrosjyre er publisert på heltopplagt.no, derfor ingen brochureUrl. */
+  heroPoints: [
+    { label: "Godt renhold gir bedre trivsel og sørger for et bedre arbeidsmiljø." },
+    { label: "Mindre støv gir også et bedre inneklima og reduserer risikoen for astma- og allergiplager." },
+    { label: "Fagutdannede og kompetente medarbeidere" },
+    { label: "Behovstilpasset renholdsavtale" },
+  ],
+  explainer: {
+    heading: "Hva tilbyr vi?",
+    body: [
+      "Vi er en renholdsentreprenør som ivaretar dine behov på en profesjonell måte. Vi kan bistå dere med en behovstilpasset renholdsavtale som på en bærekraftig og effektiv måte forlenger levetid på gulv og inventar. Samtidig vil et godt renhold bidra positivt til et lavere sykefravær og bedre lønnsomhet.",
+      "Vi har fagutdannede og kompetente medarbeidere, og det forplikter. Alle våre medarbeidere får bruke tid på videreutvikling og læring, blant annet gjennom nært samarbeid med våre leverandører som er spesialister på sine felt. Her legger vi også stor vekt på HMS, service og arbeidssystematikk.",
+    ],
+
+    image: explainerImg,
+    imageAlt: "Medarbeider fra Helt Opplagt vasker vinduer",
+  },
+  catalogs: [
+    {
+      heading: "Dette kan vi ta oss av",
+      proof: "Kort fortalt det meste du behøver av både innendørs og utendørs vedlikehold.",
+      layout: "grid",
+      photo: true,
+      items: [
+        {
+          name: "Daglig renhold",
+          description:
+            "Vi kan bistå dere med en behovstilpasset renholdsavtale som på en bærekraftig og effektiv måte forlenger levetid på gulv og inventar.",
+          image: `${thumbs}/25ddb625b59a219605acc899d9230432.jpg`,
+          to: "/tjenester/renhold/daglig-renhold",
+        },
+        {
+          name: "Hovedrengjøring",
+          description:
+            "En hovedrengjøring innebærer en grundig rengjøring av både vegger og tak. Det kan også innbefatte andre områder som ikke blir rengjort ved daglig rengjøring.",
+          image: `${thumbs}/77582f78736eb1356bae7dd359ef7852.jpg`,
+          to: "/tjenester/renhold/hovedrengjoring",
+        },
+        {
+          name: "Gulvvedlikehold",
+          description:
+            "Gulvvedlikehold er viktig for å unngå store renovasjonskostnader i fremtiden. Med våre moderne maskiner kan vi rense, skure, bone, olje og vedlikeholde alle typer gulv.",
+          image: `${thumbs}/dca037a67392f3e04161f36a0e694b15.jpg`,
+          to: "/tjenester/renhold/gulvvedlikehold",
+        },
+        {
+          name: "Vinduspuss",
+          description:
+            "Vi utfører vinduspuss og bruker moderne utstyr for å gjøre vinduene rene og flekkfrie på en fagmessig og riktig måte. Slik at du kan se gjennom vinduene – ikke på vinduene.",
+          image: `${thumbs}/345d12b02398938002207c1977b9faac.jpg`,
+          to: "/tjenester/renhold/vinduspuss",
+        },
+        {
+          name: "Tepperens og møbelrens",
+          description:
+            "Regelmessig støvsuging av tepper er en viktig del av vedlikeholdet. I tillegg bør man årlig ta en dypere rens av teppet, for å fjerne støv og bakterier som har samlet seg i teppets fibre.",
+          image: `${thumbs}/42921c719d882a03f23a614b86a36794.jpg`,
+          to: "/tjenester/renhold/tepperens-og-mobelrens",
+        },
+        {
+          name: "Vedlikehold, feiing, snø og gress",
+          description:
+            "Vi kan utføre en rekke oppgaver innen vaktmesterservice, små reparasjoner, montering, avfallshåndtering, skifting av lyspærer etc.",
+          image: `${thumbs}/b150c85e26357ff9c7b793aaaaaa6351.jpg`,
+          to: "/tjenester/renhold/vedlikehold-feiing-sno-og-gress",
+        },
+      ],
+    },
+  ],
+  hideSubServiceCards: true,
+  faq: [
+    {
+      question: "Kan vi prøve dere først?",
+      answer:
+        "Vi tilbyr alle våre kunder en prøveperiode hvor vi skal bevise hva vi duger til. Og med over 30 års bransjeerfaring kan vi skryte av å ha ekstremt få tilfeller av frafall etter denne prøveperioden.",
+    },
+    {
+      question: "Hvem utfører renholdet?",
+      answer:
+        "Vi har fagutdannede og kompetente medarbeidere, og det forplikter. Alle våre medarbeidere får bruke tid på videreutvikling og læring, blant annet gjennom nært samarbeid med våre leverandører som er spesialister på sine felt. Her legger vi også stor vekt på HMS, service og arbeidssystematikk.",
+    },
+    {
+      question: "Leverer dere mer enn vanlig kontorrenhold?",
+      answer:
+        "Vi kan utføre en rekke oppgaver innen vaktmesterservice, små reparasjoner, montering, avfallshåndtering, skifting av lyspærer etc. Kort fortalt det meste du behøver av både innendørs og utendørs vedlikehold.",
+    },
+    {
+      question: "Kan renhold kombineres med kantine?",
+      answer:
+        "Mindre selskaper kan i tillegg dra nytte av samme person på både renhold og kantine. På denne måten får vi effektivisert tidsbruken til deres vert/vertinne som igjen gjør at dere sparer penger.",
+    },
+  ],
+  readMore: [
+    {
+      label: "Kombiner kantine og renhold",
+      description: "Ved å samle dine tjenester hos en leverandør vil du forenkle din arbeidshverdag. Færre leverandører bidrar til store besparelser.",
+      to: "/tjenester/kantine/kombiner-kantine-og-renhold",
+    },
+    {
+      label: "Inneklima",
+      description: "Vi leverer ren luft og rett temperatur, helt uten byggtekniske endringer.",
+      to: "/tjenester/inneklima",
+    },
+    {
+      label: "Vårt samfunnsansvar",
+      description: "Vi har alltid hatt stort fokus på miljøtiltak.",
+      to: "/ansvar",
+    },
+    {
+      label: "Vil du bli med oss på reisen?",
+      description: "Våre 100 profesjonelle medarbeidere ønsker seg flere nye oppdragssteder.",
+      to: "/karriere",
+    },
+  ],
   subServices: [
     {
       slug: "daglig-renhold",
@@ -115,7 +229,7 @@ export const renholdData: ServicePageData = {
       content: [
         {
           type: "text",
-          heading: "Se ut gjennom vinduene — ikke på vinduene",
+          heading: "Se ut gjennom vinduene – ikke på vinduene",
           paragraphs: [
             "Vi utfører vinduspuss og bruker moderne utstyr for å gjøre vinduene rene og flekkfrie på en fagmessig og riktig måte. Slik at du kan se gjennom vinduene – ikke på vinduene.",
             "Sammen med våre kunder, kommer vi frem til en avtale om jevnlig vinduspuss.",

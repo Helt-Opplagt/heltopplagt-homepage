@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
-import { ArrowRight, ArrowUpRight, ChevronRight, Download } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Phone, Plus } from "lucide-react";
 import { Link } from "react-router";
-import { CtaSection } from "./CtaSection";
+import { CONTAINER, Pill } from "./site";
+import { useDocumentMeta } from "../../lib/use-document-meta";
 
 export const allServices = [
   { label: "Lunsj", to: "/tjenester/lunsj" },
@@ -12,26 +14,38 @@ export const allServices = [
   { label: "Renhold", to: "/tjenester/renhold" },
 ];
 
-/** Small breadcrumb trail, e.g. Forside / Frukt / Jobbsmoothie */
+const MOTIFS = [
+  "livery-puzzle-outline aspect-[100/129] -right-12 -bottom-10 w-40 rotate-[22deg] bg-brand/25 lg:-right-6 lg:w-56",
+  "livery-puzzle aspect-[100/129] -right-20 top-10 w-48 rotate-[9deg] bg-lime/15 lg:-right-12 lg:w-64",
+  "livery-puzzle-outline aspect-[100/129] -left-14 -bottom-8 w-36 -rotate-[12deg] bg-navy/20 lg:-left-8 lg:w-52",
+  "livery-puzzle-outline aspect-[100/129] -right-14 top-8 w-40 rotate-[15deg] bg-brand/20 lg:-right-8 lg:w-56",
+];
+
+/** Small breadcrumb trail, e.g. Alle tjenester / Frukt / Jobbsmoothie */
 export function Breadcrumb({
   items,
 }: {
   items: { label: string; to?: string }[];
 }) {
   return (
-    <nav aria-label="Brødsmulesti" className="flex items-center flex-wrap gap-1.5 text-[13px] mb-5">
+    <nav
+      aria-label="Brødsmulesti"
+      className="mb-5 flex flex-wrap items-center gap-1.5 text-[13px]"
+    >
       {items.map((item, i) => (
         <span key={i} className="flex items-center gap-1.5">
-          {i > 0 && <ChevronRight className="w-3.5 h-3.5 text-gray-300" />}
+          {i > 0 && (
+            <ChevronRight className="h-3.5 w-3.5 text-navy/30" aria-hidden="true" />
+          )}
           {item.to ? (
             <Link
               to={item.to}
-              className="text-gray-500 hover:text-[#0078C4] transition-colors"
+              className="text-navy/55 transition-colors hover:text-brand"
             >
               {item.label}
             </Link>
           ) : (
-            <span className="text-gray-900 font-medium">{item.label}</span>
+            <span className="font-semibold text-navy">{item.label}</span>
           )}
         </span>
       ))}
@@ -39,43 +53,99 @@ export function Breadcrumb({
   );
 }
 
-/** "Andre tjenester" section shown above the contact CTA */
-export function OtherServices({ currentPath }: { currentPath: string }) {
+export function Head({ title, proof }: { title: string; proof?: string }) {
+  return (
+    <div className="max-w-[46rem]">
+      <h2 className="font-lato text-[26px] font-light leading-[1.15] tracking-[-0.01em] text-navy sm:text-[32px] lg:text-[38px]">
+        {title}
+      </h2>
+      {proof && (
+        <p className="mt-3 max-w-[52ch] text-[15px] leading-relaxed text-navy/60">
+          {proof}
+        </p>
+      )}
+    </div>
+  );
+}
+
+export function ServiceFooter({
+  currentPath,
+  ground = "white",
+}: {
+  currentPath: string;
+  ground?: "white" | "sky";
+}) {
   const others = allServices.filter((s) => s.to !== currentPath);
+  const sky = ground === "sky";
 
   return (
-    <section className="py-16 bg-[#f5f9fc] border-t border-gray-200">
-      <div className="max-w-[1280px] mx-auto px-8">
-        <div className="flex items-end justify-between mb-8">
+    <section
+      className={
+        "relative isolate overflow-hidden " +
+        (sky ? "bg-cloud py-[4.5rem] lg:py-[6rem]" : "bg-white py-16 lg:py-20")
+      }
+    >
+      {sky && (
+        <span
+          aria-hidden="true"
+          className="livery-puzzle-outline aspect-[100/129] -right-16 -top-10 w-40 rotate-[18deg] bg-brand/20 lg:-right-8 lg:w-56"
+        />
+      )}
+
+      <div className={`${CONTAINER} relative z-10`}>
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#0078C4] mb-2">
-              På utkikk etter noe annet?
-            </p>
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">
-              Våre tjenester
+            <h2 className="payoff-marker font-payoff text-[30px] font-bold leading-[1.1] text-navy sm:text-[38px] lg:text-[44px]">
+              Bli {" "}
+              <span className="text-brand">Helt Opplagt!</span>
             </h2>
+            <p className="mt-4 max-w-[48ch] text-[16px] leading-relaxed text-navy/65">
+              Ring oss på 0 23 46 eller bruk skjema under for en uforpliktende
+              prat!
+            </p>
           </div>
-          <Link
-            to="/tjenester"
-            className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-[#0078C4] hover:text-[#0062a3] transition-colors mb-1"
-          >
-            Se alle tjenester
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {others.map((s) => (
-            <Link
-              key={s.to}
-              to={s.to}
-              className="group bg-white border border-gray-200 rounded-xl px-5 py-4 flex items-center justify-between gap-3 hover:border-[#0078C4]/40 hover:shadow-[0_8px_24px_rgba(0,120,196,0.08)] transition-all duration-300"
+
+          <div className="flex flex-col gap-3 sm:flex-shrink-0 sm:flex-row sm:items-center">
+            <Pill to="/kontakt">
+              Ta kontakt for tilbud
+              <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+            </Pill>
+            <a
+              href="tel:+4702346"
+              className="inline-flex items-center gap-2 text-[15px] font-semibold text-navy transition-colors hover:text-brand"
             >
-              <span className="text-sm font-semibold text-gray-900">
-                {s.label}
-              </span>
-              <ArrowUpRight className="w-4 h-4 flex-shrink-0 text-gray-300 group-hover:text-[#0078C4] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-            </Link>
-          ))}
+              <Phone className="h-4 w-4 text-brand" strokeWidth={2.5} aria-hidden="true" />
+              02346
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-navy/10 pt-9">
+          <h3 className="text-[16px] font-semibold text-navy">
+            Andre tjenester
+          </h3>
+          <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {others.map((s) => (
+              <Link
+                key={s.to}
+                to={s.to}
+                className={
+                  "group flex items-center justify-between gap-3 rounded-[1.25rem] bg-white px-5 py-4 transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(13,43,64,0.18)] " +
+                  (sky
+                    ? "shadow-[0_1px_2px_rgba(13,43,64,0.06)]"
+                    : "border border-navy/10")
+                }
+              >
+                <span className="text-[15px] font-semibold text-navy transition-colors group-hover:text-brand">
+                  {s.label}
+                </span>
+                <ArrowUpRight
+                  className="h-4 w-4 flex-shrink-0 text-navy/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand"
+                  strokeWidth={2.5}
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -89,10 +159,12 @@ export type ContentBlock =
   | { type: "image"; src: string; alt?: string }
   | { type: "table"; heading?: string; rows: string[][]; footnote?: string }
   | {
-      type: "cards";
-      heading?: string;
-      items: { title: string; description?: string; image?: string }[];
-    };
+    type: "cards";
+    heading?: string;
+    items: { title: string; description?: string; image?: string }[];
+  }
+  /** External link, e.g. "Se produktet hos produsenten" on product pages. */
+  | { type: "link"; label: string; href: string };
 
 export interface SubService {
   /** URL slug, e.g. "fruktkurv" → /tjenester/frukt/fruktkurv */
@@ -100,19 +172,126 @@ export interface SubService {
   title: string;
   description: string;
   image: string;
+  /** Relatedness group ("Produkter" / "Artikler"): the "Mer innen …" grid only shows siblings of the same group. */
+  group?: string;
+  /** Variant-set id ("fruktkurver", "lunsjesker"): sub-pages sharing it get a thumbnail switcher. */
+  variantOf?: string;
+  /** Short price line, shown on the sub-page header and switcher thumbs. */
+  priceNote?: string;
   /** Page content copied from heltopplagt.no */
   content?: ContentBlock[];
 }
 
-export interface ServicePageData {
-  /** Category badge shown in the hero image chip, e.g. "Mat & Drikke" */
-  badge: string;
-  title: ReactNode;
-  intro: string;
+export interface HeroPoint {
+  label: string;
+  body?: string;
+  icon?: LucideIcon;
+}
+
+/** One benefit: a short label, one supporting line, one icon. */
+export interface BenefitItem {
+  label: string;
+  body?: string;
+  icon?: LucideIcon;
+}
+
+export interface Explainer {
+  heading?: string;
+  /** One or two short paragraphs. Never more. */
+  body: string[];
+  /** Short checked lines: how it works, one fact each. */
+  points?: string[];
   image: string;
   imageAlt: string;
-  /** Link to brochure PDF, shown as a button in the hero */
+}
+
+/** One entry in the "Les mer" section at the foot of the page. */
+export interface ReadMoreLink {
+  label: string;
+  description?: string;
+  to: string;
+  image?: string;
+}
+
+/** Why this service pays off. The page's main argument. */
+export interface BenefitBand {
+  heading: string;
+  proof?: string;
+  items: BenefitItem[];
+}
+
+/** One expandable question at the foot of the page. */
+export interface FaqItem {
+  question: string;
+  answer: ReactNode;
+}
+
+/** One product in a catalog section, e.g. a single fruit basket. */
+export interface CatalogItem {
+  name: string;
+  description: string;
+  /** White-background product cut-out; rendered with mix-blend-multiply so the white drops out. */
+  image?: string;
+  /** Small tag carried over from the printed brochure, e.g. "Populær". */
+  tag?: string;
+  /** One short checked fact under the description, e.g. "Ny kurv hver uke". */
+  spec?: string;
+  /** Optional link target: the whole card becomes a link with a "Les mer" arrow. */
+  to?: string;
+}
+
+export interface CatalogSection {
+  heading: string;
+  proof?: string;
+  /** The brochure's emphasised one-liner under the lede. */
+  note?: string;
+  items: CatalogItem[];
+  /** "panels" = text-only panels, "grid" = product cards, "band" = one wide row, "feature" = copy + one photo. */
+  layout?: "panels" | "grid" | "band" | "feature";
+  /** "feature" only: photo on the left, copy on the right. Alternate it
+      section by section so the page zigzags. */
+  reverse?: boolean;
+  /** true = real photographs (object-cover). Default false = white-background cut-outs (mix-blend-multiply). */
+  photo?: boolean;
+  link?: { label: string; to: string };
+}
+
+export interface ServicePageData {
+  /** Category badge, e.g. "Helse & Trivsel". Retained for sub-page context. */
+  badge: string;
+  title: ReactNode;
+  /** Short bold line between the headline and the lede, e.g. "Fersk frukt på kontoret. Levert daglig." */
+  subtitle?: string;
+  intro: string;
+  /** Card/thumbnail image. Also the opening photo when `heroImage` is absent. */
+  image: string;
+  imageAlt: string;
+  /** Full-bleed opening photograph — the service as it arrives at the customer. */
+  heroImage?: string;
+  /** Link to brochure PDF, shown as a secondary action in the opening panel */
   brochureUrl?: string;
+  /** The promise strip directly under the hero. Three or four points. */
+  heroPoints?: HeroPoint[];
+  /** Plain-language "what this is", copy left and photo right. Renders first. */
+  explainer?: Explainer;
+  /** "Les mer" links at the foot of the page: deeper reading on this service. */
+  readMore?: ReadMoreLink[];
+  readMoreHeading?: string;
+  /** Short brand statement closing the page. */
+  closingStatement?: string;
+  benefits?: BenefitBand;
+  /** Product catalogs from the brochure. Render first, right under the hero. */
+  catalogs?: CatalogSection[];
+  /** Link out of the "Slik jobber vi" section, e.g. to a routines sub-page. */
+  processLink?: { label: string; to: string };
+  /** Suppress the sub-service card grid when catalogs already cover it. */
+  hideSubServiceCards?: boolean;
+  /** Expandable questions, rendered as the last content section. */
+  faq?: FaqItem[];
+  faqHeading?: string;
+  faqProof?: string;
+  subServicesHeading?: string;
+  subServicesProof?: string;
   /** Sub-service cards, mirroring the structure of heltopplagt.no */
   subServices: SubService[];
   quote?: { text: string; name: string; role: string; company?: string };
@@ -120,108 +299,625 @@ export interface ServicePageData {
   path: string;
 }
 
+function SubServiceCard({ to, sub }: { to: string; sub: SubService }) {
+  return (
+    <Link
+      to={to}
+      className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_1px_2px_rgba(13,43,64,0.06)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(13,43,64,0.18)]"
+    >
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <img
+          src={sub.image}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <h3 className="font-lato text-[20px] font-bold text-navy sm:text-[22px]">
+          {sub.title}
+        </h3>
+        <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-navy/60">
+          {sub.description}
+        </p>
+        <span className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand">
+          Les mer
+          <ArrowRight
+            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            strokeWidth={2.5}
+          />
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+function CatalogSectionView({ catalog }: { catalog: CatalogSection }) {
+  if (catalog.layout === "feature") {
+    const item = catalog.items[0];
+    return (
+      <div
+        className={
+          catalog.reverse
+            ? "grid items-center gap-10 lg:grid-cols-[42%_1fr] lg:gap-16"
+            : "grid items-center gap-10 lg:grid-cols-[1fr_42%] lg:gap-16"
+        }
+      >
+        <div className={catalog.reverse ? "lg:order-last" : undefined}>
+          <h2 className="max-w-[20ch] font-lato text-[26px] font-light leading-[1.15] tracking-[-0.01em] text-navy sm:text-[32px] lg:text-[38px]">
+            {catalog.heading}
+          </h2>
+          {catalog.proof && (
+            <p className="mt-5 max-w-[54ch] text-[16px] leading-relaxed text-navy/70">
+              {catalog.proof}
+            </p>
+          )}
+          {item && (
+            <p className="mt-5 max-w-[54ch] text-[16px] leading-relaxed text-navy/70">
+              {item.description}
+            </p>
+          )}
+          {catalog.link && (
+            <div className="mt-8">
+              <Pill to={catalog.link.to} variant="outline">
+                {catalog.link.label}
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+              </Pill>
+            </div>
+          )}
+        </div>
+
+        {item?.image && (
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem]">
+            <img
+              src={item.image}
+              alt={item.name}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <Head title={catalog.heading} proof={catalog.proof} />
+
+      {catalog.note && (
+        <p className="mt-5 max-w-[70ch] text-[15px] font-semibold text-brand">
+          {catalog.note}
+        </p>
+      )}
+
+      {catalog.layout === "panels" ? (
+        <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          {catalog.items.map((item) => (
+            <div
+              key={item.name}
+              className="flex flex-col items-center rounded-[1.5rem] bg-white px-6 py-9 text-center shadow-[0_1px_2px_rgba(13,43,64,0.06)]"
+            >
+              <h3 className="font-lato text-[20px] font-bold leading-tight text-navy">
+                {item.name}
+              </h3>
+              <p className="mt-3.5 max-w-[30ch] text-[15px] leading-relaxed text-navy/65">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      ) : catalog.layout === "band" ? (
+        <div className="mt-9 flex flex-col gap-5">
+          {catalog.items.map((item) => {
+            const inner = (
+              <>
+                <div className="relative isolate aspect-[4/3] overflow-hidden bg-white sm:aspect-square">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    loading="lazy"
+                    decoding="async"
+                    className={
+                      catalog.photo
+                        ? "absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                        : "absolute inset-0 h-full w-full object-contain p-4 mix-blend-multiply"
+                    }
+                  />
+                </div>
+                <div className="p-6 sm:py-7 sm:pl-6 sm:pr-8">
+                  {item.tag && (
+                    <span className="mb-3 inline-flex rounded-full bg-amber/15 px-3.5 py-1 text-[12px] font-semibold text-navy">
+                      {item.tag}
+                    </span>
+                  )}
+                  <h3 className="font-lato text-[20px] font-bold leading-tight text-navy">
+                    {item.name}
+                  </h3>
+                  <p className="mt-2.5 max-w-[58ch] text-[15px] leading-relaxed text-navy/65">
+                    {item.description}
+                  </p>
+                  {item.to && (
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand">
+                      Les mer
+                      <ArrowRight
+                        className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                        strokeWidth={2.5}
+                      />
+                    </span>
+                  )}
+                </div>
+              </>
+            );
+            return item.to ? (
+              <Link
+                key={item.name}
+                to={item.to}
+                className="group grid overflow-hidden rounded-[1.5rem] bg-white shadow-[0_1px_2px_rgba(13,43,64,0.06)] transition-shadow duration-300 hover:shadow-[0_10px_24px_-12px_rgba(13,43,64,0.14)] sm:grid-cols-[minmax(0,14rem)_1fr] sm:items-center"
+              >
+                {inner}
+              </Link>
+            ) : (
+              <div
+                key={item.name}
+                className="grid overflow-hidden rounded-[1.5rem] bg-white shadow-[0_1px_2px_rgba(13,43,64,0.06)] sm:grid-cols-[minmax(0,14rem)_1fr] sm:items-center"
+              >
+                {inner}
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {catalog.items.map((item) => {
+            const inner = (
+              <>
+                {item.image && (
+                  <div className="relative isolate h-44 overflow-hidden bg-white">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      decoding="async"
+                      className={
+                        catalog.photo
+                          ? "absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          : "absolute inset-0 h-full w-full object-contain p-4 mix-blend-multiply"
+                      }
+                    />
+                  </div>
+                )}
+
+                <div className="flex flex-1 flex-col items-center p-6 text-center">
+                  {item.tag && (
+                    <span className="mb-3 inline-flex rounded-full bg-amber/15 px-3.5 py-1 text-[12px] font-semibold text-navy">
+                      {item.tag}
+                    </span>
+                  )}
+                  <h3 className="font-lato text-[19px] font-bold leading-tight text-navy">
+                    {item.name}
+                  </h3>
+                  <p className="mt-2.5 text-[14px] leading-relaxed text-navy/65">
+                    {item.description}
+                  </p>
+                  {item.spec && (
+                    <p className="mt-3.5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-navy">
+                      <Check
+                        className="h-3.5 w-3.5 flex-shrink-0 text-lime"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
+                      {item.spec}
+                    </p>
+                  )}
+                  {item.to && (
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand">
+                      Les mer
+                      <ArrowRight
+                        className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                        strokeWidth={2.5}
+                      />
+                    </span>
+                  )}
+                </div>
+              </>
+            );
+            return item.to ? (
+              <Link
+                key={item.name}
+                to={item.to}
+                className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_1px_2px_rgba(13,43,64,0.06)] transition-shadow duration-300 hover:shadow-[0_10px_24px_-12px_rgba(13,43,64,0.14)]"
+              >
+                {inner}
+              </Link>
+            ) : (
+              <div
+                key={item.name}
+                className="flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_1px_2px_rgba(13,43,64,0.06)]"
+              >
+                {inner}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {catalog.link && (
+        <div className="mt-8">
+          <Pill to={catalog.link.to} variant="outline">
+            {catalog.link.label}
+            <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+          </Pill>
+        </div>
+      )}
+    </>
+  );
+}
+
+function HeroPointStrip({ points }: { points: HeroPoint[] }) {
+  return (
+    <ul className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+      {points.map((point) => {
+        const Icon = point.icon ?? Check;
+        return (
+          <li key={point.label} className="flex gap-3.5">
+            <span
+              aria-hidden="true"
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-brand/10"
+            >
+              <Icon className="h-4.5 w-4.5 text-brand" strokeWidth={2.25} />
+            </span>
+            <div className="min-w-0">
+              <p className="text-[15px] font-semibold leading-snug text-navy">
+                {point.label}
+              </p>
+              {point.body && (
+                <p className="mt-1.5 text-[14px] leading-relaxed text-navy/60">
+                  {point.body}
+                </p>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function BenefitGrid({ items }: { items: BenefitItem[] }) {
+  return (
+    <ul className="mt-10 grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((item) => {
+        const Icon = item.icon ?? Check;
+        return (
+          <li key={item.label}>
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand/10">
+              <Icon
+                className="h-5 w-5 text-brand"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+            </span>
+            <h3 className="mt-4 text-[16px] font-semibold leading-tight text-navy">
+              {item.label}
+            </h3>
+            {item.body && (
+              <p className="mt-2 max-w-[42ch] text-[15px] leading-relaxed text-navy/60">
+                {item.body}
+              </p>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function ReadMoreList({ links }: { links: ReadMoreLink[] }) {
+  return (
+    <div className="mt-9 max-w-[900px]">
+      {links.map((link) => (
+        <Link
+          key={link.to}
+          to={link.to}
+          className="group flex items-center gap-6 border-b border-navy/10 py-5 first:border-t first:border-navy/10"
+        >
+          {link.image && (
+            <span className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-[1rem] sm:h-20 sm:w-20">
+              <img
+                src={link.image}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </span>
+          )}
+          <span className="min-w-0 flex-1">
+            <span className="block text-[16px] font-semibold leading-snug text-navy transition-colors group-hover:text-brand">
+              {link.label}
+            </span>
+            {link.description && (
+              <span className="mt-1 block text-[15px] leading-relaxed text-navy/60">
+                {link.description}
+              </span>
+            )}
+          </span>
+          <ArrowUpRight
+            className="h-5 w-5 flex-shrink-0 text-navy/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand"
+            strokeWidth={2.5}
+            aria-hidden="true"
+          />
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+export function FaqList({ items }: { items: FaqItem[] }) {
+  return (
+    <div className="mt-10 max-w-[900px]">
+      {items.map((item, i) => (
+        <details
+          key={i}
+          className="group border-b border-navy/10 first:border-t first:border-navy/10"
+        >
+          <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-[16px] font-semibold leading-snug text-navy transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand [&::-webkit-details-marker]:hidden">
+            <span>{item.question}</span>
+            <Plus
+              className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand transition-transform duration-300 group-open:rotate-45"
+              strokeWidth={2.5}
+              aria-hidden="true"
+            />
+          </summary>
+          <div className="max-w-[68ch] pb-6 text-[15px] leading-relaxed text-navy/70">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  );
+}
+
 export function ServicePage({ data }: { data: ServicePageData }) {
   const serviceLabel =
     allServices.find((s) => s.to === data.path)?.label ?? data.badge;
 
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Page heading */}
-      <div className="max-w-[1280px] mx-auto px-8 pt-32 lg:pt-36">
-        <Breadcrumb
-          items={[
-            { label: "Alle tjenester", to: "/tjenester" },
-            { label: serviceLabel },
-          ]}
-        />
+  useDocumentMeta(data.subtitle ?? serviceLabel, data.intro);
 
-        <h1 className="text-3xl lg:text-[40px] font-bold text-gray-900 leading-[1.15] tracking-tight mb-4">
-          {data.title}
-        </h1>
+  const lowerLabel = serviceLabel.toLowerCase();
 
-        <p className="text-base lg:text-[17px] text-gray-600 leading-relaxed max-w-[680px] mb-6">
-          {data.intro}
-        </p>
+  const blocks: ReactNode[] = [];
 
-        <div className="flex flex-col sm:flex-row gap-3">
-          <Link
-            to="/kontakt"
-            className="bg-[#0078C4] text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#0062a3] transition-colors inline-flex items-center justify-center gap-2"
-          >
-            Ta kontakt for tilbud
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          {data.brochureUrl && (
-            <a
-              href={data.brochureUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-gray-300 text-gray-700 px-6 py-3 rounded-full text-sm font-medium hover:border-[#0078C4] hover:text-[#0078C4] transition-all inline-flex items-center justify-center gap-2"
+  if (data.explainer) {
+    const ex = data.explainer;
+    blocks.push(
+      <div className="grid items-center gap-10 lg:grid-cols-[1fr_42%] lg:gap-16">
+        <div>
+          <h2 className="max-w-[20ch] font-lato text-[26px] font-light leading-[1.15] tracking-[-0.01em] text-navy sm:text-[32px] lg:text-[38px]">
+            {ex.heading ?? "Hva tilbyr vi"}
+          </h2>
+          {ex.body.map((p, n) => (
+            <p
+              key={n}
+              className="mt-5 max-w-[54ch] text-[16px] leading-relaxed text-navy/70"
             >
-              <Download className="w-4 h-4" />
-              Brosjyre
-            </a>
+              {p}
+            </p>
+          ))}
+          {ex.points && ex.points.length > 0 && (
+            <ul className="mt-8 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+              {ex.points.map((point) => (
+                <li key={point} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-lime/15">
+                    <Check
+                      className="h-3.5 w-3.5 text-lime"
+                      strokeWidth={3}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span className="text-[15px] leading-relaxed text-navy/75">
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
 
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem]">
+          <img
+            src={ex.image}
+            alt={ex.imageAlt}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
       </div>
+    );
+  }
 
-      {/* Sub-service cards */}
-      <section className="py-14 bg-white">
-        <div className="max-w-[1280px] mx-auto px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {data.subServices.map((sub) => (
-              <Link
-                key={sub.slug}
-                to={`${data.path}/${sub.slug}`}
-                className="group flex flex-col rounded-2xl border border-gray-200 overflow-hidden hover:border-[#0078C4]/40 hover:shadow-[0_16px_40px_rgba(0,120,196,0.10)] transition-all duration-300"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={sub.image}
-                    alt={sub.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
-                  />
-                </div>
-                <div className="flex flex-col flex-1 p-6">
-                  <h3 className="text-lg font-bold text-gray-900 tracking-tight mb-2">
-                    {sub.title}
-                  </h3>
-                  {sub.description && (
-                    <p className="text-[15px] text-gray-600 leading-relaxed mb-5">
-                      {sub.description}
-                    </p>
-                  )}
-                  <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-[#0078C4]">
-                    Les mer
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                  </span>
-                </div>
-              </Link>
-            ))}
+  if (data.benefits) {
+    blocks.push(
+      <>
+        <Head title={data.benefits.heading} proof={data.benefits.proof} />
+        <BenefitGrid items={data.benefits.items} />
+      </>
+    );
+  }
+
+  (data.catalogs ?? []).forEach((catalog) => {
+    blocks.push(<CatalogSectionView catalog={catalog} />);
+  });
+
+  if (data.subServices.length > 0 && !data.hideSubServiceCards) {
+    blocks.push(
+      <>
+        <Head
+          title={data.subServicesHeading ?? `Dette leverer vi innen ${lowerLabel}`}
+          proof={data.subServicesProof}
+        />
+        <div
+          className={
+            "mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2" +
+            (data.subServices.length > 2 ? " lg:grid-cols-3" : "")
+          }
+        >
+          {data.subServices.map((sub) => (
+            <SubServiceCard
+              key={sub.slug}
+              to={`${data.path}/${sub.slug}`}
+              sub={sub}
+            />
+          ))}
+        </div>
+      </>
+    );
+  }
+
+  if (data.quote) {
+    blocks.push(
+      <figure className="mx-auto max-w-[820px] text-center">
+        <blockquote className="font-lato text-[22px] font-light leading-[1.4] text-navy sm:text-[26px]">
+          <span aria-hidden="true" className="text-amber">
+            &ldquo;
+          </span>
+          {data.quote.text}
+          <span aria-hidden="true" className="text-amber">
+            &rdquo;
+          </span>
+        </blockquote>
+        <figcaption className="mt-7 text-[15px] leading-relaxed">
+          <span className="font-semibold text-navy">{data.quote.name}</span>
+          <span className="block text-navy/55">
+            {data.quote.role}
+            {data.quote.company ? `, ${data.quote.company}` : ""}
+          </span>
+        </figcaption>
+      </figure>
+    );
+  }
+
+  if (data.faq && data.faq.length > 0) {
+    blocks.push(
+      <>
+        <Head
+          title={data.faqHeading ?? "Ofte stilte spørsmål"}
+          proof={data.faqProof}
+        />
+        <FaqList items={data.faq} />
+      </>
+    );
+  }
+
+  if (data.readMore && data.readMore.length > 0) {
+    blocks.push(
+      <>
+        <Head title={data.readMoreHeading ?? "Les mer"} />
+        <ReadMoreList links={data.readMore} />
+      </>
+    );
+  }
+
+  const otherServicesGround = blocks.length % 2 === 0 ? "sky" : "white";
+
+  return (
+    <div className="min-h-dvh bg-white">
+      <section className="relative isolate overflow-hidden bg-cloud text-navy">
+        <span
+          aria-hidden="true"
+          className="livery-puzzle aspect-[100/129] -left-20 bottom-[-3rem] w-44 -rotate-[14deg] bg-brand/10 lg:-left-12 lg:w-64"
+        />
+        <div className={`${CONTAINER} relative z-10`}>
+          <div className="lg:grid lg:grid-cols-[1fr_46%]">
+            <div className="max-w-[42rem] py-12 lg:max-w-none lg:py-24 lg:pr-14 xl:py-28">
+              <Breadcrumb
+                items={[
+                  { label: "Alle tjenester", to: "/tjenester" },
+                  { label: serviceLabel },
+                ]}
+              />
+
+              <h1 className="font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px] xl:text-[56px]">
+                {data.title}
+              </h1>
+
+              {data.subtitle && (
+                <p className="mt-5 max-w-[30rem] text-[17px] font-semibold leading-snug text-navy lg:text-[19px]">
+                  {data.subtitle}
+                </p>
+              )}
+
+              <p className="mt-5 max-w-[34rem] text-[15px] leading-relaxed text-navy/65 lg:text-[16px]">
+                {data.intro}
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row xl:mt-10">
+                <Pill to="/kontakt">
+                  Ta kontakt for tilbud
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                </Pill>
+                {data.brochureUrl && (
+                  <Pill
+                    href={data.brochureUrl}
+                    variant="outline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Download className="h-4 w-4" strokeWidth={2.5} />
+                    Brosjyre
+                  </Pill>
+                )}
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div className="relative h-[62vw] max-h-[24rem] w-full overflow-hidden sm:h-[26rem] lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:max-h-none lg:w-[46%] lg:rounded-l-full">
+          <img
+            src={data.heroImage ?? data.image}
+            alt={data.imageAlt}
+            /* The page's LCP element: never lazy, and ahead of the grid
+               photos. Lowercase because React 18 does not recognise the
+               camelCase `fetchPriority` prop and drops it with a warning. */
+            fetchpriority="high"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
         </div>
       </section>
 
-      {/* Quote */}
-      {data.quote && (
-        <section className="bg-[#f5f9fc] py-20 border-y border-gray-200">
-          <div className="max-w-[860px] mx-auto px-8 text-center">
-            <blockquote className="text-xl lg:text-2xl font-medium text-gray-900 leading-relaxed tracking-tight mb-8">
-              &ldquo;{data.quote.text}&rdquo;
-            </blockquote>
-            <p className="text-sm font-semibold text-gray-900">{data.quote.name}</p>
-            <p className="text-sm text-gray-500">
-              {data.quote.role}
-              {data.quote.company ? `, ${data.quote.company}` : ""}
-            </p>
+      {data.heroPoints && data.heroPoints.length > 0 && (
+        <section className="bg-white py-10 lg:py-12">
+          <div className={CONTAINER}>
+            <HeroPointStrip points={data.heroPoints} />
           </div>
         </section>
       )}
 
-      <OtherServices currentPath={data.path} />
+      {blocks.map((block, i) => {
+        const sky = i % 2 === 0;
+        const motif = sky ? MOTIFS[(i / 2) % MOTIFS.length] : null;
+        return (
+          <section
+            key={i}
+            className={
+              sky
+                ? "relative isolate overflow-hidden bg-cloud py-[4.5rem] lg:py-[5.5rem]"
+                : "bg-white py-16 lg:py-20"
+            }
+          >
+            {motif && <span aria-hidden="true" className={motif} />}
+            <div className={`${CONTAINER} relative z-10`}>{block}</div>
+          </section>
+        );
+      })}
 
-      <CtaSection />
+      <ServiceFooter currentPath={data.path} ground={otherServicesGround} />
     </div>
   );
 }
