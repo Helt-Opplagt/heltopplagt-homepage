@@ -1,19 +1,5 @@
-import {
-  Apple,
-  ChefHat,
-  ChevronDown,
-  ExternalLink,
-  Mail,
-  Menu,
-  Phone,
-  Sandwich,
-  Sparkles,
-  UtensilsCrossed,
-  Wind,
-  X,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { Menu, X, ChevronDown, Utensils, Coffee, Apple, Sparkles, Wind, Mail, Phone } from "lucide-react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "react-router";
 import logoSrc from "../../images/logo.png";
 import { CONTAINER } from "./site";
@@ -296,7 +282,7 @@ export function Header() {
               className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-aqua hover:text-aqua"
               aria-label="LinkedIn"
             >
-              <ExternalLink className="h-4 w-4" />
+              <span className="w-4 h-4">in</span>
             </a>
           </div>
         </div>

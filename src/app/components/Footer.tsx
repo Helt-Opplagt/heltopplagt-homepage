@@ -1,4 +1,4 @@
-import { ExternalLink, Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Link } from "react-router";
 import logoSrc from "../../images/logo.png";
 import { CONTAINER, Pill } from "./site";
@@ -31,23 +31,15 @@ export function Footer() {
           <p className="mb-7 max-w-[300px] text-[14px] leading-[1.7] text-white/60">
             Det Helt Opplagte valg for en sunnere, renere og enklere hverdag!
           </p>
-          <div className="flex gap-2.5">
-            <a
-              href="https://www.linkedin.com/company/helt-opplagt"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-colors hover:border-aqua hover:text-aqua"
-            >
-              <ExternalLink className="h-4 w-4" />
-            </a>
-            <a
-              href="mailto:bli@heltopplagt.no"
-              aria-label="E-post"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-colors hover:border-aqua hover:text-aqua"
-            >
-              <Mail className="h-4 w-4" />
-            </a>
+          <div className="flex gap-2">
+            {[Mail].map((Icon, i) => (
+              <div
+                key={i}
+                className="btn btn-circle btn-ghost bg-neutral-content/[0.07] text-neutral-content/60 hover:bg-primary hover:text-primary-content"
+              >
+                <Icon className="w-4 h-4" />
+              </div>
+            ))}
           </div>
         </div>
 
