@@ -48,16 +48,10 @@ const services = [
   },
 ];
 
-/**
- * The services index, in the same Opplagt grammar as the service pages:
- * cloud hero with one puzzle motif, then the standard service-card grid.
- * Deliberately no closing CTA section (user's call) — the global footer
- * carries the contact actions.
- */
 export function TjenesterPage() {
   useDocumentMeta(
     "Våre tjenester",
-    "Frukt, lunsj, kantine, catering, inneklima og renhold, samlet hos én leverandør for bedrifter i Oslo-området."
+    "Våre produkter og tjenester. Vi leverer jobbfrukt, catering, renhold, kantine og ren luft til over 50 000 ansatte i bedrifter i Oslo."
   );
 
   return (
@@ -72,10 +66,7 @@ export function TjenesterPage() {
           <h1 className="mt-4 font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
             Alle tjenester
           </h1>
-          <p className="mt-5 max-w-[42rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
-            Alt din bedrift trenger, under ett tak. Velg en tjeneste for å lese
-            mer om hva vi kan tilby din arbeidsplass.
-          </p>
+
         </div>
       </section>
 

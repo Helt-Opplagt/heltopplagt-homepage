@@ -4,7 +4,6 @@ import { CONTAINER, Pill, SectionHead } from "./site";
 import { reviews } from "../../lib/reviews";
 
 const COUNT = reviews.length;
-/** Three copies back to back so there's always a real card to scroll to in either direction; the middle copy is "home". */
 const loopedReviews = [...reviews, ...reviews, ...reviews];
 
 export function Reviews() {
@@ -13,11 +12,7 @@ export function Reviews() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const pollToken = useRef(0);
 
-  /**
-   * Horizontal-only scroll to a card. Deliberately NOT scrollIntoView: that
-   * also scrolls the PAGE vertically to reveal the row, which made the
-   * homepage load scrolled down to this section.
-   */
+  /** Horizontal-only scroll to a card. Not scrollIntoView: that also scrolls the page vertically. */
   function scrollToCard(index: number, behavior: ScrollBehavior) {
     const row = rowRef.current;
     const el = cardRefs.current[index];
@@ -78,20 +73,18 @@ export function Reviews() {
 
   return (
     <section className="relative isolate overflow-hidden bg-sand py-20 lg:py-28">
-      {/* Puzzle motif — warm amber tint on the warm ground, off the left edge. */}
       <span
         aria-hidden="true"
         className="livery-puzzle aspect-[100/129] -left-16 -bottom-12 w-40 -rotate-[15deg] bg-amber/15 lg:-left-8 lg:w-60"
       />
       <div className={`${CONTAINER} relative z-10`}>
         <SectionHead
-          kicker="Kundene våre"
-          title="Det bedriftene selv sier om oss"
-          lede="Ekte tilbakemeldinger fra bedrifter vi leverer til hver dag."
+          kicker="Referanser"
+          title="Se hva våre kunder mener om oss"
           action={
             <div className="flex items-center gap-3">
               <Pill to="/referanser" variant="outline">
-                Alle referanser
+                Referanser
                 <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
               </Pill>
               <button
@@ -144,9 +137,7 @@ export function Reviews() {
                   {review.name}
                 </p>
                 <p className="mt-0.5 text-[13px] text-navy/55">
-                  {review.role === review.company
-                    ? review.company
-                    : `${review.role}, ${review.company}`}
+                  {review.company}
                 </p>
               </div>
             </div>

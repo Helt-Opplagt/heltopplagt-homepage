@@ -1,8 +1,6 @@
 import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import heroImg from "../../../images/catering/catering.png";
 import openingImg from "../../../images/hero/web/hero-catering.jpg";
-/* The three Helt Opplagt Catering chefs in their own kitchen — the user's
-   brand photo (original: src/images/catering/6O1A6645.jpg). */
 import explainerImg from "../../../images/div/web/kokker.jpg";
 import lunsjCardImg from "../../../images/lunsj/lunsj.png";
 import kantineCardImg from "../../../images/kantine/kantine.png";
@@ -18,122 +16,91 @@ export const cateringData: ServicePageData = {
       Catering
     </>
   ),
-  subtitle: "Alt tilberedt i vårt eget kjøkken. Levert klart.",
+  subtitle: "Matlevering og møtemat til bedrifter i Oslo",
   intro:
-    "Vi har vårt eget kjøkken og kan derfor tilby alt! Her lages det blant annet varmmat, salater og påsmurt, samt en spennende meny for møte- og kursmat.",
+    "Proffesjonelle kokker, gode råvarer og variert meny laget på eget kjøkken. Vi leverer varmmat, salater, tapas og påsmurt, samt en spennende meny for møte- og kursmat.",
   image: heroImg,
   imageAlt: "Catering fra Helt Opplagt",
   heroImage: openingImg,
   brochureUrl:
     "https://heltopplagt.no/application/files/8417/5526/4710/Catering_2025.pdf",
-  /* Copy sourced from heltopplagt.no /catering + sub-pages. The eight
-     category sub-pages carry the depth, so the visual sub-service card grid
-     STAYS visible on this page (the image-navigation the user asked to try).
-     TRENGER AVKLARING FRA KUNDE (finnes ikke på nettsiden — ikke dikt opp):
-     bestillingsfrister, minimumsantall og en samlet allergenoversikt. */
   heroPoints: [
-    {
-      label: "Vårt eget kjøkken",
-      body: "Alt lages i eget kjøkken — derfor kan vi tilby alt.",
-    },
-    {
-      label: "Oslos beste påsmurt",
-      body: "Det får vi stadig høre. Prøv oss neste gang og se om du er enig.",
-    },
-    {
-      label: "Hjemmelaget kvalitet",
-      body: "Varmmat, salater og bakervarer laget fra bunn av, med gode råvarer.",
-    },
-    {
-      label: "Fra møte til firmafest",
-      body: "Møtepakker, event med kokk og servering — og egne lokaler på Store Stensrud Gård.",
-    },
+    { label: "Laget fra bunn av med ferske råvarer" },
+    { label: "Vi kan stille med mat, drikke, kokk og servitører." },
+    { label: "Godt, sunt og variert" },
+    { label: "Møtepakker fra 65,- per person" },
   ],
   explainer: {
+    heading: "Hva tilbyr vi?",
     body: [
-      "Helt Opplagt Catering lager hjemmelagede kvalitetsprodukter i vårt eget kjøkken — og kan derfor tilby alt: påsmurt, varmmat, salater, overtidsmat, møtemat, kaker og fullt eventoppsett.",
-      "Vi hjelper deg å skreddersy bestillingen så den treffer akkurat ditt arrangement — fra snitter til styremøtet til sommerfest på gården.",
+      "Sammen med våre kunders økende ønske om hjemmelagede kvalitetsprodukter har Helt Opplagt Catering vokst frem som en viktig del av lunsjtilbudet til Helt Opplagt på Jobben. Helt Opplagt Catering lager hver dag varme lunsjretter, forskjellige typer friske og sunne salater og ferske påsmurte varer som baguetter og snitter til møter og andre anledninger.",
+      "Vi har et bredt utvalg av retter og mat. Alt lages fra bunn av, med friske råvarer og kjærlighet, ligger alt til rette for å velge et sunnere alternativ til lunsj.",
     ],
-    points: [
-      "Alt lages i vårt eget kjøkken",
-      "Påsmurt, varmmat, salater og kaker",
-      "Møteservicepakker i tre nivåer",
-      "Kokk og serveringshjelp til event",
-      "Egne lokaler på Store Stensrud Gård",
-    ],
+
     image: explainerImg,
     imageAlt: "Kokkene i Helt Opplagt Catering på eget kjøkken",
   },
   catalogs: [
     {
-      heading: "Møteservicepakker",
+      heading: "Møtemat: våre møteservicepakker",
       proof:
-        "Tre nivåer av møtemat, klar til møtestart. Vi lover fornøyde og opplagte møtedeltakere.",
+        "Helt Opplagt leverer møtepakker. Våre pakker koster fra 65,- per person for kaffe og snack til full pakke med kaffe, smoothie, wraps, bakervare og oppskåret frukt/grønt. Vi lover fornøyde og opplagte møtedeltakere.",
+
       layout: "panels",
       items: [
         {
-          name: "Pakke 1 — Mini",
+          name: "Pakke 1 - Mini",
           description:
-            "Kaffepakke med kaffemelk, sukkerbit og kaffesjokolade, pluss snack: bakevare, oppskåret frukt eller grønt.",
+            "Kaffepakke med kaffemelk, sukkerbit og kaffesjokolade. Snack - velg mellom assortert bakevare, oppskåret frukt eller oppskåret grønt.",
         },
         {
-          name: "Pakke 2 — Medium",
+          name: "Pakke 2 - Medium",
           description:
-            "Kaffepakke, to miniwraps per person og valgfri snack.",
+            "Kaffepakke. Miniwraps - 2 stk. per person. Snack - velg mellom assortert bakevare, oppskåret frukt eller oppskåret grønt.",
         },
         {
-          name: "Pakke 3 — Full pakke",
+          name: "Pakke 3 - Full pakke",
           description:
-            "Smoothie eller kaffepakke, miniwraps, assortert bakevare og oppskåret frukt og grønt.",
+            "Drikke - smoothie eller kaffepakke. Miniwraps - 2 stk. per person. Assortert bakevare. Oppskåret frukt og grønt.",
         },
       ],
     },
   ],
-  subServicesHeading: "Hva skal dere servere?",
-  subServicesProof: "Åtte kategorier fra vårt eget kjøkken — velg der behovet er.",
+  subServicesHeading: "Mat og drikke til alle anledninger",
+
   faq: [
     {
-      question: "Hva slags møte- og kursmat leverer dere?",
+      question: "Hva koster møtemat?",
       answer:
-        "Baguetter, focaccia og ciabatta i ni varianter, rundstykker, snitter, wraps og kanapeer — i tillegg til møteservicepakkene med kaffe, snack og miniwraps.",
+        "Våre pakker koster fra 65,- per person for kaffe og snack til full pakke med kaffe, smoothie, wraps, bakervare og oppskåret frukt/grønt.",
     },
     {
-      question: "Hva koster en møtepakke?",
+      question: "Kan dere levere mat til firmafest og event?",
       answer:
-        "Fra 65 kroner per person for kaffe og snack, opp til full pakke med smoothie, miniwraps, bakervare og oppskåret frukt og grønt.",
-    },
-    {
-      question: "Kan dere ta hele firmafesten?",
-      answer:
-        "Ja — middager, påsmurt, fingermat, tapas, desserter og kaker, og drikke. Vi kan også stille med kokk og serveringshjelp.",
+        "Vi hjelper deg med alle former for events og firmafest! Se ikke bort fra at vi også kan stille med kokk eller serveringshjelp hvis dere skulle ønske det.",
     },
     {
       question: "Har dere egne lokaler?",
       answer:
-        "Ja, Store Stensrud Gård, 15 minutters kjøretid syd for Oslo sentrum med eget busstopp: stallen med plass til 50–60 til bords, ærverdige stuer for rundt 20, store uteområder med gårdsleker, badeplass, paintball og Archery Tag.",
-    },
-    {
-      question: "Hvor finner jeg allergeninformasjon?",
-      answer:
-        "Rettene i prislistene våre er merket med allergenkoder. Ta kontakt ved spesielle behov, så finner vi trygge alternativer.",
+        "Hos oss på Store Stensrud Gård, syd i Oslo, tilbyr vi unike lokaler for både store og små feiringer! Gården ligger lett tilgjengelig 15 minutters kjøretid syd for Oslo sentrum og har eget busstopp for ankomst med offentlig transport.",
     },
   ],
   readMore: [
     {
-      label: "Lunsj hver dag i stedet for enkeltbestillinger",
-      description: "Faste lunsjordninger fra 5 personer og oppover.",
+      label: "Lunsj",
+      description: "Lønnsomme og velsmakende lunsjordninger for 5 personer og oppover.",
       to: "/tjenester/lunsj",
       image: lunsjCardImg,
     },
     {
-      label: "Kantine med vert eller vertinne",
-      description: "Full lunsjavvikling for 15–300 ansatte.",
+      label: "Kantine",
+      description: "Et fullservicetilbud som passer alle typer kjøkken der vi tar oss av hele lunsjavviklingen.",
       to: "/tjenester/kantine",
       image: kantineCardImg,
     },
     {
-      label: "Fruktkurver til møterommet",
-      description: "Fersk frukt levert daglig eller etter behov.",
+      label: "Frukt",
+      description: "Du bestemmer størrelse og innhold. Vi leverer daglig eller etter behov.",
       to: "/tjenester/frukt",
       image: fruktCardImg,
     },
@@ -155,7 +122,7 @@ export const cateringData: ServicePageData = {
         },
         {
           type: "table",
-          heading: "Prisliste — baguetter, focaccia eller ciabatta",
+          heading: "Prisliste – baguetter, focaccia eller ciabatta",
           rows: [
             ["Ost og skinke på spansk vis", "(E, SE, SL, SU)", "81,-"],
             ["Kyllingsalat (indisk masala)", "(E, SE, SL, SU)", "81,-"],
@@ -278,27 +245,27 @@ export const cateringData: ServicePageData = {
       content: [
         {
           type: "bullets",
-          heading: "Pakke 1 — Mini",
+          heading: "Pakke 1 – Mini",
           items: [
             "Kaffepakke med kaffemelk, sukkerbit og kaffesjokolade",
-            "Snack — velg mellom assortert bakevare, oppskåret frukt eller oppskåret grønt.",
+            "Snack – velg mellom assortert bakevare, oppskåret frukt eller oppskåret grønt.",
           ],
         },
         {
           type: "bullets",
-          heading: "Pakke 2 — Medium",
+          heading: "Pakke 2 – Medium",
           items: [
             "Kaffepakke",
-            "Miniwraps — 2 stk. per person.",
-            "Snack — velg mellom assortert bakevare, oppskåret frukt eller oppskåret grønt.",
+            "Miniwraps – 2 stk. per person.",
+            "Snack – velg mellom assortert bakevare, oppskåret frukt eller oppskåret grønt.",
           ],
         },
         {
           type: "bullets",
-          heading: "Pakke 3 — Full pakke",
+          heading: "Pakke 3 – Full pakke",
           items: [
-            "Drikke — smoothie eller kaffepakke.",
-            "Miniwraps — 2 stk. per person",
+            "Drikke – smoothie eller kaffepakke.",
+            "Miniwraps – 2 stk. per person",
             "Assortert bakevare",
             "Oppskåret frukt og grønt.",
           ],
@@ -365,7 +332,7 @@ export const cateringData: ServicePageData = {
         },
         {
           type: "text",
-          heading: "Utendørs arrangementer — gårdsleker og grillfester",
+          heading: "Utendørs arrangementer – gårdsleker og grillfester",
           paragraphs: [
             "Gården har store utendørs arealer med plass til flere hundre mennesker til store sommerfester, kick-off, grillfester og mer!",
             "Nyt vårt tradisjonsrike gårdstun med rikelig plass for dans, lek, spill og aktiviteter. Vi tilbyr morsomme aktiviteter som øksekast, ringspill, hesteskokasting, kasting på blikkbokser, melkespannholding etc.",

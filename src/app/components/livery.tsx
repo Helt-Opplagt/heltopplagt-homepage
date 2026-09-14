@@ -1,10 +1,3 @@
-/**
- * Bildekoren / "The Livery" — shared primitives for the redesigned homepage world.
- *
- * The drawn, repeating marks a fleet identity is built from: the stencil plate,
- * the riveted window-cut panel, the reflective chevron seam, the notched CTA.
- * Every homepage section is assembled from exactly these.
- */
 import { type ReactNode } from "react";
 import { Link } from "react-router";
 
@@ -14,7 +7,6 @@ export const LIVERY_CONTAINER =
 export interface LiveryService {
   name: string;
   href: string;
-  /** One checkable fact — a real client or a documented capability. Never invented. */
   proof: string;
   blurb: string;
 }
@@ -23,44 +15,41 @@ export const SERVICES: LiveryService[] = [
   {
     name: "Frukt",
     href: "/tjenester/frukt",
-    proof: "Frukt til Vinmonopolet siden 2018",
-    blurb: "Fersk kurv, levert daglig eller etter behov. Den enkleste starten.",
+    proof: "Du bestemmer størrelse og innhold.",
+    blurb: "Du bestemmer størrelse og innhold. Vi leverer daglig eller etter behov.",
   },
   {
     name: "Lunsj",
     href: "/tjenester/lunsj",
-    proof: "Lunsjordning for Team Verksted, Follo",
-    blurb: "Lønnsomme, velsmakende ordninger for fem personer og oppover.",
+    proof: "For 5 personer og oppover.",
+    blurb: "Lønnsomme og velsmakende lunsjordninger for 5 personer og oppover.",
   },
   {
     name: "Kantine",
     href: "/tjenester/kantine",
-    proof: "Full kantinedrift for Kronos Titan",
-    blurb: "Vi tar hele lunsjavviklingen — også der dere ikke har eget kjøkken.",
+    proof: "Vi tar oss av hele lunsjavviklingen.",
+    blurb: "Et fullservicetilbud som passer alle typer kjøkken der vi tar oss av hele lunsjavviklingen.",
   },
   {
     name: "Catering",
     href: "/tjenester/catering",
-    proof: "Alt laget i vårt eget kjøkken",
-    blurb: "Varmmat, salater, påsmurt og møtemat — fra bunnen, levert klart.",
+    proof: "Vi tilbereder alt i vårt eget kjøkken.",
+    blurb: "Vi tilbereder alt i vårt eget kjøkken. Fra varmmat, salater og påsmurt til spennende møte- og kursmat.",
   },
   {
     name: "Inneklima",
     href: "/tjenester/inneklima",
-    proof: "Ren luft uten byggtekniske endringer",
-    blurb: "Riktig temperatur og renere luft, montert uten inngrep i bygget.",
+    proof: "Helt uten byggtekniske endringer.",
+    blurb: "Vi leverer ren luft og rett temperatur, helt uten byggtekniske endringer.",
   },
   {
     name: "Renhold",
     href: "/tjenester/renhold",
-    proof: "Renhold for Schibsted Trykk Oslo",
-    blurb: "Rene lokaler gir bedre trivsel og lavere sykefravær. Fast rute, fast folk.",
+    proof: "Godt renhold gir bedre trivsel.",
+    blurb: "Godt renhold gir bedre trivsel og sørger for et bedre arbeidsmiljø.",
   },
 ];
 
-/**
- * Small stencil-cut plate: a tracked-caps label. Overlays photo panels and tags cards.
- */
 export function StencilPlate({
   label,
   tone = "signal",
@@ -90,10 +79,6 @@ export function StencilPlate({
   );
 }
 
-/**
- * The per-section heading: a plain name of the section, set calmly in the
- * corporate heading face, with one real proof fact as a plain caption beneath.
- */
 export function SectionPlate({
   title,
   proof,
@@ -132,12 +117,10 @@ export function SectionPlate({
   );
 }
 
-/** A single calm hairline between major sections. */
 export function Seam() {
   return <div aria-hidden="true" className="livery-seam" />;
 }
 
-/** Primary action — deep-blue fill, white text, notched. Ghost variants for light/dark grounds. */
 export function LiveryCta({
   to,
   href,

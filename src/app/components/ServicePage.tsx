@@ -1,23 +1,3 @@
-/**
- * "Opplagt" — the service-page template (2026-09-01 refresh).
- *
- * One template carries all six services (/tjenester/*). The section ORDER is
- * unchanged from the previous template — it runs in the order a buyer asks
- * the questions:
- *   Hero + promise strip  (what is this, and the facts at a glance)
- *   Explainer             (what it actually is, plainly)
- *   Catalogs              (what can I get — the brochure's own spreads)
- *   Benefits              (why should I care)
- *   FAQ                   (what else)
- *   Les mer + ServiceFooter (deeper reading, then act)
- *
- * The skin is the homepage's Opplagt system: Lato Light display headings,
- * pill actions, white rounded-[1.5rem] cards, and section grounds alternating
- * white ↔ cloud with no seams or curves. Every coloured section carries ONE
- * puzzle motif (the brand's own logo piece, masked and tinted) — filled
- * variants behind the content, outline variants over a corner, never over
- * running text, always bleeding off an edge with its own rotation and size.
- */
 import { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Phone, Plus } from "lucide-react";
@@ -34,11 +14,6 @@ export const allServices = [
   { label: "Renhold", to: "/tjenester/renhold" },
 ];
 
-/**
- * The puzzle-motif set for coloured sections, cycled in order. Every instance
- * carries its own rotation, size, corner and colour, because repeats of one
- * shape at one angle read as a stamp rather than as texture.
- */
 const MOTIFS = [
   "livery-puzzle-outline aspect-[100/129] -right-12 -bottom-10 w-40 rotate-[22deg] bg-brand/25 lg:-right-6 lg:w-56",
   "livery-puzzle aspect-[100/129] -right-20 top-10 w-48 rotate-[9deg] bg-lime/15 lg:-right-12 lg:w-64",
@@ -78,12 +53,6 @@ export function Breadcrumb({
   );
 }
 
-/**
- * The per-section heading: a light Lato display line with one plain proof
- * caption beneath. The template's counterpart to the homepage SectionHead,
- * without a kicker — the page's sections answer questions, they don't need
- * department labels.
- */
 export function Head({ title, proof }: { title: string; proof?: string }) {
   return (
     <div className="max-w-[46rem]">
@@ -99,15 +68,6 @@ export function Head({ title, proof }: { title: string; proof?: string }) {
   );
 }
 
-/**
- * The service-page footer. ONE section carrying both the closing call to
- * action and the cross-links to the other services.
- *
- * It is identical on every service page by design, including the copy: the
- * headline, the supporting line and the button never change per service, so
- * the foot of the site is a fixed landmark rather than six variations. The
- * only thing that differs is which five services are listed.
- */
 export function ServiceFooter({
   currentPath,
   ground = "white",
@@ -135,19 +95,19 @@ export function ServiceFooter({
       <div className={`${CONTAINER} relative z-10`}>
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            {/* The brand's own line, in the payoff face. */}
             <h2 className="payoff-marker font-payoff text-[30px] font-bold leading-[1.1] text-navy sm:text-[38px] lg:text-[44px]">
-              Bli <span className="text-brand">Helt Opplagt</span>
+              Bli {" "}
+              <span className="text-brand">Helt Opplagt!</span>
             </h2>
             <p className="mt-4 max-w-[48ch] text-[16px] leading-relaxed text-navy/65">
-              Én leverandør, én kontaktperson, én faktura. Fortell oss hvordan
-              dere har det på jobben, så setter vi sammen et forslag som passer.
+              Ring oss på 0 23 46 eller bruk skjema under for en uforpliktende
+              prat!
             </p>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-shrink-0 sm:flex-row sm:items-center">
             <Pill to="/kontakt">
-              Snakk med oss
+              Ta kontakt for tilbud
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </Pill>
             <a
@@ -199,10 +159,10 @@ export type ContentBlock =
   | { type: "image"; src: string; alt?: string }
   | { type: "table"; heading?: string; rows: string[][]; footnote?: string }
   | {
-      type: "cards";
-      heading?: string;
-      items: { title: string; description?: string; image?: string }[];
-    }
+    type: "cards";
+    heading?: string;
+    items: { title: string; description?: string; image?: string }[];
+  }
   /** External link, e.g. "Se produktet hos produsenten" on product pages. */
   | { type: "link"; label: string; href: string };
 
@@ -212,33 +172,16 @@ export interface SubService {
   title: string;
   description: string;
   image: string;
-  /**
-   * Optional relatedness group (e.g. "Produkter" / "Artikler"). When a service
-   * has many sub-pages, the "Mer innen …" grid on a sub-page shows only
-   * siblings from the same group. Ungrouped sub-pages show all siblings.
-   */
+  /** Relatedness group ("Produkter" / "Artikler"): the "Mer innen …" grid only shows siblings of the same group. */
   group?: string;
-  /**
-   * Variant-set id (e.g. "fruktkurver", "lunsjesker"). Sub-pages sharing the
-   * same variantOf render a thumbnail switcher for flipping between them, and
-   * are excluded from each other's "Mer innen …" sibling grid.
-   */
+  /** Variant-set id ("fruktkurver", "lunsjesker"): sub-pages sharing it get a thumbnail switcher. */
   variantOf?: string;
-  /** Short price line, e.g. "Fra kr 32,- pr hode / dag". Shown on the
-      sub-page header and switcher thumbs only — never in main-page catalogs. */
+  /** Short price line, shown on the sub-page header and switcher thumbs. */
   priceNote?: string;
   /** Page content copied from heltopplagt.no */
   content?: ContentBlock[];
 }
 
-/**
- * One promise in the strip directly under the hero: the few operational facts
- * a buyer wants confirmed before they read anything else.
- *
- * This is the template's reusable hero device. Every service supplies three or
- * four; the strip is what makes the offer legible in the first viewport
- * without overloading the hero's own stack.
- */
 export interface HeroPoint {
   label: string;
   body?: string;
@@ -252,18 +195,7 @@ export interface BenefitItem {
   icon?: LucideIcon;
 }
 
-/**
- * The plain-language explanation of the service, directly under the hero:
- * what it actually is, and how it works, in as few words as possible.
- * Copy left, photograph right.
- */
 export interface Explainer {
-  /**
-   * Defaults to "Hva tilbyr vi" and should stay that way: the same question in
-   * the same slot on all six service pages is what makes the structure
-   * repeatable. Only override it if a service genuinely cannot answer that
-   * question.
-   */
   heading?: string;
   /** One or two short paragraphs. Never more. */
   body: string[];
@@ -278,11 +210,6 @@ export interface ReadMoreLink {
   label: string;
   description?: string;
   to: string;
-  /**
-   * Optional thumbnail; renders as a rounded square left of the text (the
-   * homepage Aktuelt-list grammar). Keep a list all-image or all-text — a
-   * mixed list mis-aligns the text column.
-   */
   image?: string;
 }
 
@@ -303,50 +230,28 @@ export interface FaqItem {
 export interface CatalogItem {
   name: string;
   description: string;
-  /**
-   * A cut-out product photo with a baked-in white background (not a
-   * transparent PNG). The photo plate composites it with `mix-blend-multiply`
-   * so the white drops out against the tinted ground. Absent for the "panels"
-   * layout, which is text only.
-   */
+  /** White-background product cut-out; rendered with mix-blend-multiply so the white drops out. */
   image?: string;
   /** Small tag carried over from the printed brochure, e.g. "Populær". */
   tag?: string;
   /** One short checked fact under the description, e.g. "Ny kurv hver uke". */
   spec?: string;
-  /**
-   * Optional link target ("grid" and "band" layouts): the whole card becomes
-   * a link with a "Les mer" arrow — used where the catalog itself is the
-   * sub-page navigation (Renhold's services, Frukt's baskets and smoothie).
-   */
+  /** Optional link target: the whole card becomes a link with a "Les mer" arrow. */
   to?: string;
 }
 
-/**
- * A catalog section, lifted from the printed fruit brochure.
- *
- * The brochure's maroon-and-orange palette does NOT come with the layout;
- * these render in the DESIGN.md palette.
- */
 export interface CatalogSection {
   heading: string;
   proof?: string;
   /** The brochure's emphasised one-liner under the lede. */
   note?: string;
   items: CatalogItem[];
-  /**
-   * "panels" = three text-only panels, centred, as on the brochure's
-   *   "Variasjon og fleksibilitet" spread. The overview before the detail.
-   * "grid"   = three-across product cards, the main catalog.
-   * "band"   = one wide horizontal row, for a single supporting product that
-   *   would look overblown as a full card section of its own.
-   */
-  layout?: "panels" | "grid" | "band";
-  /**
-   * true = item images are real photographs, rendered edge-to-edge
-   * (object-cover). Default false = white-background product cut-outs,
-   * rendered padded with mix-blend-multiply so the white drops out.
-   */
+  /** "panels" = text-only panels, "grid" = product cards, "band" = one wide row, "feature" = copy + one photo. */
+  layout?: "panels" | "grid" | "band" | "feature";
+  /** "feature" only: photo on the left, copy on the right. Alternate it
+      section by section so the page zigzags. */
+  reverse?: boolean;
+  /** true = real photographs (object-cover). Default false = white-background cut-outs (mix-blend-multiply). */
   photo?: boolean;
   link?: { label: string; to: string };
 }
@@ -372,10 +277,7 @@ export interface ServicePageData {
   /** "Les mer" links at the foot of the page: deeper reading on this service. */
   readMore?: ReadMoreLink[];
   readMoreHeading?: string;
-  /**
-   * A short brand statement closing the page, above the final action.
-   * e.g. "Sunnere. Renere. Enklere."
-   */
+  /** Short brand statement closing the page. */
   closingStatement?: string;
   benefits?: BenefitBand;
   /** Product catalogs from the brochure. Render first, right under the hero. */
@@ -397,7 +299,6 @@ export interface ServicePageData {
   path: string;
 }
 
-/** Sub-service card — the homepage service-card grammar, reused verbatim. */
 function SubServiceCard({ to, sub }: { to: string; sub: SubService }) {
   return (
     <Link
@@ -434,12 +335,55 @@ function SubServiceCard({ to, sub }: { to: string; sub: SubService }) {
 }
 
 function CatalogSectionView({ catalog }: { catalog: CatalogSection }) {
-  /*
-     Cards are white with the same soft resting shadow as the homepage service
-     cards, so the card grids across the site are one component in two places.
-     The photo cell stays white for the multiply blend, and `object-contain`
-     keeps each basket whole where `cover` would crop it.
-  */
+  if (catalog.layout === "feature") {
+    const item = catalog.items[0];
+    return (
+      <div
+        className={
+          catalog.reverse
+            ? "grid items-center gap-10 lg:grid-cols-[42%_1fr] lg:gap-16"
+            : "grid items-center gap-10 lg:grid-cols-[1fr_42%] lg:gap-16"
+        }
+      >
+        <div className={catalog.reverse ? "lg:order-last" : undefined}>
+          <h2 className="max-w-[20ch] font-lato text-[26px] font-light leading-[1.15] tracking-[-0.01em] text-navy sm:text-[32px] lg:text-[38px]">
+            {catalog.heading}
+          </h2>
+          {catalog.proof && (
+            <p className="mt-5 max-w-[54ch] text-[16px] leading-relaxed text-navy/70">
+              {catalog.proof}
+            </p>
+          )}
+          {item && (
+            <p className="mt-5 max-w-[54ch] text-[16px] leading-relaxed text-navy/70">
+              {item.description}
+            </p>
+          )}
+          {catalog.link && (
+            <div className="mt-8">
+              <Pill to={catalog.link.to} variant="outline">
+                {catalog.link.label}
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+              </Pill>
+            </div>
+          )}
+        </div>
+
+        {item?.image && (
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem]">
+            <img
+              src={item.image}
+              alt={item.name}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <>
       <Head title={catalog.heading} proof={catalog.proof} />
@@ -451,8 +395,6 @@ function CatalogSectionView({ catalog }: { catalog: CatalogSection }) {
       )}
 
       {catalog.layout === "panels" ? (
-        /* The brochure's overview spread: three text-only panels, centred.
-           No photographs by design, exactly as it is printed. */
         <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-3">
           {catalog.items.map((item) => (
             <div
@@ -533,13 +475,6 @@ function CatalogSectionView({ catalog }: { catalog: CatalogSection }) {
           {catalog.items.map((item) => {
             const inner = (
               <>
-                {/*
-                  The produce plate. A fixed height, not an aspect ratio: these
-                  cut-outs vary in proportion, so a ratio made the cards tall and
-                  uneven. `isolate` keeps the multiply blend from reaching past
-                  this plate into the card behind it. Optional: a grid can also
-                  run text-only (Kantine's moduler).
-                */}
                 {item.image && (
                   <div className="relative isolate h-44 overflow-hidden bg-white">
                     <img
@@ -622,13 +557,6 @@ function CatalogSectionView({ catalog }: { catalog: CatalogSection }) {
   );
 }
 
-/**
- * The promise strip, attached to the foot of the hero.
- *
- * Deliberately inside the hero section but below its grid: the hero's own
- * stack stays at headline, lede and actions, while the strip carries the three
- * or four operational facts that make the offer legible at a glance.
- */
 function HeroPointStrip({ points }: { points: HeroPoint[] }) {
   return (
     <ul className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
@@ -659,11 +587,6 @@ function HeroPointStrip({ points }: { points: HeroPoint[] }) {
   );
 }
 
-/**
- * The benefit grid: the page's main argument, one icon and one line each.
- * Borderless on the ground rather than in cards — the catalog sections are
- * already carded, and two card walls in a row read as tiles.
- */
 function BenefitGrid({ items }: { items: BenefitItem[] }) {
   return (
     <ul className="mt-10 grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
@@ -693,10 +616,6 @@ function BenefitGrid({ items }: { items: BenefitItem[] }) {
   );
 }
 
-/**
- * "Les mer": the deeper reading on this service, collected in one place
- * instead of trailing off each section as a stray link.
- */
 function ReadMoreList({ links }: { links: ReadMoreLink[] }) {
   return (
     <div className="mt-9 max-w-[900px]">
@@ -738,14 +657,6 @@ function ReadMoreList({ links }: { links: ReadMoreLink[] }) {
   );
 }
 
-/**
- * Expandable questions. Native <details>/<summary> rather than a JS disclosure:
- * keyboard and screen-reader behaviour comes free, it survives with JS off, and
- * the browser's own find-in-page can open a closed answer.
- *
- * Rules, not boxes — a hairline between each row, no card, no fill. The plus
- * rotates 45° into a close mark; that is the section's only motion.
- */
 export function FaqList({ items }: { items: FaqItem[] }) {
   return (
     <div className="mt-10 max-w-[900px]">
@@ -775,28 +686,15 @@ export function ServicePage({ data }: { data: ServicePageData }) {
   const serviceLabel =
     allServices.find((s) => s.to === data.path)?.label ?? data.badge;
 
-  useDocumentMeta(serviceLabel, data.intro);
+  useDocumentMeta(data.subtitle ?? serviceLabel, data.intro);
 
   const lowerLabel = serviceLabel.toLowerCase();
 
-  /*
-   * The visitor's order of questions:
-   *   what is this actually  → the explainer
-   *   why should I bother    → the benefit grid
-   *   what can I get         → the catalogs
-   *   what else do I ask     → the FAQ
-   *   where do I read more   → the "Les mer" links
-   *
-   * Every entry is optional, so a service that has only its sub-service cards
-   * still reads as a finished page; nothing renders an empty section.
-   */
   const blocks: ReactNode[] = [];
 
   if (data.explainer) {
     const ex = data.explainer;
     blocks.push(
-      /* Copy left, photo right — the photo takes a real share of the width
-         (~42%) so the section doesn't read as text with a thumbnail. */
       <div className="grid items-center gap-10 lg:grid-cols-[1fr_42%] lg:gap-16">
         <div>
           <h2 className="max-w-[20ch] font-lato text-[26px] font-light leading-[1.15] tracking-[-0.01em] text-navy sm:text-[32px] lg:text-[38px]">
@@ -830,9 +728,6 @@ export function ServicePage({ data }: { data: ServicePageData }) {
           )}
         </div>
 
-        {/* The explainer photo: always a plain rounded window (user's call —
-            the arch lives on the homepage and the service-hero edge only).
-            Fills its column; 4:3 so the extra width doesn't make it a tower. */}
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem]">
           <img
             src={ex.image}
@@ -869,7 +764,6 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         <div
           className={
             "mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2" +
-            /* two cards stranded in a three-column grid read as a gap, not a pair */
             (data.subServices.length > 2 ? " lg:grid-cols-3" : "")
           }
         >
@@ -912,7 +806,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
     blocks.push(
       <>
         <Head
-          title={data.faqHeading ?? "Spørsmål vi ofte får"}
+          title={data.faqHeading ?? "Ofte stilte spørsmål"}
           proof={data.faqProof}
         />
         <FaqList items={data.faq} />
@@ -929,19 +823,10 @@ export function ServicePage({ data }: { data: ServicePageData }) {
     );
   }
 
-  /* Grounds keep alternating past the blocks, so the last content section and
-     the closing section never collide on the same fill. */
   const otherServicesGround = blocks.length % 2 === 0 ? "sky" : "white";
 
   return (
     <div className="min-h-dvh bg-white">
-      {/*
-        The hero: a cloud field with the photograph bleeding off the right
-        viewport edge. From `lg` up the photo's LEFT edge is a full semicircle
-        (rounded-l-full) — the service-page echo of the homepage's arch crop.
-        Below `lg` it returns to normal flow underneath the copy, so the
-        headline and the primary action stay first on a phone.
-      */}
       <section className="relative isolate overflow-hidden bg-cloud text-navy">
         <span
           aria-hidden="true"
@@ -972,10 +857,8 @@ export function ServicePage({ data }: { data: ServicePageData }) {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row xl:mt-10">
-                {/* Same label as the footer's: both go to /kontakt with the
-                    same intent, so two wordings would read as two offers. */}
                 <Pill to="/kontakt">
-                  Snakk med oss
+                  Ta kontakt for tilbud
                   <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                 </Pill>
                 {data.brochureUrl && (
@@ -986,7 +869,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
                     rel="noopener noreferrer"
                   >
                     <Download className="h-4 w-4" strokeWidth={2.5} />
-                    Last ned brosjyren
+                    Brosjyre
                   </Pill>
                 )}
               </div>
@@ -1008,7 +891,6 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         </div>
       </section>
 
-      {/* The promise strip, on white directly under the hero. */}
       {data.heroPoints && data.heroPoints.length > 0 && (
         <section className="bg-white py-10 lg:py-12">
           <div className={CONTAINER}>
@@ -1017,12 +899,6 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         </section>
       )}
 
-      {/*
-        Sections alternate white and the cloud field — flat ground changes, no
-        seams or curves, exactly as on the homepage. Every cloud section takes
-        one puzzle motif, cycled through the MOTIFS set so filled and outline
-        variants alternate down the page with varied rotation and size.
-      */}
       {blocks.map((block, i) => {
         const sky = i % 2 === 0;
         const motif = sky ? MOTIFS[(i / 2) % MOTIFS.length] : null;

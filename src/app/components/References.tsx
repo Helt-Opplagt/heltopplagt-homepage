@@ -13,13 +13,12 @@ const customers = [
   { name: "Riksrevisjonen", logo: riksrevisjonenLogo },
 ];
 
-/** Quiet trust strip — sits directly under the hero. */
 export function References() {
   return (
     <section className="border-y border-navy/5 bg-white">
       <div className={`${CONTAINER} py-10 lg:py-12`}>
         <p className="text-center text-[13px] font-medium uppercase tracking-[0.14em] text-navy/45">
-          Noen av bedriftene vi leverer til
+          Noen av våre kunder
         </p>
         <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14 lg:flex-nowrap lg:justify-between lg:gap-x-10">
           {customers.map((customer) => (

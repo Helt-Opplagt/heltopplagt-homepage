@@ -4,12 +4,12 @@ import logoSrc from "../../images/logo.png";
 import { CONTAINER, Pill } from "./site";
 import { SERVICES } from "./livery";
 
-const companyLinks = [
+const companyLinks: { label: string; to?: string; href?: string }[] = [
   { label: "Om oss", to: "/om-oss" },
   { label: "Referanser", to: "/referanser" },
   { label: "Aktuelt", to: "/aktuelt" },
   { label: "Ansvar", to: "/ansvar" },
-  { label: "Karriere", to: "/karriere" },
+  { label: "Karriere", href: "https://karriere.heltopplagt.com/" },
   { label: "Kontakt", to: "/kontakt" },
 ];
 
@@ -19,9 +19,6 @@ const HEADING =
 export function Footer() {
   return (
     <footer className="bg-navy text-white">
-      {/* Two columns already on mobile, so the link lists sit side by side
-          instead of stacking into one long scroll. Brand and contact span
-          the full width until the four-column layout kicks in on lg. */}
       <div
         className={`${CONTAINER} grid grid-cols-2 gap-x-6 gap-y-10 py-12 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr] lg:gap-10 lg:py-20`}
       >
@@ -32,9 +29,7 @@ export function Footer() {
             className="mb-6 h-8 object-contain brightness-0 invert"
           />
           <p className="mb-7 max-w-[300px] text-[14px] leading-[1.7] text-white/60">
-            Frukt, lunsj, kantine, catering, inneklima og renhold for
-            arbeidsplassen — hos én leverandør, med én kontaktperson og én
-            faktura.
+            Det Helt Opplagte valg for en sunnere, renere og enklere hverdag!
           </p>
           <div className="flex gap-2.5">
             <a
@@ -71,15 +66,27 @@ export function Footer() {
 
         <nav className="flex flex-col gap-2.5">
           <h2 className={HEADING}>Selskapet</h2>
-          {companyLinks.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="text-[14px] text-white/70 transition-colors hover:text-aqua"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {companyLinks.map((l) =>
+            l.href ? (
+              <a
+                key={l.label}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[14px] text-white/70 transition-colors hover:text-aqua"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <Link
+                key={l.label}
+                to={l.to!}
+                className="text-[14px] text-white/70 transition-colors hover:text-aqua"
+              >
+                {l.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className="col-span-2 lg:col-span-1">
@@ -102,8 +109,22 @@ export function Footer() {
             Slimeveien 2b, 1275 Oslo
           </p>
           <Pill to="/kontakt" className="mt-6">
-            Send oss en melding
+            Kontakt oss
           </Pill>
+          <p className="mt-6 max-w-[300px] text-[13px] leading-[1.7] text-white/50">
+            Prøv også vårt søsterselskap{" "}
+            <a
+              href="https://retthjem.no"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-white/70 transition-colors hover:text-aqua"
+            >
+              Rett Hjem
+            </a>
+            . Rett Hjem er en dagligvarebutikk på nett som leverer absolutt alt
+            en bedrift trenger til lunsj, møter, event, overtid etc. i
+            Stor-Oslo.
+          </p>
         </div>
       </div>
 
@@ -112,10 +133,9 @@ export function Footer() {
           className={`${CONTAINER} flex flex-wrap items-center justify-between gap-2 py-6`}
         >
           <p className="text-[12px] text-white/45">
-            &copy; {new Date().getFullYear()} Helt Opplagt AS. Alle rettigheter
+            &copy; {new Date().getFullYear()} Helt Opplagt. Alle rettigheter
             reservert.
           </p>
-          {/* The payoff line, in the payoff face. */}
           <p className="payoff-marker font-payoff text-[15px] font-bold text-white/60">
             Helt Opplagt på jobben
           </p>

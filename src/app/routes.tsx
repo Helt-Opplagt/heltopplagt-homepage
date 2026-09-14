@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createBrowserRouter, Navigate } from "react-router";
 import { RootLayout } from "./layouts/RootLayout";
 import { HomePage } from "./pages/HomePage";
@@ -7,7 +8,6 @@ import { AktueltPage } from "./pages/AktueltPage";
 import { ArtikkelPage } from "./pages/ArtikkelPage";
 import { AnsvarPage } from "./pages/AnsvarPage";
 import { KontaktPage } from "./pages/KontaktPage";
-import { KarrierePage } from "./pages/KarrierePage";
 import { FruktPage } from "./pages/tjenester/Frukt";
 import { LunsjPage } from "./pages/tjenester/Lunsj";
 import { RenholdPage } from "./pages/tjenester/Renhold";
@@ -17,6 +17,16 @@ import { KantinePage } from "./pages/tjenester/Kantine";
 import { SubServicePage } from "./pages/tjenester/SubServicePage";
 import { TjenesterPage } from "./pages/TjenesterPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+
+const KARRIERE_URL = "https://karriere.heltopplagt.com/";
+
+/* Careers live on the Teamtailor site; /karriere just forwards there. */
+function KarriereRedirect() {
+  useEffect(() => {
+    window.location.replace(KARRIERE_URL);
+  }, []);
+  return null;
+}
 
 export const router = createBrowserRouter([
   {
@@ -30,7 +40,7 @@ export const router = createBrowserRouter([
       { path: "aktuelt/:slug", Component: ArtikkelPage },
       { path: "ansvar", Component: AnsvarPage },
       { path: "kontakt", Component: KontaktPage },
-      { path: "karriere", Component: KarrierePage },
+      { path: "karriere", Component: KarriereRedirect },
       { path: "tjenester", Component: TjenesterPage },
       { path: "tjenester/frukt", Component: FruktPage },
       { path: "tjenester/lunsj", Component: LunsjPage },

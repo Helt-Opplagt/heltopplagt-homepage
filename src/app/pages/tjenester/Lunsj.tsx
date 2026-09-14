@@ -1,16 +1,8 @@
 import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import heroImg from "../../../images/lunsj/lunsj.png";
 import openingImg from "../../../images/hero/web/hero-lunsj.jpg";
-/* NOT div/web/lunsj.jpg — that is the same shot as the hero. */
 import explainerImg from "../../../images/div/web/fat-anretning.jpg";
-/* Helt Opplagt's own tray photos (div/Hof1-3.jpg) — white-background product
-   shots, rendered un-cropped via the cut-out treatment. */
-import fatHof1 from "../../../images/div/web/hof1.jpg";
-import fatHof2 from "../../../images/div/web/hof2.jpg";
 import fatHof3 from "../../../images/div/web/hof3.jpg";
-/* The three box photos, self-hosted (optimized copies of the site's own
-   thumbnails) — the variant switcher shows all three at once, so they should
-   not hotlink heltopplagt.no. */
 import hverdagslunsjenImg from "../../../images/lunsj/cards/hverdagslunsjen.jpg";
 import golunsjenImg from "../../../images/lunsj/cards/golunsjen.jpg";
 import superlunsjenImg from "../../../images/lunsj/cards/superlunsjen.jpg";
@@ -25,7 +17,7 @@ export const lunsjData: ServicePageData = {
       Lunsj
     </>
   ),
-  subtitle: "Lønnsomme lunsjordninger. Fra fem personer og oppover.",
+  subtitle: "Vår lunsj gjør arbeidsdagen hyggeligere",
   intro:
     "Er du en bedrift med mellom 5–300 ansatte kan vi levere alt fra enkle lunsjbokser til proffkantine. Ta kontakt i dag og prøv våre velsmakende lunsjer.",
   image: heroImg,
@@ -33,57 +25,31 @@ export const lunsjData: ServicePageData = {
   heroImage: openingImg,
   brochureUrl:
     "https://heltopplagt.no/application/files/8917/6785/9195/HeltOpplagt_Lunsjbrosjyre_januar_2026_web.pdf",
-  /* All copy below is sourced from heltopplagt.no (lunsj + sub-pages).
-     Prices deliberately stay out of the catalogs (user rule) — the entry
-     price lives in the FAQ instead. */
   heroPoints: [
-    {
-      label: "Levert før kl. 11",
-      body: "Sunn lunsj levert helt inn på spiserommet, hver dag før lunsjrushet.",
-    },
-    {
-      label: "Sparer tid og penger",
-      body: "Effektivisert lunsjavvikling gir bedre tid til viktige arbeidsoppgaver.",
-    },
-    {
-      label: "Et sosialt avbrekk",
-      body: "En hyggelig pause til fast tid, hver eneste dag.",
-    },
-    {
-      label: "Fra eske til proffkantine",
-      body: "Fire formater som dekker bedrifter fra 5 til 300 ansatte.",
-    },
+    { label: "Sunn og god lunsj hver dag" },
+    { label: "Et sosialt avbrekk i en travel hverdag" },
+    { label: "Sparer tid og samler de ansatte" },
+    { label: "Bedre tid til viktige arbeidsoppgaver" },
   ],
   explainer: {
+    heading: "Hva tilbyr vi?",
     body: [
-      "Helt Opplagt leverer faste lunsjordninger til bedrifter med mellom 5 og 300 ansatte: ferskt brød, dagens pålegg, grønnsaker, frukt og drikke, levert hver dag før kl. 11 — helt inn på spiserommet.",
-      "Dere velger blant fire formater: selvbetjente lunsjesker i tre nivåer, ferdige fat rett i kjøleskapet, varm lunsj — eller full kantine når dere vokser.",
+      "Daglig levering av lunsj som inneholder ferskt brød, dagens pålegg, grønnsaker, frukt og drikke, alt etter hvilket utvalgsnivå dere ønsker.",
+      "Velg lunsjen som passer best for dere. Velg blant vår enkle Hverdagslunsj, populære Go'lunsj eller luksuriøse Superlunsj. Lunsjkurven leveres helt inn på deres spiserom, og våre kunder opplever at de sparer masse verdifull tid med våre løsninger.",
     ],
-    points: [
-      "Lunsjesker i tre nivåer — Hverdags-, Go'- og Superlunsjen",
-      "Ferdige fat, rett inn i kjøleskapet",
-      "Varm lunsj — over 50 retter fra eget kjøkken",
-      "Daglig levering før kl. 11, eller etter behov",
-      "Fra 5 personer og oppover",
-    ],
+
     image: explainerImg,
     imageAlt: "Kokk fra Helt Opplagt anretter påleggsfat",
   },
   catalogs: [
     {
       heading: "Velg din lunsjeske",
-      proof:
-        "Tre nivåer, samme prinsipp: ferskt brød, dagens pålegg, grønnsaker, frukt og drikke.",
-      /* No `photo` flag: the boxes are white-background product shots that
-         should show whole, un-cropped. */
+
       layout: "grid",
       items: [
-        /* Card copy = the opening lines of each box's live page
-           (heltopplagt.no/lunsj/lunsjkurver-1/<slug>). */
         {
           name: "Hverdagslunsjen",
           tag: "Rimelig",
-          spec: "Den enkle lunsjen",
           description:
             "Vår enkleste og rimeligste lunsjordning. Passer for dere som ønsker å spare penger, men samtidig ha noe som er ferskere og friskere enn matpakke.",
           image: hverdagslunsjenImg,
@@ -92,7 +58,6 @@ export const lunsjData: ServicePageData = {
         {
           name: "Go'lunsjen",
           tag: "Populær",
-          spec: "Mest valgt",
           description:
             "Vår mest populære lunsjordning. God og variert, fersk og frisk. Et tidsbesparende og lønnsomt alternativ til å handle mat i butikken.",
           image: golunsjenImg,
@@ -100,8 +65,7 @@ export const lunsjData: ServicePageData = {
         },
         {
           name: "Superlunsjen",
-          tag: "Luksuriøs",
-          spec: "Vårt flaggskip",
+          tag: "Flaggskip",
           description:
             "Vårt flaggskip blant selvbetjente lunsjordninger. Luksuriøst og velsmakende, godt og variert. Et fristende utvalg for dere som ønsker å gjøre noe ekstra ut av lunsjen.",
           image: superlunsjenImg,
@@ -111,103 +75,86 @@ export const lunsjData: ServicePageData = {
     },
     {
       heading: "Ferdige fat",
-      proof: "Vårt nyeste lunsjkonsept, der det aller meste er tilrettelagt på forhånd.",
-      /* One of Helt Opplagt's own tray photos (white background, un-cropped);
-         the other Hof trays live on the ferdige-fat sub-page. */
-      layout: "band",
+
+      layout: "feature",
+      reverse: true,
       items: [
         {
-          name: "Ferdige fat — rett inn i kjøleskapet",
-          tag: "Fra ca. 10 personer",
+          name: "Leveres rett inn i deres kjøleskap",
+          tag: "Passer best fra ca 10 pers og oppover",
           description:
-            "Kjøtt- og fiskepålegg, ost, egg og grønnsaker ferdig pakket på fat — vi setter dem rett inn i kjøleskapet deres ved de daglige leveransene. 50 rullerende menyer og egen fredagsmeny med karbonader, roastbiff, kokte egg, fiskekaker og kyllingvinger.",
+            "Kjøtt- og fiskepålegg, ost, egg, grønnsaker osv pakkes på fat. Drikke, smør, syltetøy og andre pålegg som ikke egner seg så godt på fat kommer ved siden av. Fatene setter vi rett inn i kjøleskapet hos dere ved våre daglige leveranser. Vi hjelper dere med å holde orden i kjøleskapet, noe som sikrer fersk mat og hindrer svinn.",
           image: fatHof3,
         },
       ],
       link: { label: "Les mer om ferdige fat", to: "/tjenester/lunsj/ferdige-fat" },
     },
     {
-      heading: "Varm lunsj",
-      proof: "Over 50 retter laget helt fra bunn av, med fokus på sunnhet og naturlige råvarer.",
-      layout: "band",
-      photo: true,
+      heading: "Varm lunsj på jobb",
+
+      layout: "feature",
       items: [
         {
-          name: "Varm lunsj — porsjonspakket eller i storforpakning",
+          name: "Stor variasjon og lang holdbarhet",
+          tag: "Mer enn 50 retter",
           description:
-            "Kylling curry, marinerte kyllinglår, albondigas, viltgryte, lapskaus, chili con carne, thai green curry og pasta carbonara — klar til rask oppvarming i komfyr eller mikrobølgeovn.",
+            "Vi har et stort utvalg av velsmakende retter, alle laget helt fra bunn av, med fokus på sunnhet og naturlige råvarer. Rettene leveres både porsjonspakkede og i storforpakninger, og kan raskt og enkelt varmes opp i komfyr eller mikrobølgeovn.",
           image: `${thumbs}/317b0d000b75625d1c6eea3f9a02a605.jpg`,
         },
       ],
-      link: { label: "Se flere varmretter", to: "/tjenester/lunsj/varm-lunsj" },
+      link: { label: "Les mer om varm lunsj", to: "/tjenester/lunsj/varm-lunsj" },
     },
   ],
-  /* The four formats are carried by the catalogs + the image links in "Les
-     mer" — the generic sub-service card grid would duplicate them. */
   hideSubServiceCards: true,
   faq: [
     {
       question: "Hvor mange må vi være for å få lunsjlevering?",
       answer:
-        "Vi leverer til bedrifter fra 5 personer og oppover. Ferdige fat passer best fra cirka 10 personer.",
+        "Er du en bedrift med mellom 5-300 ansatte kan vi levere alt fra enkle lunsjbokser til proffkantine. Ferdige fat passer best fra ca 10 pers og oppover.",
     },
     {
-      question: "Når og hvor leveres lunsjen?",
+      question: "Når leveres lunsjen på jobben?",
       answer:
-        "Vi leverer hver dag før kl. 11, helt inn på spiserommet eller det rommet dere ønsker.",
-    },
-    {
-      question: "Må vi ha levering hver dag?",
-      answer:
-        "Nei — vi leverer daglig eller etter behov, og ordningen tilpasses hvor ofte dere ønsker lunsj.",
+        "Sunn lunsj levert helt inn på spiserommet før kl. 11 hver dag. Vi leverer daglig eller etter behov.",
     },
     {
       question: "Hva koster en lunsjordning?",
       answer:
-        "Lunsjeskene starter på cirka 32 kroner per person per dag for Hverdagslunsjen. Ta kontakt, så setter vi opp et uforpliktende tilbud for deres størrelse og utvalgsnivå.",
+        "Hverdagslunsjen koster ca. 32 kr per person/dag. Go'lunsjen koster ca. 50 kr per person/dag. Superlunsjen koster ca. 61 kr per person/dag. Husk at det går an å gjøre tilleggsbestillinger ved behov/ønske.",
     },
     {
-      question: "Hva kommer i esken?",
+      question: "Hva inneholder lunsjesken?",
       answer:
-        "Ferskt brød, dagens pålegg, grønnsaker, frukt og drikke. Noen ting, som smør og syltetøy, kommer mandager og er ment å vare uken ut — resten er ferskt hver dag.",
+        "Vi kommer daglig med en eske som inneholder ferskt brød, dagens pålegg, grønnsaker, frukt og drikke. Noen ting, som for eksempel smør og syltetøy, kommer mandager og er ment å vare utover uken, mens det aller meste er dagens pålegg for at dere skal slippe å rydde det samme pålegget ut og inn av kjøleskapet hver dag.",
     },
   ],
   readMore: [
     {
-      label: "Lunsjeskene i detalj",
-      description: "Hverdagslunsjen, Go'lunsjen og Superlunsjen — med priser.",
+      label: "Lunsjesker",
+      description: "Velg blant vår enkle Hverdagslunsj™, populære Go'lunsj™ eller luksuriøse Superlunsj™.",
       to: "/tjenester/lunsj/golunsjen",
       image: `${thumbs}/4b5debec2dd9e84aaaa4847cf6ad5852.png`,
     },
     {
       label: "Ferdige fat",
-      description: "Slik fungerer fatene, menyene og fredagsmenyen.",
+      description: "Vårt nyeste lunsjkonsept, der det aller meste er tilrettelagt på forhånd.",
       to: "/tjenester/lunsj/ferdige-fat",
       image: `${thumbs}/41d9e0eadce975c155ef731dbce1b6a8.jpg`,
     },
     {
       label: "Varm lunsj",
-      description: "Hele utvalget av retter laget fra bunn av.",
+      description: "Vi har et stort utvalg av velsmakende retter, alle laget helt fra bunn av.",
       to: "/tjenester/lunsj/varm-lunsj",
       image: `${thumbs}/317b0d000b75625d1c6eea3f9a02a605.jpg`,
     },
     {
-      label: "Kantine — full lunsjavvikling",
-      description: "Vert eller vertinne, buffet og full service for 15–300 ansatte.",
+      label: "Kantine",
+      description: "Et fullservicetilbud som passer alle typer kjøkken der vi tar oss av hele lunsjavviklingen.",
       to: "/tjenester/kantine",
       image: `${thumbs}/f8b24672f313f2f3ca35fd4b0765e8ab.jpg`,
     },
   ],
   subServices: [
-    /*
-     * The three lunch boxes — variants of the same offering. Copy is taken
-     * verbatim from heltopplagt.no/lunsj/lunsjkurver-1/<slug> (2026-09-04),
-     * with obvious typos in the source normalised ("Lunsjesjen" →
-     * "Lunsjesken", "variet" → "variert"). The live pages end with a "fyll inn
-     * skjema under" line; that is covered by the page's own closing action.
-     * They replace the old combined "lunsjesker" sub-page (routes.tsx
-     * redirects the retired URL here).
-     */
     {
       slug: "hverdagslunsjen",
       title: "Hverdagslunsjen",
@@ -218,18 +165,19 @@ export const lunsjData: ServicePageData = {
       image: hverdagslunsjenImg,
       content: [
         {
+          type: "text",
+          paragraphs: [
+            "Vår enkleste og rimeligste lunsjordning. Passer for dere som ønsker å spare penger, men samtidig ha noe som er ferskere og friskere enn matpakke. Leveres i enheter tilpasset ca 5 pers.",
+            "Hverdagslunsjen koster ca. 32 kr per person/dag. Lunsjesken leveres helt inn til ønsket rom, hver dag før kl 11.",
+            "Husk at det går an å gjøre tilleggsbestillinger ved behov/ønske.",
+          ],
+        },
+        {
           type: "bullets",
           items: [
             "Variert og sunt brød + margarin. Brødet kan leveres ferskt oppskåret.",
             "2–3 typer pålegg hver dag; enkle og rimelige kjøtt- og fiskepålegg, hel gulost/brunost, syltetøy, leverpostei, italiensk salat. I tillegg leverer vi kokte egg hver fredag.",
             "Juice/melk.",
-          ],
-        },
-        {
-          type: "text",
-          paragraphs: [
-            "Hverdagslunsjen koster ca. 32 kr per person/dag. Lunsjesken leveres helt inn til ønsket rom, hver dag før kl 11.",
-            "Husk at det går an å gjøre tilleggsbestillinger ved behov/ønske.",
           ],
         },
       ],
@@ -244,6 +192,14 @@ export const lunsjData: ServicePageData = {
       image: golunsjenImg,
       content: [
         {
+          type: "text",
+          paragraphs: [
+            "Vår mest populære lunsjordning. God og variert, fersk og frisk. Et tidsbesparende og lønnsomt alternativ til å handle mat i butikken. Passer fra ca 5 pers og oppover.",
+            "Go'lunsjen koster ca. 50 kr per person/dag. Lunsjesken leveres helt inn til ønsket rom, hver dag før kl 11.",
+            "Husk at det går an å gjøre tilleggsbestillinger ved behov/ønske.",
+          ],
+        },
+        {
           type: "bullets",
           items: [
             "Variert og sunt brød + margarin. Brødet kan leveres ferdig oppskåret.",
@@ -252,13 +208,6 @@ export const lunsjData: ServicePageData = {
             "Friske grønnsaker: tomat/agurk/salat/paprika.",
             "Juice/melk.",
             "1 frukt til hver er inkludert, men bytt gjerne ut med våre flotte fruktkurver.",
-          ],
-        },
-        {
-          type: "text",
-          paragraphs: [
-            "Go'lunsjen koster ca. 50 kr per person/dag. Lunsjesken leveres helt inn til ønsket rom, hver dag før kl 11.",
-            "Husk at det går an å gjøre tilleggsbestillinger ved behov/ønske.",
           ],
         },
       ],
@@ -273,6 +222,13 @@ export const lunsjData: ServicePageData = {
       image: superlunsjenImg,
       content: [
         {
+          type: "text",
+          paragraphs: [
+            "Vårt flaggskip blant selvbetjente lunsjordninger. Luksuriøst og velsmakende, godt og variert. Et fristende utvalg for dere som ønsker å gjøre noe ekstra ut av lunsjen. Passer fra ca 5 pers og oppover.",
+            "Superlunsjen koster ca. 61 kr per person/dag. Lunsjesken leveres helt inn til ønsket rom, hver dag før kl 11.",
+          ],
+        },
+        {
           type: "bullets",
           items: [
             "Inneholder kun våre flotteste brød- og påleggsvarianter.",
@@ -283,26 +239,20 @@ export const lunsjData: ServicePageData = {
             "Vi anbefaler å kombinere med våre flotte fruktkurver.",
           ],
         },
-        {
-          type: "text",
-          paragraphs: [
-            "Superlunsjen koster ca. 61 kr per person/dag. Lunsjesken leveres helt inn til ønsket rom, hver dag før kl 11.",
-          ],
-        },
       ],
     },
     {
       slug: "ferdige-fat",
       title: "Ferdige fat",
       description:
-        "Vårt nyeste lunsjkonsept, der det aller meste er tilrettelagt på forhånd. Godt og variert, ferskt og friskt. Et tidsbesparende og lønnsomt alternativ til å handle mat i butikken. Passer best fra ca 10 pers og oppover.",
+        "Kjøtt- og fiskepålegg, ost, egg, grønnsaker osv pakkes på fat. Et tidsbesparende og lønnsomt alternativ til å handle mat i butikken. Passer best fra ca 10 pers og oppover.",
       image: `${thumbs}/41d9e0eadce975c155ef731dbce1b6a8.jpg`,
       content: [
         {
           type: "text",
           heading: "Leveres rett inn i deres kjøleskap",
           paragraphs: [
-            "Kjøtt- og fiskepålegg, ost, egg, grønnsaker osv pakkes på fat. Drikke, smør, syltetøy og andre pålegg som ikke egner seg så godt på fat kommer ved siden av. Fatene setter vi rett inn i kjøleskapet hos dere ved våre daglige leveranser. I tillegg etterfylles andre pålegg etter rullerende meny. Vi hjelper dere med å holde orden i kjøleskapet, noe som sikrer fersk mat og hindrer svinn.",
+            "Fatene setter vi rett inn i kjøleskapet hos dere ved våre daglige leveranser. I tillegg etterfylles andre pålegg etter rullerende meny. Vi hjelper dere med å holde orden i kjøleskapet, noe som sikrer fersk mat og hindrer svinn.",
           ],
         },
         {
@@ -314,30 +264,6 @@ export const lunsjData: ServicePageData = {
             "Ekstra fredagsmeny. Varieres mellom karbonader, roastbiff, kokte egg, fiskekaker og kyllingvinger.",
             "Friske grønnsaker: tomat/agurk/salat/paprika.",
             "Juice/melk.",
-          ],
-        },
-        {
-          type: "cards",
-          heading: "Slik kan fatene se ut:",
-          items: [
-            {
-              title: "Fat med kylling, ost og grønnsaker",
-              description:
-                "Krydret kylling, ost, salami, kalkun, sukkererter, gulrøtter og reddiker.",
-              image: fatHof1,
-            },
-            {
-              title: "Fat med røkelaks og spekemat",
-              description:
-                "Røkelaks, hamburgerrygg, krydret salami, ost, agurk og tomat.",
-              image: fatHof2,
-            },
-            {
-              title: "Fat med roastbiff og skinke",
-              description:
-                "Pepperskinke, roastbiff med rødløk, ostruller, paprika og cherrytomater.",
-              image: fatHof3,
-            },
           ],
         },
         {
@@ -393,7 +319,7 @@ export const lunsjData: ServicePageData = {
       content: [
         {
           type: "text",
-          heading: "Vi kommer med maten — dere nyter",
+          heading: "Vi kommer med maten - dere nyter",
           paragraphs: [
             "Et fullservicetilbud for litt større bedrifter der vi tar oss av hele lunsjavviklingen. Vi stiller med en hyggelig vert/vertinne. Dere kan bare komme og nyte!",
             "Gjennom mange års erfaring med fornøyde kunder er tjenesten spesialtilpasset bedrifter med mellom 20 til 150 ansatte. Våre varierte menyer gir dere en buffet som er både smaksrik og sunn for kroppen, samt presentert på en måte som er en fryd for øyet! Vi tilbyr et modulbasert kantinetilbud der dere selv kan påvirke sammensetningen.",
@@ -402,16 +328,16 @@ export const lunsjData: ServicePageData = {
         },
         {
           type: "bullets",
-          heading: "Modulbasert kantinetilbud — velg blant følgende moduler:",
+          heading: "Modulbasert kantinetilbud - velg blant følgende moduler:",
           items: [
-            "Frokostblanding & yoghurt som et alternativ eller tillegg",
-            "Pålegg — pyntede fat og skåler med kjøtt- og fiskepålegg, oster, majonessalater, syltetøy og smørepålegg som varieres fra dag til dag",
-            "Småretter som omelett, tunfisksalat, grønnsakspanne",
-            "Salater — daglig variasjon mellom mange spennende salater som tilberedes ferskt hos dere",
-            "Varmmat laget fra bunn av på vårt eget kjøkken",
-            "Vafler/småkaker — perfekt som fredagskos",
-            "Drikke — ulike typer juice og melk, bl.a. kundefavoritten Eplejuice fra Askim frukt- og bærpresseri",
-            "Brød/knekkebrød — sunne og grove brød etter egne oppskrifter uten unødvendige tilsetningsstoffer og fiberrike knekkebrødvarianter",
+            "Frokostblanding og yoghurt som et alternativ eller tillegg.",
+            "Pålegg - pyntede fat og skåler med kjøtt- og fiskepålegg, oster, majonessalater, syltetøy og smørepålegg som varieres fra dag til dag.",
+            "Småretter som omelett, tunfisksalat og grønnsakspanne.",
+            "Salater - daglig variasjon mellom mange spennende salater som tilberedes ferskt hos dere.",
+            "Varmmat laget fra bunn av på vårt eget kjøkken.",
+            "Vafler/småkaker - perfekt som fredagskos!",
+            "Ulike typer drikke som juice og melk, deriblant kundefavoritten Eplejuice fra Askim frukt- og bærpresseri.",
+            "Brød/knekkebrød - sunne og grove brød etter egne oppskrifter uten unødvendige tilsetningsstoffer. Variert utvalg av gode og fiberrike knekkebrødvarianter.",
           ],
         },
         {

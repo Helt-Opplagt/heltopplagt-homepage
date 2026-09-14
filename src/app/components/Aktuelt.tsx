@@ -3,11 +3,6 @@ import { Link } from "react-router";
 import { CONTAINER, Pill, SectionHead } from "./site";
 import { articles } from "../../lib/articles";
 
-/**
- * Homepage teaser for Aktuelt, driven by the real article data in
- * src/lib/articles.ts. The farm/venue story runs as the featured item since
- * it's the most visual, evergreen story; the next two articles fill the list.
- */
 export function Aktuelt() {
   const featured = articles[0];
   const listItems = articles.slice(1, 3);
@@ -18,17 +13,15 @@ export function Aktuelt() {
         <SectionHead
           kicker="Aktuelt"
           title="Siste nytt fra Helt Opplagt"
-          lede="Nyheter, miljøarbeid og livet på Store Stensrud Gård."
           action={
             <Pill to="/aktuelt" variant="outline">
-              Alle nyheter
+              Aktuelt
               <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
             </Pill>
           }
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-          {/* Featured — the gård */}
           <Link to={`/aktuelt/${featured.slug}`} className="group block">
             <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem]">
               <img
@@ -41,15 +34,14 @@ export function Aktuelt() {
               </span>
             </div>
             <h3 className="mt-6 font-lato text-[22px] font-bold leading-[1.25] text-navy transition-colors group-hover:text-brand lg:text-[24px]">
-              Leter du etter det perfekte stedet for arrangementet?
+              Leter du etter det perfekte stedet for ditt arrangement?
             </h3>
             <p className="mt-3 max-w-[48ch] text-[15px] leading-relaxed text-navy/60">
-              På Store Stensrud Gård, syd i Oslo, tilbyr vi unike lokaler for
-              både store og små feiringer, inne og ute, med full service,
-              gårdsleker, badeplass, paintball og Archery Tag.
+              Hos oss på Store Stensrud Gård, syd i Oslo, tilbyr vi unike lokaler
+              for både store og små feiringer!
             </p>
             <span className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand">
-              Les mer om gården
+              Les mer
               <ArrowRight
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                 strokeWidth={2.5}
@@ -57,7 +49,6 @@ export function Aktuelt() {
             </span>
           </Link>
 
-          {/* The next real stories */}
           <div className="flex flex-col gap-5">
             {listItems.map((item) => (
               <Link

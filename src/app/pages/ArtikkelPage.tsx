@@ -4,7 +4,6 @@ import { CONTAINER, Kicker, Pill } from "../components/site";
 import { articles, getArticle, type ArticleBlock } from "../../lib/articles";
 import { useDocumentMeta } from "../../lib/use-document-meta";
 
-/** One Aktuelt article, in the Opplagt grammar. */
 export function ArtikkelPage() {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticle(slug) : undefined;
@@ -180,7 +179,6 @@ function ArticleBlockView({ block }: { block: ArticleBlock }) {
     );
   }
 
-  /* qa */
   return (
     <div className="mb-6">
       <h2 className="mb-2 text-[17px] font-semibold leading-snug text-navy">

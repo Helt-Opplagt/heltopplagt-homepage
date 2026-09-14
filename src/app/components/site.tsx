@@ -1,17 +1,3 @@
-/**
- * "Opplagt" — shared primitives for the 2026-09-01 homepage refresh.
- *
- * The whole system is four moves, borrowed from the reference sites and kept
- * deliberately small:
- *   1. Pill buttons (rounded-full) for every action.
- *   2. A kicker label ("/ VÅRE TJENESTER") over a light Lato display heading.
- *   3. Soft-rounded white cards on full tinted section grounds (cloud/sand).
- *   4. One arch photo crop (rounded-t-full) as the signature shape — hero and
- *      About only; every other image is a plain rounded rectangle.
- *
- * Colors come from DESIGN.md via the tokens in tailwind.css: brand, navy,
- * cloud, sand, plus lime for checks and amber for warm detail.
- */
 import { type ReactNode } from "react";
 import { Link } from "react-router";
 

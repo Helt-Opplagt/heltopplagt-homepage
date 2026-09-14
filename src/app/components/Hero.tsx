@@ -41,7 +41,6 @@ export function Hero() {
 
           <h1 className="mt-5 font-lato text-[38px] font-light leading-[1.1] tracking-[-0.01em] text-navy sm:text-[48px] lg:text-[54px] xl:text-[64px]">
             Det{" "}
-            {/* The brand phrase carries the payoff face — its one hero moment. */}
             <span className="payoff-marker font-payoff font-bold text-brand">
               Helt Opplagte
             </span>{" "}
@@ -49,24 +48,25 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 max-w-[36rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px] xl:mt-7">
-            Frukt, lunsj, kantine, catering, inneklima og renhold — levert til
-            arbeidsplassen av én leverandør, med én kontaktperson og én faktura.
+            Helt Opplagt på jobben er en markedsorientert leverandør av løpende
+            abonnementsbaserte tjenester innen helse og trivsel på arbeidsplassen.
+            Vi leverer jobbfrukt, catering, renhold, kantine og ren luft til over
+            50 000 ansatte i bedrifter i Oslo.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Pill to="/kontakt">
-              Kontakt oss i dag
+              Ta kontakt for tilbud
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </Pill>
             <Pill to="/tjenester" variant="outline">
-              Se tjenestene
+              Våre tjenester
             </Pill>
           </div>
         </div>
 
-        {/* Arch photo carousel — the site's one signature shape. */}
         <div>
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[26rem] overflow-hidden rounded-t-full rounded-b-[2rem] lg:max-w-[30rem] xl:max-w-[33rem]">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[26rem] overflow-hidden rounded-2xl lg:max-w-[30rem] xl:max-w-[33rem]">
             {slides.map((slide, i) => (
               <img
                 key={slide.label}

@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import fruktImg from "../../images/frukt/frukt.png";
 import lunsjImg from "../../images/lunsj/lunsj.png";
@@ -22,31 +22,34 @@ function ServiceCard({ service }: { service: LiveryService }) {
   return (
     <Link
       to={service.href}
-      className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_1px_2px_rgba(13,43,64,0.06)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(13,43,64,0.18)]"
+      className="group relative block aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-[#1c1c1c] shadow-[0_1px_2px_rgba(13,43,64,0.06)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(13,43,64,0.18)]"
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img
-          src={PHOTO[service.name]}
-          alt={service.name}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      </div>
+      <img
+        src={PHOTO[service.name]}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.18)_45%,rgba(0,0,0,0)_75%)]"
+      />
 
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <h3 className="font-lato text-[21px] font-bold text-navy sm:text-[23px]">
+      <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6 sm:p-7">
+        <span className="font-lato text-[24px] font-bold leading-none text-white sm:text-[26px]">
           {service.name}
-        </h3>
-        <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-navy/60">
-          {service.blurb}
-        </p>
-        <span className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand">
-          Les mer
-          <ArrowRight
-            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-            strokeWidth={2.5}
-          />
         </span>
-      </div>
+
+        {/* The "Les mer" affordance: a white disc that fills brand-blue on
+            hover while the arrow turns from diagonal to straight right. */}
+        <span className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-white text-navy transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+          <ArrowUpRight
+            className="h-5 w-5 transition-transform duration-300 ease-out group-hover:rotate-45"
+            strokeWidth={2.5}
+            aria-hidden="true"
+          />
+          <span className="sr-only">Les mer om {service.name}</span>
+        </span>
+      </span>
     </Link>
   );
 }
@@ -58,8 +61,6 @@ export function Services() {
       className="relative isolate scroll-mt-24 overflow-hidden bg-cloud py-20 lg:py-28"
       aria-labelledby="tjenester-tittel"
     >
-      {/* The brand's puzzle piece — outline variant, laid over the grid's
-          bottom corner and the section edge, clear of the header's action. */}
       <span
         aria-hidden="true"
         className="livery-puzzle-outline aspect-[100/129] -right-14 -bottom-12 w-44 rotate-[18deg] bg-brand/25 lg:-right-8 lg:w-60"
@@ -68,11 +69,11 @@ export function Services() {
         <div id="tjenester-tittel">
           <SectionHead
             kicker="Våre tjenester"
-            title="Alt som gjør arbeidsdagen bedre, fra én leverandør"
-            lede="Seks tjenester som kan bestilles hver for seg eller samlet — alltid med én kontaktperson og én faktura."
+            title="Våre produkter og tjenester"
+            lede="Helt Opplagt tilbyr tjenester som skaper en bedre arbeidshverdag. Med samlevering blir det ofte synergier å tjene på, målet er å gjøre det enklere for våre kunder å levere et godt arbeidsmiljø til sine ansatte."
             action={
               <Pill to="/kontakt" variant="outline">
-                Få tilbud på alle
+                Ta kontakt for tilbud
                 <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
               </Pill>
             }

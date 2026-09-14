@@ -4,12 +4,6 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SubService } from "./ServicePage";
 import { Kicker } from "./site";
 
-/**
- * Thumbnail strip for flipping between sub-pages that are variants of the same
- * product (fruit baskets, lunch boxes). Each variant keeps its own URL — a
- * click navigates to the sibling slug with `preserveScroll` so the page
- * doesn't jump to the top (see ScrollToTop in RootLayout).
- */
 export function VariantSwitcher({
   label,
   items,
@@ -37,9 +31,7 @@ export function VariantSwitcher({
     });
   }
 
-  /* Keep the active thumb in view inside the strip. Horizontal-only scroll,
-     deliberately NOT scrollIntoView — that also scrolls the PAGE vertically
-     (see the same note in Reviews.tsx). */
+  /* Horizontal-only scroll; scrollIntoView would also scroll the page vertically. */
   useEffect(() => {
     const row = rowRef.current;
     const el = thumbRefs.current[activeSlug];

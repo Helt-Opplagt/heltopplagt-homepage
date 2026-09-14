@@ -4,17 +4,10 @@ import { CONTAINER, Kicker } from "../components/site";
 import { articles } from "../../lib/articles";
 import { useDocumentMeta } from "../../lib/use-document-meta";
 
-/**
- * The Aktuelt listing, in the Opplagt grammar: the real articles from
- * heltopplagt.no (see src/lib/articles.ts — currently the four newest;
- * the site's ~22 older articles can be added there later and will appear
- * here automatically). The site publishes no dates, so cards carry a
- * category kicker instead.
- */
 export function AktueltPage() {
   useDocumentMeta(
     "Aktuelt",
-    "Siste nytt fra Helt Opplagt: nyheter, miljøarbeid og livet på Store Stensrud Gård."
+    "Siste nytt fra Helt Opplagt."
   );
 
   const [featured, ...rest] = articles;
@@ -31,16 +24,11 @@ export function AktueltPage() {
           <h1 className="mt-4 font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
             Siste nytt fra Helt Opplagt
           </h1>
-          <p className="mt-5 max-w-[42rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
-            Nyheter, miljøarbeid, menneskene våre og livet på Store Stensrud
-            Gård.
-          </p>
         </div>
       </section>
 
       <section className="bg-white py-16 lg:py-20">
         <div className={CONTAINER}>
-          {/* Featured story */}
           <Link to={`/aktuelt/${featured.slug}`} className="group block lg:grid lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-14">
             <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem]">
               <img
@@ -69,7 +57,6 @@ export function AktueltPage() {
             </div>
           </Link>
 
-          {/* The rest */}
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
             {rest.map((a) => (
               <Link

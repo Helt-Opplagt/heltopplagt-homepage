@@ -17,7 +17,6 @@ const customers = [
   { name: "Riksrevisjonen", logo: riksrevisjonenLogo },
 ];
 
-/** Ordered service groups; reviews come from the shared src/lib/reviews.ts. */
 const GROUPS: Review["service"][] = [
   "Kantine",
   "Lunsj",
@@ -46,20 +45,17 @@ function ReviewCard({ review }: { review: Review }) {
       <div className="mt-6 border-t border-navy/10 pt-4">
         <p className="text-[15px] font-semibold text-navy">{review.name}</p>
         <p className="mt-0.5 text-[13px] text-navy/55">
-          {review.role === review.company
-            ? review.company
-            : `${review.role}, ${review.company}`}
+          {review.company}
         </p>
       </div>
     </div>
   );
 }
 
-/** Content is the real reference list from heltopplagt.no/referanser. */
 export function ReferanserPage() {
   useDocumentMeta(
     "Referanser",
-    "Se hva kundene våre mener om oss: ekte tilbakemeldinger om kantine, lunsj, frukt, inneklima og renhold."
+    "Se hva våre kunder mener om oss."
   );
 
   return (
@@ -72,51 +68,19 @@ export function ReferanserPage() {
         <div className={`${CONTAINER} relative z-10 py-14 lg:py-20`}>
           <Kicker>Referanser</Kicker>
           <h1 className="mt-4 font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
-            Se hva kundene våre mener om oss
+            Se hva våre kunder mener om oss
           </h1>
           <p className="mt-5 max-w-[42rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
-            Ekte tilbakemeldinger fra bedrifter vi leverer til hver dag — om
-            kantine, lunsj, frukt, inneklima og renhold.
+            Vi har mange fornøyde kunder som har benyttet våre tjenester. Her kan du lese noen av deres erfaringer med oss, og se hvordan vi har bidratt til å skape et bedre arbeidsmiljø og økt trivsel på arbeidsplassen.
           </p>
-          <div className="mt-7">
-            <Pill
-              href="https://heltopplagt.no/application/files/3616/9455/3678/Helt_Opplagt_-_Inneklima_referansebrosjyre_2023_WEB.pdf"
-              variant="outline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Last ned referansebrosjyren
-              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-            </Pill>
-          </div>
         </div>
       </section>
 
-      {/* Logo strip */}
-      <section className="border-b border-navy/5 bg-white">
-        <div className={`${CONTAINER} py-10 lg:py-12`}>
-          <p className="text-center text-[13px] font-medium uppercase tracking-[0.14em] text-navy/45">
-            Noen av bedriftene vi leverer til
-          </p>
-          <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14 lg:flex-nowrap lg:justify-between lg:gap-x-10">
-            {customers.map((customer) => (
-              <li key={customer.name} className="flex items-center justify-center">
-                <img
-                  src={customer.logo}
-                  alt={customer.name}
-                  className="max-h-7 w-auto max-w-[8rem] object-contain opacity-55 grayscale transition-[opacity,filter] duration-300 hover:opacity-100 hover:grayscale-0 lg:max-h-8"
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
 
-      {/* Testimonials, grouped by service */}
       {GROUPS.map((service, i) => {
         const group = reviews.filter((r) => r.service === service);
         if (group.length === 0) return null;
-        const tinted = i % 2 === 0;
+        const tinted = i % 2 === 1;
         return (
           <section
             key={service}

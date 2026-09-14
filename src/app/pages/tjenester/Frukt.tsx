@@ -4,9 +4,6 @@ import pakkerImg from "../../../images/frukt/frukt.png";
 import heroFruktImg from "../../../images/hero/web/hero-frukt.jpg";
 import teamImg from "../../../images/hele_gjengen.jpg";
 import lunsjCardImg from "../../../images/lunsj/lunsj.png";
-/* The six basket photos, self-hosted (optimized copies of the site's own
-   thumbnails) — the variant switcher shows all six at once, so they should
-   not hotlink heltopplagt.no. */
 import gokurvenImg from "../../../images/frukt/cards/gokurven.jpg";
 import knaskekurvenImg from "../../../images/frukt/cards/knaskekurven.jpg";
 import hverdagskurvenImg from "../../../images/frukt/cards/hverdagskurven.jpg";
@@ -26,163 +23,111 @@ export const fruktData: ServicePageData = {
       Frukt
     </>
   ),
-  subtitle: "Fersk frukt på kontoret. Levert hver dag.",
+  subtitle: "Fruktkurv og jobbfrukt levert på jobben i Oslo",
   intro:
-    "For lite frukt er tomt før onsdag. For mye blir brunt på fredag. Vi hjelper dere å finne riktig kurv, størrelse og leveringsrytme, og leverer den helt inn på ønsket avdeling.",
+    "Helt Opplagt leverer fruktkurver og faste fruktabonnement til bedrifter i Oslo og Stor-Oslo. Vi hjelper dere å velge riktig kurv, mengde og leveringsrytme etter antall ansatte, budsjett og hvor ofte dere ønsker påfyll.",
   image: packehallImg,
   imageAlt: "Fruktkurv fra Helt Opplagt levert på et kontor",
   heroImage: heroFruktImg,
   brochureUrl:
     "https://heltopplagt.no/application/files/7317/6785/9195/HeltOpplagt_Fruktbrosjyre_januar_2026_web.pdf",
 
-  /*
-   * The strip under the hero carries the argument, not the logistics: the four
-   * strongest claims from the brochure's "Visste du at frukt på jobb…" list,
-   * building from the immediate effect to the business case.
-   *
-   * It deliberately does NOT repeat delivery frequency, delivery location or
-   * pricing; those are answered in the FAQ, and stating them twice was the
-   * duplication this replaced.
-   */
   heroPoints: [
-    {
-      label: "Energi og konsentrasjon",
-      body: "Rask energi midt i arbeidsdagen, som varer lenger enn den fra kaker og sjokolade.",
-    },
-    {
-      label: "Bedre trivsel og yteevne",
-      body: "Frukt på arbeidsplassen øker både trivselen og yteevnen.",
-    },
-    {
-      label: "Lavere sykefravær",
-      body: "Styrker immunforsvaret og bidrar til å redusere korttidsfraværet.",
-    },
-    {
-      label: "Et gode som synes",
-      body: "Lønnsomt og godt synlig for de ansatte, og det merkes hver eneste dag.",
-    },
+    { label: "Gir umiddelbar energi og økt konsentrasjon" },
+    { label: "Et sunt gode til dine ansatte" },
+    { label: "Tilpass kurven etter behov" },
+    { label: "Fra cirka 6 kroner per person per dag" },
   ],
 
-  /*
-   * The plain-language explanation, in the live site's own Norwegian: what the
-   * service is, then how it works as five short checked facts. Photo right.
-   */
   explainer: {
-    /* No `heading`: the template's shared "Hva tilbyr vi" is the point. */
+    heading: "Hva tilbyr vi?",
     body: [
-      "Helt Opplagt leverer fruktkurver og faste fruktabonnement til bedrifter i Oslo og Stor-Oslo — seks kurvtyper, fra enkel basisfrukt til eksotiske sesongvarer med grønnsaker og nøtter, pluss jobbsmoothie laget på vårt eget kjøkken.",
-      "Vi hjelper dere å velge riktig kurv, mengde og leveringsrytme etter antall ansatte, budsjett og hvor ofte dere ønsker påfyll.",
+      "Vi leverer først og fremst faste fruktavtaler, der kurvtype, mengde og leveringsfrekvens tilpasses arbeidsplassen.",
+      "Leveringsområdet strekker seg fra Drammen - Gardermoen - Lillestrøm - Fredrikstad - Sandvika - Oslo og alt i mellom. ",
+      "For å sikre kvalitet på frukten vår, vurderer smakspanelet vårt hver uke frukten som skal brukes i kommende leveranser. Frukten pakkes så tett opp mot levering som mulig, og kvaliteten kontrolleres underveis.",
     ],
-    points: [
-      "Seks kurvtyper for ulike behov og budsjetter",
-      "Jobbsmoothie fra vårt eget kjøkken",
-      "Daglige utkjøringer, pakket tett opp mot levering",
-      "Leveres helt inn på ønsket kontor eller avdeling",
-    ],
+
     image: pakkerImg,
     imageAlt:
       "Ansatt med hårnett og forkle som setter sammen en fruktkurv i pakkehallen",
   },
 
-  /*
-   * The brochure's own wording and tags, in a three-across grid: six baskets
-   * fill two clean rows, so Smoothiekurven sits with the other baskets rather
-   * than padding out a drinks section. Jobbsmoothie is the only true drink, so
-   * it renders as one compact band instead of a half-empty card section.
-   *
-   * The maroon/orange print palette stays in the brochure; these render in the
-   * Livery blues. Together they replace the old /tjenester/frukt/fruktkurv
-   * sub-page. Prices are omitted throughout; they belong in a tilbud.
-   */
   catalogs: [
     {
-      heading: "Hvilken fruktkurv passer dere best?",
+      heading: "Hvilken fruktkurv passer bedriften deres?",
       proof:
-        "Seks kurver som dekker de fleste behov. Vi justerer størrelse og innhold sammen med dere.",
-      note: "Alle kurvene kommer i flere størrelser. Ta kontakt for et spesialtilpasset tilbud.",
+        "Det finnes ikke én fruktkurv som passer alle. Noen vil ha klassisk frukt til lavest mulig pris. Andre ønsker større variasjon, grønnsaker, nøtter eller smoothie.",
+
       layout: "grid",
       items: [
         {
-          name: "Go'kurven",
-          spec: "Variert etter sesong",
-          tag: "Populær",
-          description:
-            "Epler, sitrus, bananer, pærer, druer, plommer og nektariner, variert etter sesong. Innimellom også nøtter eller eksotisk frukt.",
-          image: gokurvenImg,
-          to: "/tjenester/frukt/gokurven",
-        },
-        {
-          name: "Knaskekurven",
-          spec: "Med grønnsaker og nøtter",
-          tag: "Spennende",
-          description:
-            "Frukt kombinert med grønnsaker og nøtter: minigulrøtter, cherrytomater, reddiker og sukkererter i tillegg til basisfrukten.",
-          image: knaskekurvenImg,
-          to: "/tjenester/frukt/knaskekurven",
-        },
-        {
           name: "Hverdagskurven",
-          spec: "Tre typer basisfrukt",
           tag: "Rimelig",
           description:
-            "Tre typer basisfrukt, variert mellom eple, pære, banan og sitrus. Helsefordelen ved frukt, til lavest mulig pris.",
+            "For bedrifter som ønsker klassisk basisfrukt til lavest mulig pris. Fra ca. 6 kr per person per dag.",
           image: hverdagskurvenImg,
           to: "/tjenester/frukt/hverdagskurven",
         },
         {
+          name: "Knaskekurven",
+          tag: "Spennende",
+          description:
+            "For dere som ønsker frukt kombinert med grønnsaker og nøtter. Fra ca. 11 kr per person per dag.",
+          image: knaskekurvenImg,
+          to: "/tjenester/frukt/knaskekurven",
+        },
+        {
+          name: "Go'kurven",
+          tag: "Populær",
+          description:
+            "For bedrifter som ønsker god variasjon uten å gå opp til premiumutvalget. Fra ca. 8 kr per person per dag.",
+          image: gokurvenImg,
+          to: "/tjenester/frukt/gokurven",
+        },
+
+        {
           name: "Superkurven",
-          spec: "Med nøtter og tørket frukt",
           tag: "Eksotisk",
           description:
-            "Basisfrukt toppet med sesongfrukt og eksotisk frukt: plommer, nektariner, jordbær, kiwi, sharon og melon, pluss nøtter.",
+            "For bedrifter som ønsker størst mulig variasjon med sesongvarer, mer eksotisk frukt, grønt og nøtter. Fra ca. 11 kr per person per dag.",
           image: superkurvenImg,
           to: "/tjenester/frukt/superkurven",
         },
         {
           name: "Rullekurven",
-          spec: "Ny kurvtype hver uke",
-          tag: "Vanskelig å velge?",
           description:
-            "Klarer dere ikke å bestemme dere? Da varierer vi mellom de andre kurvene fra uke til uke.",
+            "For bedrifter som vil variere mellom ulike kurvtyper fra uke til uke. Fra ca. 9 kr per person per dag.",
           image: rullekurvenImg,
           to: "/tjenester/frukt/rullekurven",
         },
         {
           name: "Smoothiekurven",
-          spec: "Smoothie inkludert",
           description:
-            "Basisfrukt kombinert med ferske smoothies. For dere som vil både spise og drikke frukten sin.",
+            "Fruktkurv med basisfrukt og smoothie. Ideell for de som liker både å spise og drikke frukt. Priseksempel 12 pers: ca 11,- pr hode / dag.",
           image: smoothiekurvenImg,
           to: "/tjenester/frukt/smoothiekurven",
         },
       ],
     },
     {
-      heading: "Drikke",
+      heading: "Jobbsmoothie",
       proof:
-        "Rene smoothies laget på vårt eget kjøkken, av frisk frukt og bær. Bestilles alene, eller som supplement til fruktkurven.",
-      layout: "band",
+        "Vi leverer to ulike varianter hver uke.",
+      layout: "feature",
+      reverse: true,
       items: [
         {
           name: "Jobbsmoothie",
-          spec: "To varianter i uka",
           description:
-            "Næringsrike, ferske smoothies laget på vårt eget kjøkken, av frisk frukt og bær. Vi rullerer gjennom åtte smaker, så det kommer noe nytt hver uke.",
+            "Våre spennende, næringsrike og ferske smoothies er laget fra bunnen av på vårt eget kjøkken med ekte frukt og bær. De er utviklet med fokus på sunn energi, og er fulle av antioksidanter og vitaminer.",
           image: `${thumbs}/84880641e437bfb7b441396f2b721a9d.jpg`,
-          to: "/tjenester/frukt/jobbsmoothie",
         },
       ],
+      link: { label: "Les mer om jobbsmoothie", to: "/tjenester/frukt/jobbsmoothie" },
     },
   ],
 
-  /* No separate benefits section: the hero strip above states the argument
-     once, at the top, where it does the most work. The template still supports
-     `benefits` for the other five services. */
-
-  /* Questions and answers supplied by the client, verbatim. Note that the
-     pricing answer names a figure; that is a deliberate reversal of the
-     earlier "no prices on the page" decision, on the client's instruction. */
-  faqHeading: "Ofte stilte spørsmål",
+  faqHeading: "Ofte stilte spørsmål om frukt på jobben",
 
   faq: [
     {
@@ -191,14 +136,14 @@ export const fruktData: ServicePageData = {
         "Helt Opplagt leverer først og fremst faste fruktavtaler til bedrifter. Vi kan også hjelpe med enkeltleveranser når kapasiteten tillater det.",
     },
     {
+      question: "Hvor mye frukt trenger dere på jobben?",
+      answer:
+        "Riktig mengde avhenger først og fremst av hvor mange som faktisk er på kontoret, hvor ofte dere ønsker levering og hvor mye frukt som normalt blir spist. Har dere hybridarbeid, bør dere derfor ta utgangspunkt i normal kontortilstedeværelse - ikke totalt antall ansatte",
+    },
+    {
       question: "Kan dere levere frukt samme dag?",
       answer:
         "Det kan enkelte ganger være mulig, avhengig av tidspunkt, kapasitet og kjørerute. Vi kan derfor ikke garantere levering samme dag. Ta kontakt, så sjekker vi hva vi kan få til.",
-    },
-    {
-      question: "Hvor leverer Helt Opplagt frukt?",
-      answer:
-        "Vi leverer i Oslo og store deler av Stor-Oslo, omtrent innenfor området Drammen - Gardermoen - Fredrikstad.",
     },
     {
       question: "Hva koster frukt på jobben?",
@@ -210,48 +155,35 @@ export const fruktData: ServicePageData = {
       answer:
         "Vi har daglige utkjøringer og tilpasser leveringsrytmen etter behov og avtale.",
     },
-    {
-      question: "Leveres kurven helt inn på kontoret?",
-      answer:
-        "Ja. Fruktkurvene kan leveres helt inn på ønsket kontor eller avdeling.",
-    },
   ],
 
-  /* The catalogs cover the baskets and the smoothies, and "Slik jobber vi"
-     covers the routines, so the sub-service card grid would only repeat
-     itself. Both sub-pages stay reachable through contextual links instead. */
   hideSubServiceCards: true,
 
-  /* One place for the deeper reading, instead of a stray link trailing off the
-     end of three different sections. */
   readMoreHeading: "Les mer",
   readMore: [
     {
       label: "Våre fruktrutiner",
       description:
-        "Smakspanelet, pakkingen, kjølekjeden og kvalitetskontrollen bak hver leveranse.",
+        "Gode rutiner på renhold og hygiene er selve nøkkelen til at våre kunder alltid mottar sunn, frisk og velsmakende frukt, hver dag.",
       to: "/tjenester/frukt/vare-fruktrutiner",
       image: `${thumbs}/3660ed1a222d7d3dde58c2ee0b824500.jpg`,
     },
     {
       label: "Jobbsmoothie",
-      description: "Alle smaker og pakkestørrelser, laget på vårt eget kjøkken.",
+      description: "Våre spennende, næringsrike og ferske smoothies er laget fra bunnen av på vårt eget kjøkken med ekte frukt og bær.",
       to: "/tjenester/frukt/jobbsmoothie",
       image: `${thumbs}/0f4e0649d2119d89e9f23b17cfc2ae78.jpg`,
     },
     {
       label: "Vårt samfunnsansvar",
       description:
-        "Miljøfyrtårn, gjenbrukskurver, nullutslipp på transport innen 2028 og fruktpakkeskolen.",
+        "Vi har alltid hatt stort fokus på miljøtiltak. Vi er en miljøfyrtårnbedrift som prioriterer miljøet i alt vi gjør.",
       to: "/ansvar",
       image: teamImg,
     },
-    /* The old "Alle tjenestene våre" row duplicated the ServiceFooter's
-       "Andre tjenester" grid right below it — replaced with the concrete
-       cross-sell the other service pages carry. */
     {
-      label: "Lunsj levert hver dag",
-      description: "Lunsjesker, ferdige fat og varm lunsj — fra 5 personer.",
+      label: "Lunsj",
+      description: "Lønnsomme og velsmakende lunsjordninger for 5 personer og oppover.",
       to: "/tjenester/lunsj",
       image: lunsjCardImg,
     },
@@ -365,23 +297,18 @@ export const fruktData: ServicePageData = {
       ],
     },
 
-    /*
-     * The six basket sub-pages, reached from the clickable basket cards in the
-     * catalog. Copy taken from heltopplagt.no/frukt/fruktkurv/<slug> (obvious
-     * typos in the source normalized). No prices exist on those pages.
-     */
     {
       slug: "gokurven",
       title: "Go'kurven",
       variantOf: "fruktkurver",
       description:
-        "Vårt mest populære alternativ — både rimelig, variert og spennende.",
+        "Go'kurven™ er vårt mest populære alternativ, da den er både rimelig, variert og spennende.",
       image: gokurvenImg,
       content: [
         {
           type: "text",
           paragraphs: [
-            "Go'kurven™ er vårt mest populære alternativ, da den er både rimelig, variert og spennende. Dere får friske fruktkurver bestående av eple, sitrus, banan, pære, drue, plomme og nektarin, variert etter sesong og tilgang. I tillegg får dere en gang i blant knaskerøtter, cherrytomater eller eksotisk frukt som en hyggelig overraskelse.",
+            "Go'kurven™ er vårt mest populære alternativ, da den er både rimelig, variert og spennende. Dere får friske fruktkurver bestående av eple, sitrus, banan, pære, drue, plomme og nektarin, variert etter sesong og tilgang. I tillegg får dere en gang i blant nøtter, cherrytomater eller eksotisk frukt som en hyggelig overraskelse.",
             "Leveres i kurver à ca. 6 kg, 9 kg og 15 kg.",
           ],
         },
@@ -392,15 +319,14 @@ export const fruktData: ServicePageData = {
       title: "Knaskekurven",
       variantOf: "fruktkurver",
       description:
-        "Et sunt og spennende alternativ som er skapt for kos — frukt, grønnsaker og nøtter.",
+        "Knaskekurven™ er et sunt og spennende alternativ som er skapt for kos.",
       image: knaskekurvenImg,
       content: [
         {
           type: "text",
           paragraphs: [
-            "Knaskekurven™ er et sunt og spennende alternativ som er skapt for kos. Den inneholder epler, pærer, bananer, druer, minigulrøtter, cherrytomater, reddiker, sukkererter og nøtter.",
-            "Ønsker dere jobbfrukt med masse spennende innhold uten å være avhengige av redskaper for å behandle det, er dette fruktkurven for dere!",
-            "Leveres i kurver à ca. 5,5 kg og 8 kg.",
+            "Et sunt og spennende alternativ som er skapt for kos. Inneholder epler, pærer, bananer, sitrus, druer, minigulrøtter, cherrytomater, reddiker, sukkererter og nøtter. Ønsker dere en fruktkurv med masse spennende innhold, er dette kurven for dere!",
+            "Leveres i kurver à ca. 5,5 kg og 8 kg."
           ],
         },
       ],
@@ -410,13 +336,13 @@ export const fruktData: ServicePageData = {
       title: "Hverdagskurven",
       variantOf: "fruktkurver",
       description:
-        "Helsefordelen ved frukt på jobben, til lavest mulig pris.",
+        "Den perfekte fruktkurven for dere som ønsker å oppnå helsefordelen ved å benytte frukt og samtidig holde prisen på det minimale.",
       image: hverdagskurvenImg,
       content: [
         {
           type: "text",
           paragraphs: [
-            "Den perfekte fruktkurven for dere som ønsker å oppnå helsefordelen ved å benytte frukt og samtidig holde prisen på det minimale. Hverdagskurven™ består av tre ulike typer basisfrukt, der det varieres mellom eple, pære, banan og sitrus.",
+            "Den perfekte fruktkurven for dere som ønsker å oppnå helsefordelen ved frukt til en lav pris. Hverdagskurven består av tre ulike typer basefrukt, der det varieres mellom eple, pære, banan og sitrus",
             "Leveres i kurver à ca. 6 kg, 9 kg og 15 kg.",
           ],
         },
@@ -427,14 +353,13 @@ export const fruktData: ServicePageData = {
       title: "Superkurven",
       variantOf: "fruktkurver",
       description:
-        "Vårt flaggskip — for dere som ønsker «alt» i deres jobbfrukt.",
+        "Superkurven™ er vårt flaggskip, for dere som ønsker «alt» i deres jobbfrukt!",
       image: superkurvenImg,
       content: [
         {
           type: "text",
           paragraphs: [
-            "Superkurven™ er vårt flaggskip, for dere som ønsker «alt» i deres jobbfrukt! Denne kurven finnes i to størrelser og består av henholdsvis 3–4 eller 5–6 kg frisk frukt som eple, pære, banan, sitrus og druer.",
-            "I tillegg toppes den av eksotisk og sesongfrukt som plommer, nektariner, jordbær, kiwi, sharon, melon osv., samt knaskegrønnsaker, nøtter og tørkede frukter. Innholdet i kurven varierer fra uke til uke, og etter sesong og tilgang.",
+            "Inneholder frukt som eple, pære, banan, sitrus og druer. Toppes med eksotisk frukt og sesongfrukt som plommer, nektariner, jordbær, kiwi, sharon, melon og lignende, samt nøtter og tørkede frukter. Innholdet i kurven varierer fra uke til uke, og etter sesong og tilgang"
           ],
         },
       ],
@@ -444,13 +369,13 @@ export const fruktData: ServicePageData = {
       title: "Rullekurven",
       variantOf: "fruktkurver",
       description:
-        "For dere som ønsker mer variasjon — ny kurvtype hver uke.",
+        "Rullekurven™ er for dere som ønsker mer variasjon, eller ganske enkelt ikke klarer å bestemme dere.",
       image: rullekurvenImg,
       content: [
         {
           type: "text",
           paragraphs: [
-            "Rullekurven™ er for dere som ønsker mer variasjon, eller ganske enkelt ikke klarer å bestemme dere. Varierer fra uke til uke mellom de fire ulike typene fruktkurv, og kan leveres i to størrelser — stor og liten.",
+            "Rullekurven er for dere som ønsker mer variasjon, eller ganske enkelt ikke klarer å bestemme dere. Varierer fra uke til uke mellom de fire ulike typene fruktkurv, og kan leveres i to størrelser – stor og liten.",
           ],
         },
       ],
@@ -460,13 +385,13 @@ export const fruktData: ServicePageData = {
       title: "Smoothiekurven",
       variantOf: "fruktkurver",
       description:
-        "Fruktkurv med basisfrukt og smoothie — for dere som liker både å spise og drikke frukt.",
+        "Fruktkurv med basisfrukt og smoothie. Ideell for de som liker både å spise og drikke frukt.",
       image: smoothiekurvenImg,
       content: [
         {
           type: "text",
           paragraphs: [
-            "Fruktkurv med basisfrukt og smoothie. Ideell for dere som liker både å spise og drikke frukt. Våre hjemmelagede kvalitetssmoothier inneholder kun sunne og ferske ingredienser.",
+            "Fruktkurv med basisfrukt og smoothie. Ideell for de som liker både å spise og drikke frukt. Våre hjemmelagede kvalitetssmoothier inneholder kun sunne og ferske ingredienser.",
             "Leveres i kurver i to størrelser.",
           ],
         },

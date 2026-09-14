@@ -4,76 +4,68 @@ import { CONTAINER, Kicker, Pill } from "../components/site";
 import { Head } from "../components/ServicePage";
 import { useDocumentMeta } from "../../lib/use-document-meta";
 
-/*
- * Content is verbatim from heltopplagt.no/samfunnsansvar and its sub-pages
- * (miljo, arbeidstrening, nettverk-etter-soning, norskkurs). The previous
- * page's invented claims ("80 % norske råvarer", five dated goals, HACCP
- * badge) are removed — everything below is documented on the live site.
- */
-
 const miljoTiltak = [
   {
-    title: "Miljøfyrtårn siden 2014",
-    body: "Systematisk arbeid med miljøtiltak i hverdagen gjorde oss til en Miljøfyrtårn-sertifisert bedrift i 2014. Vår miljøgruppe, med ansatte fra alle avdelinger, kvalitetssikrer miljøtiltakene løpende.",
+    title: "Miljøfyrtårn",
+    body: "Et systematisk arbeid med miljøtiltak i hverdagen, samt et fokus på miljø fra alle våre ansatte, gjorde oss til en Miljøfyrtårn-sertifisert bedrift i 2014. Helt Opplagts miljøgruppe, bestående av ansatte fra alle avdelinger i organisasjonen, har i lengre tid jobbet med å kvalitetssikre våre miljøtiltak slik at vi til enhver tid reduserer vår virksomhets ytre miljøpåvirkninger.",
   },
   {
-    title: "Miljøvennlige gjenbrukskurver",
-    body: "Vi benytter utelukkende flettede gjenbrukskurver, laget av en familiebedrift i en liten landsby i fjellene på Filippinene.",
+    title: "Miljøvennlige kurver",
+    body: "Vi administrerer, pakker, og frakter våre produkter til deg uten å belaste miljøet. Vi benytter utelukkende miljøvennlige, flettede gjenbrukskurver laget av en familiebedrift i en liten landsby i fjellene på Filippinene.",
   },
   {
     title: "Kildesortering",
-    body: "Alle avdelinger kildesorterer avfall. All papp komprimeres og leveres til gjenbruk — vi returnerer over 1 tonn emballasje i uken.",
+    body: "Alle avdelinger kildesorterer avfall. All papp komprimeres i vår komprimator og leveres til gjenbruk. Vi er stolte over at vi kan returnere over 1 tonn emballasje i uken.",
   },
   {
-    title: "Ingenting går til spille",
-    body: "Frukt som sorteres ut i kvalitetskontrollen, men som er fullt brukbar, gis til barnehager og organisasjoner som Fattighuset og Gatebarnas far. Resten går til heste- og grisefôr samt biogass.",
+    title: "Kvalitetskontroll av frukt og grønnsaker",
+    body: "Frukt som sorteres ut i vår strenge kvalitetskontroll, og som er fullt brukbar, gis til barnehager og organisasjoner som Fattighuset og Gatebarnas far. Frukt som ikke passer til dette, går til heste- og grisefôr samt biogass.",
   },
   {
     title: "CO2-nøytral virksomhet",
-    body: "Vi fører årlig klimaregnskap etter GHG-protokollen og kjøper FN-godkjente CO2-kvoter for alle våre utslipp — gjennom Gold Standard-prosjektet i Mali, der husholdninger får energieffektive og rentbrennende kjøkkenovner.",
+    body: "Helt Opplagt er også en CO2-nøytral virksomhet. Årlig lager vi et klimaregnskap for virksomheten (i henhold til GHG-protokollen) og kjøper inn FN-godkjente CO2-kvoter for å kompensere for alle våre utslipp. Vi er stolte av å kunne støtte Gold Standard-prosjektet i Mali, der lokalbefolkningen utstyres med lokalt produserte energieffektive og rentbrennende kjøkkenovner.",
   },
   {
     title: "Gjenbruk av energi",
-    body: "All oppvarming i bygget vårt på Bjørnholt er basert på gjenbruk av energi fra forbrenningsanlegget på Klemetsrud, og kjølingen gjøres med energigjerrig varmepumpeteknologi.",
+    body: "I forbindelse med at vi ferdigstilte og flyttet inn i vårt eget bygg, har vi kunnet planlegge alt fra starten av og all oppvarming er basert på gjenbruk av energi fra forbrenningsanlegget på Klemetsrud. All kjøling til våre 11 kjøle- og fryserom gjøres med energigjerrig varmepumpeteknologi.",
   },
   {
-    title: "Vaskbare filtre",
-    body: "Inneklimaavdelingen skifter nær 20 000 filtre hvert år. I stedet for å kaste dem bruker vi vaskbare filtre som renses i vår egen vaskehall og brukes igjen — omtrent som med panteflasker.",
+    title: "Vaskbare filtre til inneklima",
+    body: "I vår inneklimaavdeling skifter vi nær 20.000 filtre hvert år ute hos våre kunder. I stedet benytter vi vaskbare filtre, og våre serviceteknikere reiser ut til kundene med rene filtre og returnerer med skitne filtre som vi vasker her i vår vaskehall, som igjen benyttes hos våre kunder. År ut og år inn omtrent som med panteflasker.",
   },
   {
-    title: "Nullutslipp på transport innen 2030",
-    body: "Med Ford E-Transit elvarebiler, elektriske firmabiler og egen ladeinfrastruktur er innkjøp av rene fossilbiler til transportavdelingen historie.",
+    title: "Elbiler, hybridbiler og miljømål for 2030",
+    body: "Vårt fokus på bærekraft og ønsket om å spare miljøet der det er mulig gjør at vi har satt oss et hårete mål om å ha nullutslipp på all transport innen 2030. De første hel-elektriske varebilene er nå både bestilt og tatt i bruk og vi har bygget ny ladeinfrastruktur og ladebokser til hele bilparken. Innkjøp av rene fossilbiler til transportavdelingen er nå historie!",
   },
 ];
 
 const sosialt = [
   {
     title: "Arbeidstrening",
-    body: "I samarbeid med arbeidsmarkedsbedrifter på Østlandet kan du som kunde få fruktkurvene dine pakket av en bedrift med varig tilrettelagte arbeidsplasser (VTA) — i dag Stiftelsen Radarveien, avdeling Skredderstua arbeidssenter. Kurvene er like våre andre, men spesielt merket.",
+    body: "I tråd med vår sosiale profil har vi utviklet et samarbeid med arbeidsmarkedsbedrifter på Østlandet. Dette gir deg som kunde muligheten til å få pakket dine fruktkurver av en bedrift med varig tilrettelagte arbeidsplasser (en VTA-bedrift), samtidig som våre svært høye krav på frukt-, temperatur- og kvalitetskontroll opprettholdes. Gjennom dette kan vi levere kurver pakket av Stiftelsen Radarveien avdeling Skredderstua arbeidssenter.",
   },
   {
     title: "Nettverk etter soning",
-    body: "Vi har stor tro på mennesket — også de som trenger en ny sjanse. Sammen med Røde Kors i Oslo tilbyr vi praksisplasser til tidligere innsatte, med oppfølging fra Røde Kors' frivillige. Fungerer arbeidsforholdet, ansetter vi personen fast.",
+    body: "Vi i Helt Opplagt har stor tro på mennesket, også de som trenger en ny sjanse. Vi er stolt av samarbeidet vi har fått til med Røde Kors i Oslo. Røde Kors plukker ut passende personer og disse starter i praksisplasser hos oss, samtidig som de får oppfølging av Røde Kors sine frivillige. Dersom arbeidsforholdet fungerer ansetter vi personen fast her hos oss.",
   },
   {
-    title: "Norskkurs for ansatte",
-    body: "Sammen med Folkeuniversitetet tilbyr vi norskkurs med gratis lærebøker til 45 av våre ansatte. Undervisningen er rettet mot arbeidet de utfører — og gir i tillegg til språkkunnskaper et sterkere fellesskap.",
+    title: "Norskkurs hos Helt Opplagt",
+    body: "Vi i Helt Opplagt ønsker at alle våre ansatte skal ha like forutsetninger på jobb og i samfunnet generelt. Derfor tilbyr vi sammen med Folkeuniversitetet norskkurs med gratis lærebøker til 45 av våre ansatte. I tillegg til språkkunnskaper ser man effekter som skaper et sterkt fellesskap mellom de ansatte imellom og oss i Helt Opplagt.",
   },
   {
-    title: "En hånd til ukrainske flyktninger",
-    body: "Vi tilbyr arbeid, interne fadderordninger og norskkurs til ukrainske flyktninger, i dialog med den ukrainske ambassaden, NAV og europratsya.com.",
+    title: "Vi jobber for å rekke en hånd til de ukrainske flyktningene",
+    body: "Vi er i dialog med den ukrainske ambassade, NAV og europratsya.com for å hurtigst mulig kunne hjelpe de som nå krysser landegrensen vår ved å tilby arbeid, interne fadderordninger og norskkurs. Vi håper dette kan skape noe forutsigbarhet og trygghet. Vi kan ikke hjelpe alle, men vi skal gjøre vårt for å hjelpe de vi har ressurser til.",
   },
 ];
 
 export function AnsvarPage() {
   useDocumentMeta(
     "Samfunnsansvar",
-    "Miljøfyrtårn siden 2014, CO2-nøytral drift, arbeidstrening og nettverk etter soning: slik tar Helt Opplagt ansvar for miljø, mennesker og samfunn."
+    "Vi i Helt Opplagt vet at vi ikke kan redde verden på egenhånd, men vi ønsker å bidra der vi kan, og håper å inspirere andre til å gjøre det samme."
   );
 
   return (
     <div className="min-h-dvh bg-white">
-      {/* Hero */}
       <section className="relative isolate overflow-hidden bg-cloud text-navy">
         <span
           aria-hidden="true"
@@ -82,13 +74,14 @@ export function AnsvarPage() {
         <div className={`${CONTAINER} relative z-10 py-14 lg:py-20`}>
           <Kicker>Samfunnsansvar</Kicker>
           <h1 className="mt-4 max-w-[46rem] font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
-            Vi kan ikke redde verden alene — men vi bidrar der vi kan
+            Vårt samfunnsansvar
           </h1>
           <p className="mt-5 max-w-[42rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
-            Vi har alltid hatt stort fokus på miljøtiltak — for klima og natur,
-            men også i et sosialt perspektiv. Vi jobber kontinuerlig med å finne
-            smarte løsninger som sparer ressurser og miljø, og håper å inspirere
-            andre til å gjøre det samme.
+            Vi i Helt Opplagt vet at vi ikke kan redde verden på egenhånd, men
+            vi ønsker å bidra der vi kan, og håper å inspirere andre til å gjøre
+            det samme. Vi har alltid hatt stort fokus på miljøtiltak. Vi tenker
+            på miljøet både i forhold til klima og natur, men også i et sosialt
+            perspektiv.
           </p>
           <div className="mt-7">
             <Pill
@@ -104,12 +97,11 @@ export function AnsvarPage() {
         </div>
       </section>
 
-      {/* Miljø */}
       <section className="bg-white py-16 lg:py-24">
         <div className={CONTAINER}>
           <Head
-            title="Miljøansvaret vårt"
-            proof="Konkrete tiltak i hele driften — fra gjenbrukskurver og kildesortering til CO2-nøytralitet."
+            title="Miljø"
+            proof="Vi søker hele tiden etter nye metoder for å gjøre miljøet enda bedre – det er vårt miljøansvar!"
           />
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-7">
             {miljoTiltak.map((t) => (
@@ -138,7 +130,6 @@ export function AnsvarPage() {
         </div>
       </section>
 
-      {/* Sosialt ansvar */}
       <section className="relative isolate overflow-hidden bg-sand py-16 lg:py-24">
         <span
           aria-hidden="true"
@@ -147,7 +138,7 @@ export function AnsvarPage() {
         <div className={`${CONTAINER} relative z-10`}>
           <Head
             title="Mennesker og samfunn"
-            proof="Vi tror på menneskene — og gir muligheter til dem som trenger en ny sjanse."
+            proof="Vi i Helt Opplagt har stor tro på mennesket, også de som trenger en ny sjanse."
           />
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-7">
             {sosialt.map((t) => (
@@ -167,12 +158,10 @@ export function AnsvarPage() {
         </div>
       </section>
 
-      {/* Sertifiseringer og medlemskap */}
       <section className="bg-white py-16 lg:py-20">
         <div className={CONTAINER}>
           <Head
             title="Sertifiseringer og medlemskap"
-            proof="Dokumentert — ikke bare fine ord."
           />
           <ul className="mt-8 grid max-w-[820px] grid-cols-1 gap-4 sm:grid-cols-3">
             {[

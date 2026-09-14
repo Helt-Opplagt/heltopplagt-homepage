@@ -19,7 +19,6 @@ import logoSrc from "../../images/logo.png";
 import { CONTAINER } from "./site";
 import { SERVICES } from "./livery";
 
-/** One icon per service for the small-screen dropdown. */
 const SERVICE_ICONS: Record<string, LucideIcon> = {
   Frukt: Apple,
   Lunsj: Sandwich,
@@ -29,12 +28,12 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
   Renhold: Sparkles,
 };
 
-const secondaryLinks = [
+const secondaryLinks: { label: string; to?: string; href?: string }[] = [
   { label: "Om oss", to: "/om-oss" },
   { label: "Referanser", to: "/referanser" },
   { label: "Aktuelt", to: "/aktuelt" },
   { label: "Ansvar", to: "/ansvar" },
-  { label: "Karriere", to: "/karriere" },
+  { label: "Karriere", href: "https://karriere.heltopplagt.com/" },
   { label: "Kontakt", to: "/kontakt" },
 ];
 
@@ -93,7 +92,6 @@ export function Header() {
           <img src={logoSrc} alt="Helt Opplagt" className="h-8 object-contain" />
         </Link>
 
-        {/* The six services, directly clickable (lg+). Page links live in the menu. */}
         <nav aria-label="Tjenester" className="hidden items-center gap-4 lg:flex xl:gap-6">
           {SERVICES.map((s) => (
             <Link
@@ -106,9 +104,6 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Between sm and lg the services collapse into a dropdown. On phones
-            it is hidden entirely — the fullscreen menu covers the services,
-            and the dropdown was redundant next to it. */}
         <details ref={servicesRef} className="dropdown hidden sm:block lg:hidden">
           <summary className="flex cursor-pointer list-none items-center gap-1 text-[14px] font-medium text-navy/70 transition-colors hover:text-brand [&::-webkit-details-marker]:hidden">
             Tjenester
@@ -164,7 +159,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Full-page menu */}
       <div
         ref={menuRef}
         className="modal z-[70]"
@@ -198,7 +192,6 @@ export function Header() {
             </button>
           </div>
 
-          {/* Compact on mobile so all links fit without scrolling. */}
           <div className="flex-1 overflow-y-auto px-6 py-6 sm:px-8 sm:py-14">
             <div className="mx-auto grid max-w-[1000px] gap-6 sm:grid-cols-2 sm:gap-16">
               <nav>
@@ -237,27 +230,43 @@ export function Header() {
                   Om Helt Opplagt
                 </p>
                 <ul className="flex flex-col gap-1">
-                  {secondaryLinks.map((l, i) => (
-                    <li key={l.to} className="overflow-hidden">
-                      <Link
-                        to={l.to}
-                        onClick={closeMenu}
-                        style={{
-                          transitionDelay: menuExpanded
-                            ? `${menuLinkDelay(i, 1)}ms`
-                            : "0ms",
-                        }}
-                        className={
-                          "inline-block py-0.5 font-lato text-xl font-light tracking-[-0.01em] transition-[translate,opacity,color] duration-300 ease-out hover:text-aqua sm:py-1.5 sm:text-4xl " +
-                          (menuExpanded
-                            ? "translate-x-0 opacity-100"
-                            : "-translate-x-3 opacity-0")
-                        }
-                      >
-                        {l.label}
-                      </Link>
-                    </li>
-                  ))}
+                  {secondaryLinks.map((l, i) => {
+                    const cls =
+                      "inline-block py-0.5 font-lato text-xl font-light tracking-[-0.01em] transition-[translate,opacity,color] duration-300 ease-out hover:text-aqua sm:py-1.5 sm:text-4xl " +
+                      (menuExpanded
+                        ? "translate-x-0 opacity-100"
+                        : "-translate-x-3 opacity-0");
+                    const style = {
+                      transitionDelay: menuExpanded
+                        ? `${menuLinkDelay(i, 1)}ms`
+                        : "0ms",
+                    };
+                    return (
+                      <li key={l.label} className="overflow-hidden">
+                        {l.href ? (
+                          <a
+                            href={l.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={closeMenu}
+                            style={style}
+                            className={cls}
+                          >
+                            {l.label}
+                          </a>
+                        ) : (
+                          <Link
+                            to={l.to!}
+                            onClick={closeMenu}
+                            style={style}
+                            className={cls}
+                          >
+                            {l.label}
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             </div>

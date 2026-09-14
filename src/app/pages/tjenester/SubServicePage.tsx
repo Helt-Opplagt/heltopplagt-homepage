@@ -31,12 +31,6 @@ const VARIANT_LABELS: Record<string, string> = {
   lunsjesker: "Velg lunsjeske",
 };
 
-/**
- * Shared page for all sub-services (e.g. /tjenester/frukt/gokurven).
- * Renders title, description, image and content blocks from the parent
- * service's data. Sub-pages sharing a `variantOf` (fruit baskets, lunch
- * boxes) get a thumbnail switcher for flipping between the variants.
- */
 export function SubServicePage() {
   const { service, slug } = useParams<{ service: string; slug: string }>();
   const entry = service ? services[service] : undefined;
@@ -64,20 +58,11 @@ export function SubServicePage() {
     );
   }
 
-  /* The other members of this sub-page's variant set (fruit baskets, lunch
-     boxes) — shown in the switcher below the header when there are any. */
   const variants = sub.variantOf
     ? entry.data.subServices.filter((s) => s.variantOf === sub.variantOf)
     : [];
   const hasVariants = variants.length > 1;
 
-  /*
-   * Related sub-pages: with many sub-pages (Inneklima has 15), listing every
-   * sibling became a wall. Grouped sub-pages ("Produkter"/"Artikler") show
-   * only their own group, capped at 7 — plus a "Se alt" card back to the
-   * service page, so nothing is unreachable. Variant siblings are excluded:
-   * they already sit in the switcher above.
-   */
   const allSiblings = entry.data.subServices.filter(
     (s) =>
       s.slug !== sub.slug && !(sub.variantOf && s.variantOf === sub.variantOf)
@@ -90,13 +75,10 @@ export function SubServicePage() {
       ? "Flere produkter"
       : `Mer innen ${entry.label.toLowerCase()}`;
 
-  /* The sub-service's card photo — skipped when the content below already
-     leads with an image block, so nothing shows twice. */
   const showImage = Boolean(sub.image) && sub.content?.[0]?.type !== "image";
 
   return (
     <div className="min-h-dvh bg-white">
-      {/* Page heading — copy left, photo right on larger screens. */}
       <div className={`${CONTAINER} pt-10 lg:pt-14`}>
         <div
           className={
@@ -124,17 +106,22 @@ export function SubServicePage() {
               </p>
             )}
 
-            {/* Variant pages show the full content text right here under the
-                heading — one text, not a short teaser plus a long version.
-                (The short description still feeds the meta tag.) */}
             {hasVariants ? (
-              sub.content && (
-                <div className="space-y-5">
-                  {sub.content.map((block, i) => (
-                    <ContentBlockView key={i} block={block} />
-                  ))}
+              <>
+                {sub.content && (
+                  <div className="space-y-5">
+                    {sub.content.map((block, i) => (
+                      <ContentBlockView key={i} block={block} />
+                    ))}
+                  </div>
+                )}
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <Pill to="/kontakt">
+                    Ta kontakt for tilbud
+                    <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                  </Pill>
                 </div>
-              )
+              </>
             ) : (
               <>
                 {sub.description && (
@@ -164,7 +151,6 @@ export function SubServicePage() {
         </div>
       </div>
 
-      {/* Page content — on variant pages it already rendered in the header. */}
       {!hasVariants && sub.content && sub.content.length > 0 && (
         <section className="border-b border-navy/10 bg-white py-14">
           <div className={`${CONTAINER} space-y-12`}>
@@ -175,8 +161,6 @@ export function SubServicePage() {
         </section>
       )}
 
-      {/* Variant pages close with the switcher — flip to a sibling basket
-          or box without going back. */}
       {hasVariants && (
         <section className="border-b border-navy/10 bg-white pt-12 pb-14">
           <div className={CONTAINER}>
@@ -190,7 +174,6 @@ export function SubServicePage() {
         </section>
       )}
 
-      {/* More from this service */}
       {siblings.length > 0 && (
         <section className="bg-white py-14 lg:py-16">
           <div className={CONTAINER}>
@@ -222,7 +205,6 @@ export function SubServicePage() {
                   <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-navy/25 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" />
                 </Link>
               ))}
-              {/* Everything not listed stays reachable via the service page. */}
               <Link
                 to={entry.data.path}
                 className="group flex items-center gap-3 rounded-[1.25rem] border border-navy/10 p-4 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_8px_24px_rgba(0,119,190,0.08)]"
