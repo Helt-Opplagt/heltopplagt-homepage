@@ -559,27 +559,24 @@ function CatalogSectionView({ catalog }: { catalog: CatalogSection }) {
 
 function HeroPointStrip({ points }: { points: HeroPoint[] }) {
   return (
-    <ul className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+    <ul className="flex flex-col gap-3.5 border-y border-navy/10 py-6 sm:flex-row sm:flex-wrap sm:gap-x-10 sm:gap-y-3 lg:flex-nowrap lg:justify-between lg:gap-x-8">
       {points.map((point) => {
         const Icon = point.icon ?? Check;
         return (
-          <li key={point.label} className="flex gap-3.5">
-            <span
+          <li key={point.label} className="flex items-center gap-2.5">
+            <Icon
+              className="h-[18px] w-[18px] flex-shrink-0 text-brand"
+              strokeWidth={2.5}
               aria-hidden="true"
-              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-brand/10"
-            >
-              <Icon className="h-4.5 w-4.5 text-brand" strokeWidth={2.25} />
-            </span>
-            <div className="min-w-0">
-              <p className="text-[15px] font-semibold leading-snug text-navy">
-                {point.label}
-              </p>
+            />
+            <span className="text-[15px] font-medium leading-snug text-navy">
+              {point.label}
               {point.body && (
-                <p className="mt-1.5 text-[14px] leading-relaxed text-navy/60">
+                <span className="block text-[14px] font-normal text-navy/60">
                   {point.body}
-                </p>
+                </span>
               )}
-            </div>
+            </span>
           </li>
         );
       })}
