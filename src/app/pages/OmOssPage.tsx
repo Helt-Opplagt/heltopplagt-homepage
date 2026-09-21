@@ -2,6 +2,13 @@ import { ArrowUpRight } from "lucide-react";
 import { CONTAINER, Kicker, Pill } from "../components/site";
 import { Head } from "../components/ServicePage";
 import buildingImg from "../../images/div/web/ho-015.jpg";
+import inneklimaImg from "../../images/div/web/inneklima.jpg";
+import fruktImg from "../../images/frukt/frukt.png";
+import lunsjImg from "../../images/div/web/lunsj.jpg";
+import kantineImg from "../../images/div/web/kantine.jpg";
+import cateringImg from "../../images/div/web/fat-anretning.jpg";
+import teamImg from "../../images/div/web/kokker.jpg";
+import { History, type HistoryEntry } from "../components/History";
 import { useDocumentMeta } from "../../lib/use-document-meta";
 
 const stats = [
@@ -28,41 +35,48 @@ const values = [
   },
 ];
 
-const timeline = [
+const timeline: HistoryEntry[] = [
   {
     year: "1985",
     title: "Startet som Euromiljø",
+    image: inneklimaImg,
     body: "Euromiljø ble etablert i 1985, og har i alle årene jobbet med økt trivsel, effektivitet og for enda flere langtidsfriske mennesker hos bedrifter og offentlig sektor på østlandet. Det startet med ren luft med rett temperatur; med luftrensere, kjøling og varmepumper med tilhørende leie- og serviceavtaler.",
   },
   {
     year: "Midt på nittitallet",
     title: "Jobbfrukt",
+    image: fruktImg,
     body: "Midt på nittitallet startet vi levering av fruktkurver, eller jobbfrukt; lett tilgjengelig frukt på arbeidsplassen. Tjenesten er i dag blitt vanlig og inngår hos svært mange bedrifter som en viktig faktor for de ansattes trivsel og helse.",
   },
   {
     year: "1999",
     title: "Sunn lunsj",
+    image: lunsjImg,
     body: "1999 startet vi med levering av sunn lunsj til små og mellomstore bedrifter. Lunsjtjenesten ble senere utvidet med kantinedrift med personell, samt varmmat, catering, overtids- og julemat fra vårt eget kjøkken.",
   },
   {
     year: "2007",
     title: "Helt Opplagt på jobben",
+    image: kantineImg,
     body: "Navnet Euromiljø er beholdt som firmanavn, men fra 2007 begynte vi å bruke profilnavnet Helt Opplagt på jobben.",
   },
   {
     year: "2011",
     title: "Nytt bygg på Bjørnholt",
+    image: buildingImg,
     body: "I 2011 fikk vi ferdigstilt vårt nye bygg på Bjørnholt, bygget spesielt for våre virksomheter. Vi fikk med dette flotte vekstmuligheter.",
   },
 
   {
     year: "2016",
     title: "Rett Hjem",
+    image: cateringImg,
     body: "I denne ånd kjøpte vi Rett Hjem i 2016 for å kunne tilby bedrifter også netthandel av lunsj, catering etc. Videre overtok vi også en «Seniortjeneste», nå kalt Rett Hjem PLUSS, med levering av dagligvarer og middagsmat til eldre.",
   },
   {
     year: "I dag",
     title: "Drøyt 320 ansatte",
+    image: teamImg,
     body: "Vi har hele veien hatt jevn og fin vekst, og i Helt Opplagt har vi nå drøyt 320 ansatte. Vi er stolte av våre fine og lojale medarbeidere som gjør service på rundt 1200 luftrensere og varmepumper hver måned, produserer og leverer rundt 3500 fruktkurver per uke, og serverer lunsj til over 15 000 mennesker hver dag.",
   },
 ];
@@ -184,33 +198,11 @@ export function OmOssPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 lg:py-24">
-        <div className={CONTAINER}>
-          <Head
-            title="Historikk"
-            proof="Helt Opplagt begynte som Euromiljø."
-          />
-          <ol className="mt-10 max-w-[820px] border-l-2 border-brand/20 pl-8">
-            {timeline.map((t) => (
-              <li key={t.year} className="relative pb-10 last:pb-0">
-                <span
-                  aria-hidden="true"
-                  className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-white bg-brand shadow-[0_0_0_1px_rgba(0,119,190,0.3)]"
-                />
-                <p className="text-[13px] font-semibold uppercase tracking-[0.08em] text-brand">
-                  {t.year}
-                </p>
-                <h3 className="mt-1.5 font-lato text-[19px] font-bold text-navy">
-                  {t.title}
-                </h3>
-                <p className="mt-2 max-w-[58ch] text-[15px] leading-relaxed text-navy/65">
-                  {t.body}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <History
+        title="Historikk"
+        proof="Helt Opplagt begynte som Euromiljø."
+        entries={timeline}
+      />
 
       <section className="bg-stone border-y border-navy/[0.06] py-16 lg:py-20">
         <div className={CONTAINER}>
