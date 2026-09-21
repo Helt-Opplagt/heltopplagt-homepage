@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Quote, ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { CONTAINER, Pill, SectionHead } from "./site";
 import { reviews } from "../../lib/reviews";
+import { Reveal } from "./Reveal";
 
 const COUNT = reviews.length;
 const loopedReviews = [...reviews, ...reviews, ...reviews];
@@ -78,6 +79,7 @@ export function Reviews() {
         className="livery-puzzle aspect-[100/129] -left-16 -bottom-12 w-40 -rotate-[15deg] bg-amber/15 lg:-left-8 lg:w-60"
       />
       <div className={`${CONTAINER} relative z-10`}>
+        <Reveal>
         <SectionHead
           kicker="Referanser"
           title="Se hva våre kunder mener om oss"
@@ -106,6 +108,7 @@ export function Reviews() {
             </div>
           }
         />
+        </Reveal>
 
         <div
           ref={rowRef}

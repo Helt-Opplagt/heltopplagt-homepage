@@ -8,6 +8,7 @@ const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 export const renholdData: ServicePageData = {
   path: "/tjenester/renhold",
   badge: "Arbeidsmiljø",
+  layout: "light",
   title: (
     <>
       Renhold

@@ -42,6 +42,7 @@ const njordTilvalg: ContentBlock = {
 export const inneklimaData: ServicePageData = {
   path: "/tjenester/inneklima",
   badge: "Arbeidsmiljø",
+  layout: "light",
   title: (
     <>
       Inneklima

@@ -12,6 +12,7 @@ const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 export const lunsjData: ServicePageData = {
   path: "/tjenester/lunsj",
   badge: "Mat & Drikke",
+  layout: "light",
   title: (
     <>
       Lunsj

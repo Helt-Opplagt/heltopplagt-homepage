@@ -89,7 +89,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-navy/8 bg-white/95 backdrop-blur">
       <div className={`${CONTAINER} flex h-[4.5rem] items-center gap-5 lg:gap-7`}>
         <Link to="/" className="flex-shrink-0">
-          <img src={logoSrc} alt="Helt Opplagt" className="h-8 object-contain" />
+          <img src={logoSrc} alt="Helt Opplagt" className="h-11 object-contain" />
         </Link>
 
         <nav aria-label="Tjenester" className="hidden items-center gap-4 lg:flex xl:gap-6">
@@ -176,7 +176,7 @@ export function Header() {
               <img
                 src={logoSrc}
                 alt="Helt Opplagt"
-                className="h-8 object-contain brightness-0 invert"
+                className="h-11 object-contain brightness-0 invert"
               />
             </Link>
             <button

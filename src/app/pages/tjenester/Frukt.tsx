@@ -18,6 +18,7 @@ const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 export const fruktData: ServicePageData = {
   path: "/tjenester/frukt",
   badge: "Helse & Trivsel",
+  layout: "light",
   title: (
     <>
       Frukt

@@ -2,6 +2,7 @@ import { Mail, Phone, MapPin, ArrowRight, Calendar } from "lucide-react";
 import { useState } from "react";
 import { CONTAINER, Kicker } from "./site";
 import { ContactForm } from "./ContactForm";
+import { Reveal } from "./Reveal";
 
 /* Set to true to show the "Book et møte" tab. */
 const SHOW_BOOKING = false;
@@ -36,7 +37,7 @@ export function Contact({ initialServices }: ContactProps) {
 
   return (
     <section id="kontakt" className="scroll-mt-20 bg-white">
-      <div className={`${CONTAINER} py-20 lg:py-28`}>
+      <Reveal className={`${CONTAINER} py-20 lg:py-28`}>
         <div className="relative isolate grid gap-12 overflow-hidden rounded-[2rem] bg-navy p-7 sm:p-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:p-14">
           <span
             aria-hidden="true"
@@ -159,7 +160,7 @@ export function Contact({ initialServices }: ContactProps) {
             )}
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

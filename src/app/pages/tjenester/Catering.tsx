@@ -11,6 +11,7 @@ const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 export const cateringData: ServicePageData = {
   path: "/tjenester/catering",
   badge: "Mat & Drikke",
+  layout: "light",
   title: (
     <>
       Catering

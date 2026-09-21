@@ -1,6 +1,7 @@
 import { ArrowRight, Check } from "lucide-react";
 import teamImg from "../../images/hele_gjengen.jpg";
 import { CONTAINER, Kicker, Pill } from "./site";
+import { Reveal } from "./Reveal";
 
 const points = [
   "En leverandør med bred kunnskap og lang erfaring, grunnlagt i 1985",
@@ -15,7 +16,7 @@ export function About() {
       <div
         className={`${CONTAINER} grid items-center gap-14 lg:grid-cols-2 lg:gap-20`}
       >
-        <div className="relative order-2 mx-auto w-full max-w-[26rem] lg:order-1 lg:max-w-[30rem]">
+        <Reveal className="relative order-2 mx-auto w-full max-w-[26rem] lg:order-1 lg:max-w-[30rem]">
           <div className="aspect-[4/5] overflow-hidden rounded-2xl">
             <img
               src={teamImg}
@@ -31,9 +32,9 @@ export function About() {
               Erfaring
             </p>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="order-1 lg:order-2">
+        <Reveal delay={120} className="order-1 lg:order-2">
           <Kicker>Om oss</Kicker>
           <h2 className="mt-4 font-lato text-[30px] font-light leading-[1.12] tracking-[-0.01em] text-navy sm:text-[38px] lg:text-[44px]">
             Om Helt Opplagt på jobben
@@ -62,7 +63,7 @@ export function About() {
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </Pill>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

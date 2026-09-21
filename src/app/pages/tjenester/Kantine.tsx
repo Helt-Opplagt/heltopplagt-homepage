@@ -18,6 +18,7 @@ const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 export const kantineData: ServicePageData = {
   path: "/tjenester/kantine",
   badge: "Mat & Drikke",
+  layout: "light",
   title: (
     <>
       Kantine

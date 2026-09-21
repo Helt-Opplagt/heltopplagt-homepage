@@ -2,6 +2,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { CONTAINER, Pill, SectionHead } from "./site";
 import { articles } from "../../lib/articles";
+import { Reveal } from "./Reveal";
 
 export function Aktuelt() {
   const featured = articles[0];
@@ -10,18 +11,21 @@ export function Aktuelt() {
   return (
     <section className="bg-white py-20 lg:py-28">
       <div className={CONTAINER}>
-        <SectionHead
-          kicker="Aktuelt"
-          title="Siste nytt fra Helt Opplagt"
-          action={
-            <Pill to="/aktuelt" variant="outline">
-              Aktuelt
-              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-            </Pill>
-          }
-        />
+        <Reveal>
+          <SectionHead
+            kicker="Aktuelt"
+            title="Siste nytt fra Helt Opplagt"
+            action={
+              <Pill to="/aktuelt" variant="outline">
+                Aktuelt
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+              </Pill>
+            }
+          />
+        </Reveal>
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+          <Reveal delay={100}>
           <Link to={`/aktuelt/${featured.slug}`} className="group block">
             <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem]">
               <img
@@ -48,8 +52,9 @@ export function Aktuelt() {
               />
             </span>
           </Link>
+          </Reveal>
 
-          <div className="flex flex-col gap-5">
+          <Reveal delay={200} className="flex flex-col gap-5">
             {listItems.map((item) => (
               <Link
                 key={item.slug}
@@ -75,7 +80,7 @@ export function Aktuelt() {
                 </div>
               </Link>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
