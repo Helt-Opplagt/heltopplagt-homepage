@@ -59,7 +59,7 @@ export function Services() {
   return (
     <section
       id="tjenester"
-      className="relative isolate scroll-mt-24 overflow-hidden bg-stone py-20 lg:py-28"
+      className="relative isolate scroll-mt-24 overflow-hidden bg-stone border-y border-navy/[0.06] py-20 lg:py-28"
       aria-labelledby="tjenester-tittel"
     >
       <span

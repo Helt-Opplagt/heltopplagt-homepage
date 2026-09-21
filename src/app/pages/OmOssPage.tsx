@@ -75,7 +75,7 @@ export function OmOssPage() {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-stone text-navy">
+      <section className="relative isolate overflow-hidden bg-stone border-b border-navy/[0.06] text-navy">
         <span
           aria-hidden="true"
           className="livery-puzzle aspect-[100/129] -right-20 -bottom-12 w-44 rotate-[12deg] bg-brand/10 lg:-right-10 lg:w-64"
@@ -156,7 +156,7 @@ export function OmOssPage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-stone py-16 lg:py-24">
+      <section className="relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-16 lg:py-24">
         <span
           aria-hidden="true"
           className="livery-puzzle-outline aspect-[100/129] -left-14 -top-8 w-36 -rotate-[12deg] bg-brand/20 lg:-left-8 lg:w-52"
@@ -212,7 +212,7 @@ export function OmOssPage() {
         </div>
       </section>
 
-      <section className="bg-stone py-16 lg:py-20">
+      <section className="bg-stone border-y border-navy/[0.06] py-16 lg:py-20">
         <div className={CONTAINER}>
           <Head
             title="Hvorfor er Helt Opplagt det smarteste valget?"

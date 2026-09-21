@@ -94,7 +94,7 @@ export function ServiceFooter({
     <section
       className={
         "relative isolate overflow-hidden " +
-        (sky ? "bg-stone py-[4.5rem] lg:py-[6rem]" : "bg-white py-16 lg:py-20")
+        (sky ? "bg-stone border-y border-navy/[0.06] py-[4.5rem] lg:py-[6rem]" : "bg-white py-16 lg:py-20")
       }
     >
       {sky && (
@@ -852,7 +852,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-stone text-navy">
+      <section className="relative isolate overflow-hidden bg-stone border-b border-navy/[0.06] text-navy">
         <span
           aria-hidden="true"
           className="livery-puzzle-outline aspect-[100/129] -left-20 bottom-[-3rem] w-44 -rotate-[14deg] bg-brand/15 lg:-left-12 lg:w-64"
@@ -958,7 +958,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
             key={i}
             className={
               sky
-                ? "relative isolate overflow-hidden bg-stone py-[4.5rem] lg:py-[5.5rem]"
+                ? "relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-[4.5rem] lg:py-[5.5rem]"
                 : "bg-white py-16 lg:py-20"
             }
           >

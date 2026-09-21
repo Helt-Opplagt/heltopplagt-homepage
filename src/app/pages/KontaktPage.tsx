@@ -34,7 +34,7 @@ export function KontaktPage() {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-stone">
+      <section className="relative isolate overflow-hidden bg-stone border-b border-navy/[0.06]">
         <span
           aria-hidden="true"
           className="livery-puzzle aspect-[100/129] -left-20 -bottom-16 w-48 -rotate-[12deg] bg-brand/10 lg:-left-10 lg:w-72"

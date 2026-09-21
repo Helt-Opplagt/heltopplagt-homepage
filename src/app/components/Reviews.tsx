@@ -73,7 +73,7 @@ export function Reviews() {
   }
 
   return (
-    <section className="relative isolate overflow-hidden bg-stone py-20 lg:py-28">
+    <section className="relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-20 lg:py-28">
       <span
         aria-hidden="true"
         className="livery-puzzle aspect-[100/129] -left-16 -bottom-12 w-40 -rotate-[15deg] bg-brand/10 lg:-left-8 lg:w-60"
