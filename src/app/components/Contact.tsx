@@ -38,14 +38,14 @@ export function Contact({ initialServices }: ContactProps) {
   return (
     <section id="kontakt" className="scroll-mt-20 bg-white">
       <Reveal className={`${CONTAINER} py-20 lg:py-28`}>
-        <div className="relative isolate grid gap-12 overflow-hidden rounded-[2rem] bg-navy p-7 sm:p-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:p-14">
+        <div className="relative isolate grid gap-12 overflow-hidden rounded-[2rem] bg-stone p-7 sm:p-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:p-14">
           <span
             aria-hidden="true"
-            className="livery-puzzle-outline aspect-[100/129] -bottom-12 hidden w-52 -rotate-[14deg] bg-aqua/30 lg:-left-6 lg:block"
+            className="livery-puzzle-outline aspect-[100/129] -bottom-12 hidden w-52 -rotate-[14deg] bg-brand/15 lg:-left-6 lg:block"
           />
           <div className="relative z-10">
-            <Kicker onDark>Kontakt</Kicker>
-            <h2 className="mt-4 font-lato text-[30px] font-light leading-[1.12] tracking-[-0.01em] text-white sm:text-[38px] lg:text-[44px]">
+            <Kicker>Kontakt</Kicker>
+            <h2 className="mt-4 font-lato text-[30px] font-light leading-[1.12] tracking-[-0.01em] text-navy sm:text-[38px] lg:text-[44px]">
               Be om en uforpliktende prat. Vi kontakter deg!
             </h2>
 
@@ -54,14 +54,14 @@ export function Contact({ initialServices }: ContactProps) {
                 const Icon = item.icon;
                 const body = (
                   <>
-                    <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-white/10">
-                      <Icon className="h-5 w-5 text-aqua" strokeWidth={2} />
+                    <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-white text-brand shadow-[0_1px_2px_rgba(13,43,64,0.08)]">
+                      <Icon className="h-5 w-5" strokeWidth={2} />
                     </span>
                     <span>
-                      <span className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-white/45">
+                      <span className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-navy/45">
                         {item.label}
                       </span>
-                      <span className="mt-0.5 block text-[16px] font-semibold text-white">
+                      <span className="mt-0.5 block text-[16px] font-semibold text-navy">
                         {item.value}
                       </span>
                     </span>
@@ -87,7 +87,7 @@ export function Contact({ initialServices }: ContactProps) {
             </div>
           </div>
 
-          <div className="relative z-10 rounded-[1.5rem] bg-white p-6 sm:p-8 lg:p-10">
+          <div className="relative z-10 rounded-[1.5rem] bg-white p-6 shadow-[0_24px_60px_-32px_rgba(13,43,64,0.28)] sm:p-8 lg:p-10">
             {SHOW_BOOKING && (
               <div
                 role="tablist"

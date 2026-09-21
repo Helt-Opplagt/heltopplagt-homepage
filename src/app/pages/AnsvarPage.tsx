@@ -66,7 +66,7 @@ export function AnsvarPage() {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-cloud text-navy">
+      <section className="relative isolate overflow-hidden bg-stone text-navy">
         <span
           aria-hidden="true"
           className="livery-puzzle aspect-[100/129] -right-20 -bottom-12 w-44 rotate-[12deg] bg-lime/15 lg:-right-10 lg:w-64"

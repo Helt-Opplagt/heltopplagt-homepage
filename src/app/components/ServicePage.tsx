@@ -94,7 +94,7 @@ export function ServiceFooter({
     <section
       className={
         "relative isolate overflow-hidden " +
-        (sky ? "bg-cloud py-[4.5rem] lg:py-[6rem]" : "bg-white py-16 lg:py-20")
+        (sky ? "bg-stone py-[4.5rem] lg:py-[6rem]" : "bg-white py-16 lg:py-20")
       }
     >
       {sky && (
@@ -852,34 +852,33 @@ export function ServicePage({ data }: { data: ServicePageData }) {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-navy text-white">
+      <section className="relative isolate overflow-hidden bg-stone text-navy">
         <span
           aria-hidden="true"
-          className="livery-puzzle-outline aspect-[100/129] -left-20 bottom-[-3rem] w-44 -rotate-[14deg] bg-white/20 lg:-left-12 lg:w-64"
+          className="livery-puzzle-outline aspect-[100/129] -left-20 bottom-[-3rem] w-44 -rotate-[14deg] bg-brand/15 lg:-left-12 lg:w-64"
         />
         <div
           className={`${CONTAINER} relative z-10 grid gap-10 py-10 sm:py-12 lg:min-h-[36rem] lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)] lg:items-center lg:gap-16 lg:py-16 xl:min-h-[40rem] xl:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] xl:gap-20`}
         >
           <div className="order-2 lg:order-1 lg:self-end lg:pb-2">
             <Breadcrumb
-              onDark
               items={[
                 { label: "Alle tjenester", to: "/tjenester" },
                 { label: serviceLabel },
               ]}
             />
 
-            <h1 className="font-lato text-[38px] font-light leading-[1.05] tracking-[-0.01em] text-white sm:text-[48px] lg:text-[56px] xl:text-[64px]">
+            <h1 className="font-lato text-[38px] font-light leading-[1.05] tracking-[-0.01em] text-navy sm:text-[48px] lg:text-[56px] xl:text-[64px]">
               {data.title}
             </h1>
 
             {data.subtitle && (
-              <p className="mt-5 max-w-[32rem] text-[17px] font-semibold leading-snug text-white lg:text-[19px]">
+              <p className="mt-5 max-w-[32rem] text-[17px] font-semibold leading-snug text-navy lg:text-[19px]">
                 {data.subtitle}
               </p>
             )}
 
-            <p className="mt-5 max-w-[36rem] text-[15px] leading-relaxed text-white/70 lg:text-[17px]">
+            <p className="mt-5 max-w-[36rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
               {data.intro}
             </p>
 
@@ -891,7 +890,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
               {data.brochureUrl && (
                 <Pill
                   href={data.brochureUrl}
-                  variant="ghost-dark"
+                  variant="outline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -929,7 +928,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
               .getElementById("innhold")
               ?.scrollIntoView({ behavior: "smooth", block: "start" });
           }}
-          className="absolute bottom-10 right-8 z-10 hidden flex-col items-center gap-3 text-white/70 transition-colors hover:text-white lg:flex"
+          className="absolute bottom-10 right-8 z-10 hidden flex-col items-center gap-3 text-navy/55 transition-colors hover:text-brand lg:flex"
         >
           <span className="text-[11px] font-semibold uppercase tracking-[0.22em] [writing-mode:vertical-rl] rotate-180">
             Les mer
@@ -959,7 +958,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
             key={i}
             className={
               sky
-                ? "relative isolate overflow-hidden bg-cloud py-[4.5rem] lg:py-[5.5rem]"
+                ? "relative isolate overflow-hidden bg-stone py-[4.5rem] lg:py-[5.5rem]"
                 : "bg-white py-16 lg:py-20"
             }
           >

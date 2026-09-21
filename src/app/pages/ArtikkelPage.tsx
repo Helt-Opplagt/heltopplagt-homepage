@@ -34,7 +34,7 @@ export function ArtikkelPage() {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-cloud text-navy">
+      <section className="relative isolate overflow-hidden bg-stone text-navy">
         <span
           aria-hidden="true"
           className="livery-puzzle aspect-[100/129] -right-20 -bottom-12 w-44 rotate-[14deg] bg-brand/10 lg:-right-10 lg:w-60"
@@ -61,7 +61,7 @@ export function ArtikkelPage() {
       </article>
 
       {others.length > 0 && (
-        <section className="relative isolate overflow-hidden bg-cloud py-16 lg:py-20">
+        <section className="relative isolate overflow-hidden bg-stone py-16 lg:py-20">
           <span
             aria-hidden="true"
             className="livery-puzzle-outline aspect-[100/129] -left-14 -bottom-10 w-36 -rotate-[12deg] bg-brand/20 lg:-left-8 lg:w-52"
