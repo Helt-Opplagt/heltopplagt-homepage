@@ -94,7 +94,7 @@ export function ServiceFooter({
     <section
       className={
         "relative isolate overflow-hidden " +
-        (sky ? "bg-navy ground-dark py-[4.5rem] lg:py-[6rem]" : "bg-white py-16 lg:py-20")
+        (sky ? "bg-cloud py-[4.5rem] lg:py-[6rem]" : "bg-white py-16 lg:py-20")
       }
     >
       {sky && (
@@ -959,7 +959,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
             key={i}
             className={
               sky
-                ? "relative isolate overflow-hidden bg-navy ground-dark py-[4.5rem] lg:py-[5.5rem]"
+                ? "relative isolate overflow-hidden bg-cloud py-[4.5rem] lg:py-[5.5rem]"
                 : "bg-white py-16 lg:py-20"
             }
           >
