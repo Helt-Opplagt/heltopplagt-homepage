@@ -86,7 +86,7 @@ export function ReferanserPage() {
             key={service}
             className={
               tinted
-                ? "relative isolate overflow-hidden bg-sand py-14 lg:py-20"
+                ? "relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-14 lg:py-20"
                 : "bg-white py-14 lg:py-20"
             }
           >
@@ -94,7 +94,7 @@ export function ReferanserPage() {
               <span
                 aria-hidden="true"
                 className={
-                  "livery-puzzle aspect-[100/129] w-40 bg-amber/15 lg:w-56 " +
+                  "livery-puzzle aspect-[100/129] w-40 bg-brand/10 lg:w-56 " +
                   (i % 4 === 0
                     ? "-left-16 -bottom-12 -rotate-[15deg] lg:-left-8"
                     : "-right-16 top-6 rotate-[11deg] lg:-right-8")

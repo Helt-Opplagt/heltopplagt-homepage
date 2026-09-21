@@ -41,7 +41,7 @@ export function ArtikkelPage() {
         />
         <div className={`${CONTAINER} relative z-10 py-12 lg:py-16`}>
           <Kicker>{article.category}</Kicker>
-          <h1 className="mt-4 max-w-[52rem] font-lato text-[30px] font-light leading-[1.12] tracking-[-0.01em] text-navy sm:text-[38px] lg:text-[44px]">
+          <h1 className="h1-compact mt-4 max-w-[52rem] font-lato text-[30px] font-light leading-[1.12] tracking-[-0.01em] text-navy sm:text-[38px] lg:text-[44px]">
             {article.title}
           </h1>
           <p className="mt-5 max-w-[42rem] text-[16px] leading-relaxed text-navy/65 lg:text-[18px]">

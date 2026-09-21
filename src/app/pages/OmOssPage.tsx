@@ -221,10 +221,10 @@ export function OmOssPage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-sand py-16 lg:py-20">
+      <section className="relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-16 lg:py-20">
         <span
           aria-hidden="true"
-          className="livery-puzzle aspect-[100/129] -right-16 -bottom-12 w-40 rotate-[15deg] bg-amber/15 lg:-right-8 lg:w-56"
+          className="livery-puzzle aspect-[100/129] -right-16 -bottom-12 w-40 rotate-[15deg] bg-brand/10 lg:-right-8 lg:w-56"
         />
         <div className={`${CONTAINER} relative z-10`}>
           <Head

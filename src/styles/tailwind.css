@@ -315,3 +315,33 @@
   caret-color: var(--color-brand);
   accent-color: var(--color-brand);
 }
+
+/* Site-wide heading scale: a large, airy light h1 and compact bold section
+   headings, so the hierarchy is one big quiet statement followed by firm,
+   small chapter titles. Unlayered, so it wins over per-element utilities. */
+h1 {
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  font-size: clamp(44px, 5.6vw, 78px);
+  line-height: 1.02;
+}
+/* Sentence-length titles (articles, error page) get a smaller step. */
+h1.h1-compact {
+  font-size: clamp(32px, 3.4vw, 48px);
+  line-height: 1.1;
+}
+h2:not(.payoff-marker) {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-size: clamp(24px, 2.1vw, 30px);
+  line-height: 1.2;
+}
+/* Keyword line under a service h1: a deck line in the heading face, sized
+   between the h1 and the intro. Colour comes from the markup. */
+.service-subtitle {
+  font-family: var(--font-lato);
+  font-weight: 400;
+  font-size: clamp(18px, 1.5vw, 21px);
+  line-height: 1.35;
+  max-width: 30rem;
+}

@@ -873,7 +873,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
             </h1>
 
             {data.subtitle && (
-              <p className="mt-5 max-w-[32rem] text-[17px] font-semibold leading-snug text-navy lg:text-[19px]">
+              <p className="service-subtitle mt-5 text-navy">
                 {data.subtitle}
               </p>
             )}
