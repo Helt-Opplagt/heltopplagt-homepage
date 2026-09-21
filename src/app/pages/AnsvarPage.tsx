@@ -73,7 +73,7 @@ export function AnsvarPage() {
         />
         <div className={`${CONTAINER} relative z-10 py-14 lg:py-20`}>
           <Kicker>Samfunnsansvar</Kicker>
-          <h1 className="mt-4 max-w-[46rem] font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
+          <h1 className="h1-compact mt-4 max-w-[46rem] font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
             Vårt samfunnsansvar
           </h1>
           <p className="mt-5 max-w-[42rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">

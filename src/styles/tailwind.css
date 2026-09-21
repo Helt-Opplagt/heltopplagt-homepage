@@ -325,7 +325,8 @@ h1 {
   font-size: clamp(44px, 5.6vw, 78px);
   line-height: 1.02;
 }
-/* Sentence-length titles (articles, error page) get a smaller step. */
+/* Company pages, articles and the error page get a smaller h1 step;
+   the big one is for the homepage and the service heroes. */
 h1.h1-compact {
   font-size: clamp(32px, 3.4vw, 48px);
   line-height: 1.1;
