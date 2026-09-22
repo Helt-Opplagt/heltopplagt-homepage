@@ -1,5 +1,6 @@
 import { ArrowUpRight, Quote } from "lucide-react";
-import { CONTAINER, Kicker, Pill } from "../components/site";
+import { CONTAINER, Pill } from "../components/site";
+import { PageHeader } from "../components/PageHeader";
 import { Head } from "../components/ServicePage";
 import { reviews, type Review } from "../../lib/reviews";
 import intilityLogo from "../../images/logo/intility.png";
@@ -60,21 +61,10 @@ export function ReferanserPage() {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-stone border-b border-navy/[0.06] text-navy">
-        <span
-          aria-hidden="true"
-          className="livery-puzzle aspect-[100/129] -right-20 -bottom-12 w-44 rotate-[12deg] bg-brand/10 lg:-right-10 lg:w-64"
-        />
-        <div className={`${CONTAINER} relative z-10 py-14 lg:py-20`}>
-          <Kicker>Referanser</Kicker>
-          <h1 className="h1-compact mt-4 font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
-            Se hva våre kunder mener om oss
-          </h1>
-          <p className="mt-5 max-w-[42rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
-            Vi har mange fornøyde kunder som har benyttet våre tjenester. Her kan du lese noen av deres erfaringer med oss, og se hvordan vi har bidratt til å skape et bedre arbeidsmiljø og økt trivsel på arbeidsplassen.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="Se hva våre kunder mener om oss"
+        intro="Vi har mange fornøyde kunder som har benyttet våre tjenester. Her kan du lese noen av deres erfaringer med oss, og se hvordan vi har bidratt til å skape et bedre arbeidsmiljø og økt trivsel på arbeidsplassen."
+      />
 
 
       {GROUPS.map((service, i) => {

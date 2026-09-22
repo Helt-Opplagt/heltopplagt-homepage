@@ -348,14 +348,10 @@ h2:not(.payoff-marker):not(.h2-plain) {
   max-width: 30rem;
 }
 
-/* Historikk timeline (History.tsx). The sticky year slides in when it
-   changes, the active marker breathes, and each photo wipes open once the
-   reading line has reached its milestone. All of it rests when the user
+/* Historikk timeline (History.tsx). The active marker breathes, and each
+   photo wipes open once its milestone has been reached. All of it rests when the user
    prefers reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
-  .history-year {
-    animation: history-year-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
   .history-ring {
     animation: history-ring 2.4s ease-out infinite;
   }
@@ -373,10 +369,6 @@ h2:not(.payoff-marker):not(.h2-plain) {
   .history-photo.is-on img {
     transform: scale(1);
   }
-}
-@keyframes history-year-in {
-  from { opacity: 0; translate: 0 0.35em; }
-  to { opacity: 1; translate: 0 0; }
 }
 @keyframes history-ring {
   0% { opacity: 0.7; transform: scale(0.6); }
