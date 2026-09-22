@@ -11,6 +11,11 @@ import { CONTAINER, Kicker, Pill } from "./site";
 
 const SLIDE_DURATION = 6000;
 
+/* Entrance on first paint: fades and lifts in, staggered per element via
+   [transition-delay:…]. Users who prefer reduced motion see it at rest. */
+const ENTER =
+  "motion-safe:transition-[opacity,translate] motion-safe:duration-700 motion-safe:ease-out motion-safe:starting:translate-y-3 motion-safe:starting:opacity-0";
+
 const slides = [
   { src: heroFrukt, label: "Frukt", href: "/tjenester/frukt" },
   { src: heroLunsj, label: "Lunsj", href: "/tjenester/lunsj" },
@@ -34,12 +39,16 @@ export function Hero() {
   return (
     <section className="bg-white">
       <div
-        className={`${CONTAINER} grid items-center gap-y-12 py-14 lg:min-h-[calc(100svh-4.5rem)] lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-16 lg:py-16 xl:gap-x-24`}
+        className={`${CONTAINER} grid items-center gap-y-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-16 lg:py-20 xl:gap-x-24 xl:py-24`}
       >
         <div className="max-w-[42rem] lg:max-w-none">
-          <Kicker>Helt Opplagt på jobben</Kicker>
+          <div className={ENTER}>
+            <Kicker>Helt Opplagt på jobben</Kicker>
+          </div>
 
-          <h1 className="mt-5 font-lato text-[38px] font-light leading-[1.1] tracking-[-0.01em] text-navy sm:text-[48px] lg:text-[54px] xl:text-[64px]">
+          <h1
+            className={`mt-5 font-lato text-[38px] font-light leading-[1.1] tracking-[-0.01em] text-navy sm:text-[48px] lg:text-[54px] xl:text-[64px] ${ENTER} [transition-delay:80ms]`}
+          >
             Det{" "}
             <span className="payoff-marker font-payoff font-bold text-brand">
               Helt Opplagte
@@ -47,14 +56,16 @@ export function Hero() {
             valg for en sunnere, renere og enklere hverdag
           </h1>
 
-          <p className="mt-6 max-w-[36rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px] xl:mt-7">
+          <p
+            className={`mt-6 max-w-[36rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px] xl:mt-7 ${ENTER} [transition-delay:160ms]`}
+          >
             Helt Opplagt på jobben er en markedsorientert leverandør av løpende
             abonnementsbaserte tjenester innen helse og trivsel på arbeidsplassen.
             Vi leverer jobbfrukt, catering, renhold, kantine og ren luft til over
             50 000 ansatte i bedrifter i Oslo.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className={`mt-9 flex flex-col gap-3 sm:flex-row ${ENTER} [transition-delay:240ms]`}>
             <Pill to="/kontakt">
               Ta kontakt for tilbud
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
@@ -65,7 +76,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div>
+        <div className={`${ENTER} [transition-delay:200ms]`}>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[26rem] overflow-hidden rounded-2xl lg:max-w-[30rem] xl:max-w-[33rem]">
             {slides.map((slide, i) => (
               <img
@@ -73,8 +84,10 @@ export function Hero() {
                 src={slide.src}
                 alt={slide.label}
                 className={
-                  "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out " +
-                  (i === active ? "z-[1] opacity-100" : "z-0 opacity-0")
+                  "absolute inset-0 h-full w-full object-cover transition-[opacity,scale] duration-[1200ms] ease-in-out motion-safe:[transition-duration:1200ms,7000ms] motion-safe:[transition-timing-function:ease-in-out,ease-out] " +
+                  (i === active
+                    ? "z-[1] opacity-100 motion-safe:scale-105"
+                    : "z-0 opacity-0 scale-100")
                 }
               />
             ))}

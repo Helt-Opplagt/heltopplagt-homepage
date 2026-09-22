@@ -34,14 +34,14 @@ export function ArtikkelPage() {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-cloud text-navy">
+      <section className="relative isolate overflow-hidden bg-stone border-b border-navy/[0.06] text-navy">
         <span
           aria-hidden="true"
           className="livery-puzzle aspect-[100/129] -right-20 -bottom-12 w-44 rotate-[14deg] bg-brand/10 lg:-right-10 lg:w-60"
         />
         <div className={`${CONTAINER} relative z-10 py-12 lg:py-16`}>
           <Kicker>{article.category}</Kicker>
-          <h1 className="mt-4 max-w-[52rem] font-lato text-[30px] font-light leading-[1.12] tracking-[-0.01em] text-navy sm:text-[38px] lg:text-[44px]">
+          <h1 className="h1-compact mt-4 max-w-[52rem] font-lato text-[30px] font-light leading-[1.12] tracking-[-0.01em] text-navy sm:text-[38px] lg:text-[44px]">
             {article.title}
           </h1>
           <p className="mt-5 max-w-[42rem] text-[16px] leading-relaxed text-navy/65 lg:text-[18px]">
@@ -61,7 +61,7 @@ export function ArtikkelPage() {
       </article>
 
       {others.length > 0 && (
-        <section className="relative isolate overflow-hidden bg-cloud py-16 lg:py-20">
+        <section className="relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-16 lg:py-20">
           <span
             aria-hidden="true"
             className="livery-puzzle-outline aspect-[100/129] -left-14 -bottom-10 w-36 -rotate-[12deg] bg-brand/20 lg:-left-8 lg:w-52"

@@ -4,6 +4,7 @@ import sporveienLogo from "../../images/logo/sporveien.png";
 import xxlLogo from "../../images/logo/xxl.png";
 import riksrevisjonenLogo from "../../images/logo/riksrevisjonen.png";
 import { CONTAINER } from "./site";
+import { Reveal } from "./Reveal";
 
 const customers = [
   { name: "Intility", logo: intilityLogo },
@@ -16,7 +17,7 @@ const customers = [
 export function References() {
   return (
     <section className="border-y border-navy/5 bg-white">
-      <div className={`${CONTAINER} py-10 lg:py-12`}>
+      <Reveal className={`${CONTAINER} py-10 lg:py-12`}>
         <p className="text-center text-[13px] font-medium uppercase tracking-[0.14em] text-navy/45">
           Noen av våre kunder
         </p>
@@ -31,7 +32,7 @@ export function References() {
             </li>
           ))}
         </ul>
-      </div>
+      </Reveal>
     </section>
   );
 }

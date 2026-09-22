@@ -1,6 +1,7 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
-import { CONTAINER, Kicker, Pill } from "../components/site";
+import { CONTAINER, Pill } from "../components/site";
+import { PageHeader } from "../components/PageHeader";
 import { Head } from "../components/ServicePage";
 import { useDocumentMeta } from "../../lib/use-document-meta";
 
@@ -66,36 +67,21 @@ export function AnsvarPage() {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-cloud text-navy">
-        <span
-          aria-hidden="true"
-          className="livery-puzzle aspect-[100/129] -right-20 -bottom-12 w-44 rotate-[12deg] bg-lime/15 lg:-right-10 lg:w-64"
-        />
-        <div className={`${CONTAINER} relative z-10 py-14 lg:py-20`}>
-          <Kicker>Samfunnsansvar</Kicker>
-          <h1 className="mt-4 max-w-[46rem] font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
-            Vårt samfunnsansvar
-          </h1>
-          <p className="mt-5 max-w-[42rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
-            Vi i Helt Opplagt vet at vi ikke kan redde verden på egenhånd, men
-            vi ønsker å bidra der vi kan, og håper å inspirere andre til å gjøre
-            det samme. Vi har alltid hatt stort fokus på miljøtiltak. Vi tenker
-            på miljøet både i forhold til klima og natur, men også i et sosialt
-            perspektiv.
-          </p>
-          <div className="mt-7">
-            <Pill
-              href="https://heltopplagt.no/download_file/view/455/236"
-              variant="outline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Les klimaregnskapet vårt
-              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-            </Pill>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        title="Vårt samfunnsansvar"
+        intro="Vi i Helt Opplagt vet at vi ikke kan redde verden på egenhånd, men vi ønsker å bidra der vi kan, og håper å inspirere andre til å gjøre det samme. Vi har alltid hatt stort fokus på miljøtiltak. Vi tenker på miljøet både i forhold til klima og natur, men også i et sosialt perspektiv."
+        action={
+          <Pill
+            href="https://heltopplagt.no/download_file/view/455/236"
+            variant="outline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Les klimaregnskapet vårt
+            <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+          </Pill>
+        }
+      />
 
       <section className="bg-white py-16 lg:py-24">
         <div className={CONTAINER}>
@@ -130,10 +116,10 @@ export function AnsvarPage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-sand py-16 lg:py-24">
+      <section className="relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-16 lg:py-24">
         <span
           aria-hidden="true"
-          className="livery-puzzle aspect-[100/129] -left-16 -bottom-12 w-40 -rotate-[15deg] bg-amber/15 lg:-left-8 lg:w-60"
+          className="livery-puzzle aspect-[100/129] -left-16 -bottom-12 w-40 -rotate-[15deg] bg-brand/10 lg:-left-8 lg:w-60"
         />
         <div className={`${CONTAINER} relative z-10`}>
           <Head

@@ -14,7 +14,7 @@ const companyLinks: { label: string; to?: string; href?: string }[] = [
 ];
 
 const HEADING =
-  "mb-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-white/45";
+  "h2-plain mb-5 font-lato text-[16px] font-bold text-white";
 
 export function Footer() {
   return (
@@ -136,9 +136,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Helt Opplagt. Alle rettigheter
             reservert.
           </p>
-          <p className="payoff-marker font-payoff text-[15px] font-bold text-white/60">
-            Helt Opplagt på jobben
-          </p>
+          <p className="text-[12px] text-white/45">Helt Opplagt på jobben</p>
         </div>
       </div>
     </footer>

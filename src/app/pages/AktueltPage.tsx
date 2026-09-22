@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
-import { CONTAINER, Kicker } from "../components/site";
+import { CONTAINER } from "../components/site";
+import { PageHeader } from "../components/PageHeader";
 import { articles } from "../../lib/articles";
 import { useDocumentMeta } from "../../lib/use-document-meta";
 
@@ -14,18 +15,7 @@ export function AktueltPage() {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-cloud text-navy">
-        <span
-          aria-hidden="true"
-          className="livery-puzzle aspect-[100/129] -right-20 -bottom-12 w-44 rotate-[12deg] bg-brand/10 lg:-right-10 lg:w-64"
-        />
-        <div className={`${CONTAINER} relative z-10 py-14 lg:py-20`}>
-          <Kicker>Aktuelt</Kicker>
-          <h1 className="mt-4 font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
-            Siste nytt fra Helt Opplagt
-          </h1>
-        </div>
-      </section>
+      <PageHeader title="Siste nytt fra Helt Opplagt" />
 
       <section className="bg-white py-16 lg:py-20">
         <div className={CONTAINER}>

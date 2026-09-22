@@ -2,7 +2,7 @@ import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import packehallImg from "../../../images/frukt/frukt2.png";
 import pakkerImg from "../../../images/frukt/frukt.png";
 import heroFruktImg from "../../../images/hero/web/hero-frukt.jpg";
-import teamImg from "../../../images/hele_gjengen.jpg";
+import teamImg from "../../../images/hele_gjengen.png";
 import lunsjCardImg from "../../../images/lunsj/lunsj.png";
 import gokurvenImg from "../../../images/frukt/cards/gokurven.jpg";
 import knaskekurvenImg from "../../../images/frukt/cards/knaskekurven.jpg";
@@ -18,6 +18,7 @@ const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 export const fruktData: ServicePageData = {
   path: "/tjenester/frukt",
   badge: "Helse & Trivsel",
+  layout: "light",
   title: (
     <>
       Frukt
@@ -36,7 +37,6 @@ export const fruktData: ServicePageData = {
     { label: "Gir umiddelbar energi og økt konsentrasjon" },
     { label: "Et sunt gode til dine ansatte" },
     { label: "Tilpass kurven etter behov" },
-    { label: "Fra cirka 6 kroner per person per dag" },
   ],
 
   explainer: {

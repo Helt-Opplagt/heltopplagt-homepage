@@ -1,9 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Phone, Plus } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Phone, Plus } from "lucide-react";
 import { Link } from "react-router";
 import { CONTAINER, Pill } from "./site";
 import { useDocumentMeta } from "../../lib/use-document-meta";
+import { Reveal } from "./Reveal";
 
 export const allServices = [
   { label: "Lunsj", to: "/tjenester/lunsj" },
@@ -24,8 +25,10 @@ const MOTIFS = [
 /** Small breadcrumb trail, e.g. Alle tjenester / Frukt / Jobbsmoothie */
 export function Breadcrumb({
   items,
+  onDark = false,
 }: {
   items: { label: string; to?: string }[];
+  onDark?: boolean;
 }) {
   return (
     <nav
@@ -35,17 +38,26 @@ export function Breadcrumb({
       {items.map((item, i) => (
         <span key={i} className="flex items-center gap-1.5">
           {i > 0 && (
-            <ChevronRight className="h-3.5 w-3.5 text-navy/30" aria-hidden="true" />
+            <ChevronRight
+              className={"h-3.5 w-3.5 " + (onDark ? "text-white/40" : "text-navy/30")}
+              aria-hidden="true"
+            />
           )}
           {item.to ? (
             <Link
               to={item.to}
-              className="text-navy/55 transition-colors hover:text-brand"
+              className={
+                onDark
+                  ? "text-white/60 transition-colors hover:text-white"
+                  : "text-navy/55 transition-colors hover:text-brand"
+              }
             >
               {item.label}
             </Link>
           ) : (
-            <span className="font-semibold text-navy">{item.label}</span>
+            <span className={"font-semibold " + (onDark ? "text-white" : "text-navy")}>
+              {item.label}
+            </span>
           )}
         </span>
       ))}
@@ -82,7 +94,7 @@ export function ServiceFooter({
     <section
       className={
         "relative isolate overflow-hidden " +
-        (sky ? "bg-cloud py-[4.5rem] lg:py-[6rem]" : "bg-white py-16 lg:py-20")
+        (sky ? "bg-stone border-y border-navy/[0.06] py-[4.5rem] lg:py-[6rem]" : "bg-white py-16 lg:py-20")
       }
     >
       {sky && (
@@ -92,7 +104,7 @@ export function ServiceFooter({
         />
       )}
 
-      <div className={`${CONTAINER} relative z-10`}>
+      <Reveal className={`${CONTAINER} relative z-10`}>
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="payoff-marker font-payoff text-[30px] font-bold leading-[1.1] text-navy sm:text-[38px] lg:text-[44px]">
@@ -147,7 +159,7 @@ export function ServiceFooter({
             ))}
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -286,6 +298,8 @@ export interface ServicePageData {
   processLink?: { label: string; to: string };
   /** Suppress the sub-service card grid when catalogs already cover it. */
   hideSubServiceCards?: boolean;
+  /** "light" = hero points shown at the foot of the explainer instead of in their own strip under the hero. */
+  layout?: "classic" | "light";
   /** Expandable questions, rendered as the last content section. */
   faq?: FaqItem[];
   faqHeading?: string;
@@ -557,22 +571,50 @@ function CatalogSectionView({ catalog }: { catalog: CatalogSection }) {
   );
 }
 
+/** Three claims on one line when they fit, otherwise one per line. */
 function HeroPointStrip({ points }: { points: HeroPoint[] }) {
+  const listRef = useRef<HTMLUListElement>(null);
+  const [stacked, setStacked] = useState(false);
+
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list || typeof ResizeObserver === "undefined") return;
+    const GAP = 40;
+    function measure() {
+      if (!list) return;
+      const items = Array.from(list.children) as HTMLElement[];
+      const total =
+        items.reduce((sum, el) => sum + el.offsetWidth, 0) +
+        GAP * (items.length - 1);
+      setStacked(total > list.clientWidth + 1);
+    }
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <ul className="flex flex-col gap-3.5 border-y border-navy/10 py-6 sm:flex-row sm:flex-wrap sm:gap-x-10 sm:gap-y-3 lg:flex-nowrap lg:justify-between lg:gap-x-8">
+    <ul
+      ref={listRef}
+      className={
+        "flex border-t border-navy/10 pt-8 " +
+        (stacked
+          ? "flex-col items-start gap-y-4 lg:gap-y-5"
+          : "flex-row flex-wrap gap-x-10 gap-y-5")
+      }
+    >
       {points.map((point) => {
         const Icon = point.icon ?? Check;
         return (
-          <li key={point.label} className="flex items-center gap-2.5">
-            <Icon
-              className="h-[18px] w-[18px] flex-shrink-0 text-brand"
-              strokeWidth={2.5}
-              aria-hidden="true"
-            />
-            <span className="text-[15px] font-medium leading-snug text-navy">
+          <li key={point.label} className="flex items-center gap-3.5">
+            <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand text-white">
+              <Icon className="h-4 w-4" strokeWidth={3} aria-hidden="true" />
+            </span>
+            <span className="font-lato text-[17px] font-bold leading-snug text-navy lg:whitespace-nowrap lg:text-[clamp(15px,1.2vw,18px)]">
               {point.label}
               {point.body && (
-                <span className="block text-[14px] font-normal text-navy/60">
+                <span className="mt-1.5 block font-sans text-[14px] font-normal leading-relaxed text-navy/60">
                   {point.body}
                 </span>
               )}
@@ -687,11 +729,15 @@ export function ServicePage({ data }: { data: ServicePageData }) {
 
   const lowerLabel = serviceLabel.toLowerCase();
 
+  const light = data.layout === "light";
+  const hasPoints = !!data.heroPoints && data.heroPoints.length > 0;
+
   const blocks: ReactNode[] = [];
 
   if (data.explainer) {
     const ex = data.explainer;
     blocks.push(
+      <>
       <div className="grid items-center gap-10 lg:grid-cols-[1fr_42%] lg:gap-16">
         <div>
           <h2 className="max-w-[20ch] font-lato text-[26px] font-light leading-[1.15] tracking-[-0.01em] text-navy sm:text-[32px] lg:text-[38px]">
@@ -735,6 +781,12 @@ export function ServicePage({ data }: { data: ServicePageData }) {
           />
         </div>
       </div>
+      {light && hasPoints && (
+        <div className="mt-14 lg:mt-16">
+          <HeroPointStrip points={data.heroPoints!} />
+        </div>
+      )}
+      </>
     );
   }
 
@@ -820,96 +872,126 @@ export function ServicePage({ data }: { data: ServicePageData }) {
     );
   }
 
-  const otherServicesGround = blocks.length % 2 === 0 ? "sky" : "white";
+  /* Grounds alternate. With the light layout the hero points live inside the
+     first block, so the first block goes white and the alternation shifts. */
+  const groundOffset = light ? 1 : 0;
+  const otherServicesGround =
+    (blocks.length + groundOffset) % 2 === 0 ? "sky" : "white";
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-cloud text-navy">
+      <section className="relative isolate overflow-hidden bg-stone border-b border-navy/[0.06] text-navy">
         <span
           aria-hidden="true"
-          className="livery-puzzle aspect-[100/129] -left-20 bottom-[-3rem] w-44 -rotate-[14deg] bg-brand/10 lg:-left-12 lg:w-64"
+          className="livery-puzzle-outline aspect-[100/129] -left-20 bottom-[-3rem] w-44 -rotate-[14deg] bg-brand/15 lg:-left-12 lg:w-64"
         />
-        <div className={`${CONTAINER} relative z-10`}>
-          <div className="lg:grid lg:grid-cols-[1fr_46%]">
-            <div className="max-w-[42rem] py-12 lg:max-w-none lg:py-24 lg:pr-14 xl:py-28">
-              <Breadcrumb
-                items={[
-                  { label: "Alle tjenester", to: "/tjenester" },
-                  { label: serviceLabel },
-                ]}
-              />
+        <div
+          className={`${CONTAINER} relative z-10 grid gap-10 py-10 sm:py-12 lg:min-h-[36rem] lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)] lg:items-center lg:gap-16 lg:py-16 xl:min-h-[40rem] xl:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] xl:gap-20`}
+        >
+          <div className="order-2 lg:order-1 lg:self-end lg:pb-2">
+            <Breadcrumb
+              items={[
+                { label: "Alle tjenester", to: "/tjenester" },
+                { label: serviceLabel },
+              ]}
+            />
 
-              <h1 className="font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px] xl:text-[56px]">
-                {data.title}
-              </h1>
+            <h1 className="font-lato text-[38px] font-light leading-[1.05] tracking-[-0.01em] text-navy sm:text-[48px] lg:text-[56px] xl:text-[64px]">
+              {data.title}
+            </h1>
 
-              {data.subtitle && (
-                <p className="mt-5 max-w-[30rem] text-[17px] font-semibold leading-snug text-navy lg:text-[19px]">
-                  {data.subtitle}
-                </p>
-              )}
-
-              <p className="mt-5 max-w-[34rem] text-[15px] leading-relaxed text-navy/65 lg:text-[16px]">
-                {data.intro}
+            {data.subtitle && (
+              <p className="service-subtitle mt-5 text-navy">
+                {data.subtitle}
               </p>
+            )}
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row xl:mt-10">
-                <Pill to="/kontakt">
-                  Ta kontakt for tilbud
-                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+            <p className="mt-5 max-w-[36rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px]">
+              {data.intro}
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row xl:mt-10">
+              <Pill to="/kontakt">
+                Ta kontakt for tilbud
+                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              </Pill>
+              {data.brochureUrl && (
+                <Pill
+                  href={data.brochureUrl}
+                  variant="outline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="h-4 w-4" strokeWidth={2.5} />
+                  Brosjyre
                 </Pill>
-                {data.brochureUrl && (
-                  <Pill
-                    href={data.brochureUrl}
-                    variant="outline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Download className="h-4 w-4" strokeWidth={2.5} />
-                    Brosjyre
-                  </Pill>
-                )}
+              )}
+            </div>
+          </div>
+
+          <div className="order-1 mx-auto w-full max-w-[22rem] sm:max-w-[26rem] lg:order-2 lg:max-w-none">
+            <div className="relative aspect-square">
+              <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                <img
+                  src={data.heroImage ?? data.image}
+                  alt={data.imageAlt}
+                  /* The page's LCP element: never lazy, and ahead of the grid
+                     photos. Lowercase because React 18 does not recognise the
+                     camelCase `fetchPriority` prop and drops it with a warning. */
+                  fetchpriority="high"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="relative h-[62vw] max-h-[24rem] w-full overflow-hidden sm:h-[26rem] lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:max-h-none lg:w-[46%] lg:rounded-l-full">
-          <img
-            src={data.heroImage ?? data.image}
-            alt={data.imageAlt}
-            /* The page's LCP element: never lazy, and ahead of the grid
-               photos. Lowercase because React 18 does not recognise the
-               camelCase `fetchPriority` prop and drops it with a warning. */
-            fetchpriority="high"
-            decoding="async"
-            className="h-full w-full object-cover"
-          />
-        </div>
+        {/* Scroll cue, desktop only. */}
+        <a
+          href="#innhold"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .getElementById("innhold")
+              ?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }}
+          className="absolute bottom-10 right-8 z-10 hidden flex-col items-center gap-3 text-navy/55 transition-colors hover:text-brand lg:flex"
+        >
+          <span className="text-[11px] font-semibold uppercase tracking-[0.22em] [writing-mode:vertical-rl] rotate-180">
+            Les mer
+          </span>
+          <span aria-hidden="true" className="h-14 w-px bg-current" />
+          <ArrowDown className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+        </a>
       </section>
 
-      {data.heroPoints && data.heroPoints.length > 0 && (
+      <div id="innhold" className="scroll-mt-20" />
+
+      {hasPoints && !(light && data.explainer) && (
         <section className="bg-white py-10 lg:py-12">
-          <div className={CONTAINER}>
+          <Reveal className={CONTAINER}>
             <HeroPointStrip points={data.heroPoints} />
-          </div>
+          </Reveal>
         </section>
       )}
 
       {blocks.map((block, i) => {
-        const sky = i % 2 === 0;
-        const motif = sky ? MOTIFS[(i / 2) % MOTIFS.length] : null;
+        const sky = (i + groundOffset) % 2 === 0;
+        const motif = sky
+          ? MOTIFS[Math.floor((i + groundOffset) / 2) % MOTIFS.length]
+          : null;
         return (
           <section
             key={i}
             className={
               sky
-                ? "relative isolate overflow-hidden bg-cloud py-[4.5rem] lg:py-[5.5rem]"
+                ? "relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-[4.5rem] lg:py-[5.5rem]"
                 : "bg-white py-16 lg:py-20"
             }
           >
             {motif && <span aria-hidden="true" className={motif} />}
-            <div className={`${CONTAINER} relative z-10`}>{block}</div>
+            <Reveal className={`${CONTAINER} relative z-10`}>{block}</Reveal>
           </section>
         );
       })}

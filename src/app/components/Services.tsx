@@ -8,6 +8,7 @@ import inneklimaImg from "../../images/inneklima/inneklima.png";
 import renholdImg from "../../images/renhold/renhold.png";
 import { CONTAINER, Pill, SectionHead } from "./site";
 import { SERVICES, type LiveryService } from "./livery";
+import { Reveal } from "./Reveal";
 
 const PHOTO: Record<string, string> = {
   Frukt: fruktImg,
@@ -58,7 +59,7 @@ export function Services() {
   return (
     <section
       id="tjenester"
-      className="relative isolate scroll-mt-24 overflow-hidden bg-cloud py-20 lg:py-28"
+      className="relative isolate scroll-mt-24 overflow-hidden bg-stone border-y border-navy/[0.06] py-20 lg:py-28"
       aria-labelledby="tjenester-tittel"
     >
       <span
@@ -66,7 +67,8 @@ export function Services() {
         className="livery-puzzle-outline aspect-[100/129] -right-14 -bottom-12 w-44 rotate-[18deg] bg-brand/25 lg:-right-8 lg:w-60"
       />
       <div className={`${CONTAINER} relative z-10`}>
-        <div id="tjenester-tittel">
+        <Reveal>
+          <div id="tjenester-tittel">
           <SectionHead
             kicker="Våre tjenester"
             title="Våre produkter og tjenester"
@@ -78,11 +80,14 @@ export function Services() {
               </Pill>
             }
           />
-        </div>
+          </div>
+        </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
-          {SERVICES.map((service) => (
-            <ServiceCard key={service.href} service={service} />
+          {SERVICES.map((service, i) => (
+            <Reveal key={service.href} delay={i * 80}>
+              <ServiceCard service={service} />
+            </Reveal>
           ))}
         </div>
       </div>

@@ -14,7 +14,7 @@ export function NotFoundPage() {
         <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-primary mb-2.5">
           404
         </p>
-        <h1 className="text-3xl lg:text-[40px] font-bold text-base-content tracking-tight leading-[1.15] mb-4">
+        <h1 className="h1-compact text-3xl lg:text-[40px] font-bold text-base-content tracking-tight leading-[1.15] mb-4">
           Siden finnes ikke
         </h1>
         <p className="text-base text-base-content/65 leading-relaxed mb-8">

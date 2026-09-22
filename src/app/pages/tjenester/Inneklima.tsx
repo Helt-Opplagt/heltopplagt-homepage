@@ -42,6 +42,7 @@ const njordTilvalg: ContentBlock = {
 export const inneklimaData: ServicePageData = {
   path: "/tjenester/inneklima",
   badge: "Arbeidsmiljø",
+  layout: "light",
   title: (
     <>
       Inneklima
@@ -59,7 +60,6 @@ export const inneklimaData: ServicePageData = {
     { label: "Vi leverer ren luft og rett temperatur, helt uten byggtekniske endringer." },
     { label: "Bli kvitt hodepine, tretthet og andre symptomer av dårlig luft." },
     { label: "Forbedre helsen og velværet til dine ansatte" },
-    { label: "Forebygger papirstøv, svevestøv og pollen" },
   ],
   explainer: {
     heading: "Hva tilbyr vi?",

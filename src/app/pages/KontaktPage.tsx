@@ -34,7 +34,7 @@ export function KontaktPage() {
 
   return (
     <div className="min-h-dvh bg-white">
-      <section className="relative isolate overflow-hidden bg-cloud">
+      <section className="relative isolate overflow-hidden bg-stone border-b border-navy/[0.06]">
         <span
           aria-hidden="true"
           className="livery-puzzle aspect-[100/129] -left-20 -bottom-16 w-48 -rotate-[12deg] bg-brand/10 lg:-left-10 lg:w-72"
@@ -43,7 +43,7 @@ export function KontaktPage() {
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-20">
             <div className="lg:sticky lg:top-28 lg:self-start">
               <Kicker>Kontakt</Kicker>
-              <h1 className="mt-4 font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
+              <h1 className="h1-compact mt-4 font-lato text-[34px] font-light leading-[1.08] tracking-[-0.01em] text-navy sm:text-[42px] lg:text-[48px]">
                 Kontakt oss
               </h1>
               <p className="mt-5 max-w-[36rem] text-[16px] leading-relaxed text-navy/65 lg:text-[18px]">

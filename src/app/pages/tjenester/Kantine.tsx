@@ -18,6 +18,7 @@ const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 export const kantineData: ServicePageData = {
   path: "/tjenester/kantine",
   badge: "Mat & Drikke",
+  layout: "light",
   title: (
     <>
       Kantine
@@ -35,7 +36,6 @@ export const kantineData: ServicePageData = {
     { label: "Mat tilbedret av proffesjonelle kokker" },
     { label: "Stor variert meny" },
     { label: "Kan fungerer uten fullt kantinekjøkken" },
-    { label: "Kan kombineres med renhold" },
   ],
   explainer: {
     heading: "Hva tilbyr vi?",
