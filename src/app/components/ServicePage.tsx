@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Phone, Plus } from "lucide-react";
 import { Link } from "react-router";
@@ -571,17 +571,47 @@ function CatalogSectionView({ catalog }: { catalog: CatalogSection }) {
   );
 }
 
+/** Three claims on one line when they fit, otherwise one per line. */
 function HeroPointStrip({ points }: { points: HeroPoint[] }) {
+  const listRef = useRef<HTMLUListElement>(null);
+  const [stacked, setStacked] = useState(false);
+
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list || typeof ResizeObserver === "undefined") return;
+    const GAP = 40;
+    function measure() {
+      if (!list) return;
+      const items = Array.from(list.children) as HTMLElement[];
+      const total =
+        items.reduce((sum, el) => sum + el.offsetWidth, 0) +
+        GAP * (items.length - 1);
+      setStacked(total > list.clientWidth + 1);
+    }
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <ul className="grid grid-cols-1 gap-x-10 gap-y-6 border-t border-navy/10 pt-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-8">
+    <ul
+      ref={listRef}
+      className={
+        "flex border-t border-navy/10 pt-8 " +
+        (stacked
+          ? "flex-col items-start gap-y-4 lg:gap-y-5"
+          : "flex-row flex-wrap gap-x-10 gap-y-5")
+      }
+    >
       {points.map((point) => {
         const Icon = point.icon ?? Check;
         return (
-          <li key={point.label} className="flex items-start gap-4">
-            <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand text-white">
+          <li key={point.label} className="flex items-center gap-3.5">
+            <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-brand text-white">
               <Icon className="h-4 w-4" strokeWidth={3} aria-hidden="true" />
             </span>
-            <span className="font-lato text-[18px] font-bold leading-snug text-navy lg:text-[19px]">
+            <span className="font-lato text-[17px] font-bold leading-snug text-navy lg:whitespace-nowrap lg:text-[clamp(15px,1.2vw,18px)]">
               {point.label}
               {point.body && (
                 <span className="mt-1.5 block font-sans text-[14px] font-normal leading-relaxed text-navy/60">
