@@ -30,7 +30,6 @@ export const lunsjData: ServicePageData = {
     { label: "Sunn og god lunsj hver dag" },
     { label: "Et sosialt avbrekk i en travel hverdag" },
     { label: "Sparer tid og samler de ansatte" },
-    { label: "Bedre tid til viktige arbeidsoppgaver" },
   ],
   explainer: {
     heading: "Hva tilbyr vi?",

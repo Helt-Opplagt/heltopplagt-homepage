@@ -37,7 +37,6 @@ export const fruktData: ServicePageData = {
     { label: "Gir umiddelbar energi og økt konsentrasjon" },
     { label: "Et sunt gode til dine ansatte" },
     { label: "Tilpass kurven etter behov" },
-    { label: "Fra cirka 6 kroner per person per dag" },
   ],
 
   explainer: {

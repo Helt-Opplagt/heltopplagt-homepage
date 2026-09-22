@@ -25,7 +25,6 @@ export const renholdData: ServicePageData = {
     { label: "Godt renhold gir bedre trivsel og sørger for et bedre arbeidsmiljø." },
     { label: "Mindre støv gir også et bedre inneklima og reduserer risikoen for astma- og allergiplager." },
     { label: "Fagutdannede og kompetente medarbeidere" },
-    { label: "Behovstilpasset renholdsavtale" },
   ],
   explainer: {
     heading: "Hva tilbyr vi?",

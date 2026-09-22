@@ -29,7 +29,6 @@ export const cateringData: ServicePageData = {
     { label: "Laget fra bunn av med ferske råvarer" },
     { label: "Vi kan stille med mat, drikke, kokk og servitører." },
     { label: "Godt, sunt og variert" },
-    { label: "Møtepakker fra 65,- per person" },
   ],
   explainer: {
     heading: "Hva tilbyr vi?",

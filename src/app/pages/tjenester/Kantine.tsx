@@ -36,7 +36,6 @@ export const kantineData: ServicePageData = {
     { label: "Mat tilbedret av proffesjonelle kokker" },
     { label: "Stor variert meny" },
     { label: "Kan fungerer uten fullt kantinekjøkken" },
-    { label: "Kan kombineres med renhold" },
   ],
   explainer: {
     heading: "Hva tilbyr vi?",

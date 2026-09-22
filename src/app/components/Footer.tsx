@@ -14,7 +14,7 @@ const companyLinks: { label: string; to?: string; href?: string }[] = [
 ];
 
 const HEADING =
-  "mb-5 font-lato text-[17px] font-bold text-white";
+  "h2-plain mb-5 font-lato text-[16px] font-bold text-white";
 
 export function Footer() {
   return (
