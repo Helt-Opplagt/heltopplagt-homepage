@@ -8,27 +8,42 @@ export interface HistoryEntry {
   year: string;
   title: string;
   body: string;
-  image: string;
+  /** One photo, or several that the card steps through before moving on. */
+  image: string | string[];
   imageAlt?: string;
 }
 
 /** Height of the fixed site header, which the pinned section sits under. */
 const HEADER = 72;
 
+/** Page scroll spent on each extra photo while its milestone holds still. */
+const PHOTO_STEP = 360;
+
+/** Free (unpinned) layout: how often the active card shows its next photo. */
+const PHOTO_INTERVAL = 3500;
+
+const photosOf = (entry: HistoryEntry) =>
+  Array.isArray(entry.image) ? entry.image : [entry.image];
+
 /**
  * Horizontal timeline that the page scroll drives. On desktop the section
  * pins under the header and vertical scrolling moves the milestones
- * sideways, one pixel for one pixel, keeping the current milestone centred. On
- * smaller screens the track is a plain swipeable row instead.
+ * sideways, one pixel for one pixel, keeping the current milestone centred.
+ * A milestone with several photos holds still while the scroll steps through
+ * them. On smaller screens the track is a plain swipeable row instead, and
+ * the active milestone cycles its photos on a timer.
  */
 export function History({
   title,
   proof,
   entries,
+  ground = "white",
 }: {
   title: string;
   proof?: string;
   entries: HistoryEntry[];
+  /** Section background, so pages can alternate white and stone. */
+  ground?: "white" | "stone";
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const blockRef = useRef<HTMLDivElement>(null);
@@ -38,8 +53,9 @@ export function History({
   const [fits, setFits] = useState(true);
   const lastWidth = useRef(0);
   const pinned = fits;
-  const [distance, setDistance] = useState(0);
+  const [offsets, setOffsets] = useState<number[]>([]);
   const [active, setActive] = useState(0);
+  const [shown, setShown] = useState<number[]>(() => entries.map(() => 0));
   const [reached, setReached] = useState<boolean[]>(() =>
     entries.map((_, i) => i === 0)
   );
@@ -78,21 +94,60 @@ export function History({
     };
   }, []);
 
-  // How far the track has to travel for the last card to reach the left edge.
+  // Where each card sits along the track, relative to the first one.
   useEffect(() => {
     const track = trackRef.current;
     if (!track || typeof ResizeObserver === "undefined") return;
     const measure = () => {
       const cards = cardRefs.current.filter(Boolean) as HTMLElement[];
       const first = cards[0];
-      const last = cards[cards.length - 1];
-      setDistance(first && last ? last.offsetLeft - first.offsetLeft : 0);
+      const next = cards.map((c) => (first ? c.offsetLeft - first.offsetLeft : 0));
+      setOffsets((prev) =>
+        prev.length === next.length && prev.every((v, i) => v === next[i])
+          ? prev
+          : next
+      );
     };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(track);
     return () => observer.disconnect();
   }, [pinned]);
+
+  // Pinned scroll map: each card first holds for its extra photos, then the
+  // track travels to the next card. holdAt[i] is where card i arrives.
+  const holds = entries.map((e) => (photosOf(e).length - 1) * PHOTO_STEP);
+  const holdAt: number[] = [];
+  offsets.forEach((o, i) => {
+    holdAt.push(i === 0 ? 0 : holdAt[i - 1] + holds[i - 1] + (o - offsets[i - 1]));
+  });
+  const distance = offsets.length
+    ? holdAt[holdAt.length - 1] + holds[offsets.length - 1]
+    : 0;
+
+  /** Track position and photo per card for a scroll amount into the section. */
+  function mapScroll(s: number) {
+    const photos = entries.map((e, i) =>
+      s < (holdAt[i] ?? 0)
+        ? 0
+        : Math.min(
+            photosOf(e).length - 1,
+            Math.round((s - (holdAt[i] ?? 0)) / PHOTO_STEP)
+          )
+    );
+    let x = 0;
+    for (let i = offsets.length - 1; i >= 0; i--) {
+      if (s >= holdAt[i]) {
+        x = offsets[i] + Math.max(0, s - holdAt[i] - holds[i]);
+        break;
+      }
+    }
+    return { x, photos };
+  }
+
+  function show(photos: number[]) {
+    setShown((prev) => (prev.every((v, i) => v === photos[i]) ? prev : photos));
+  }
 
   function settle(x: number) {
     let index = 0;
@@ -125,9 +180,11 @@ export function History({
       const centre = first ? (track.clientWidth - first.offsetWidth) / 2 : 0;
       if (pinned) {
         const start = wrap.getBoundingClientRect().top + window.scrollY - HEADER;
-        const x = Math.min(Math.max(window.scrollY - start, 0), distance);
+        const s = Math.min(Math.max(window.scrollY - start, 0), distance);
+        const { x, photos } = mapScroll(s);
         track.style.transform = `translate3d(${centre - x}px, 0, 0)`;
         settle(x);
+        show(photos);
       } else {
         track.style.transform = "";
         settle(track.scrollLeft + centre);
@@ -148,17 +205,31 @@ export function History({
       if (frame) cancelAnimationFrame(frame);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pinned, distance]);
+  }, [pinned, offsets]);
 
-  function goTo(index: number) {
+  // Free layout: the active card cycles its photos on its own.
+  useEffect(() => {
+    if (pinned) return;
+    const n = photosOf(entries[active]).length;
+    if (n < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
+    const timer = window.setInterval(() => {
+      setShown((prev) => prev.map((v, i) => (i === active ? (v + 1) % n : v)));
+    }, PHOTO_INTERVAL);
+    return () => window.clearInterval(timer);
+  }, [pinned, active, entries]);
+
+  function goTo(index: number, photo = 0) {
     const wrap = wrapRef.current;
     const track = trackRef.current;
     const card = cardRefs.current[index];
     if (!wrap || !track || !card) return;
     if (pinned) {
       const start = wrap.getBoundingClientRect().top + window.scrollY - HEADER;
-      window.scrollTo({ top: start + card.offsetLeft, behavior: "smooth" });
+      const at = (holdAt[index] ?? 0) + photo * PHOTO_STEP;
+      window.scrollTo({ top: start + at, behavior: "smooth" });
     } else {
+      setShown((prev) => prev.map((v, i) => (i === index ? photo : v)));
       const centre = (track.clientWidth - card.offsetWidth) / 2;
       track.scrollTo({ left: card.offsetLeft - centre, behavior: "smooth" });
     }
@@ -194,11 +265,15 @@ export function History({
   );
 
   return (
-    <section ref={wrapRef} className="bg-white">
+    <section
+      ref={wrapRef}
+      className={ground === "stone" ? "border-y border-navy/[0.06] bg-stone" : "bg-white"}
+    >
       <div
         ref={blockRef}
         className={
-          "overflow-hidden bg-white " +
+          "overflow-hidden " +
+          (ground === "stone" ? "bg-stone " : "bg-white ") +
           (compact ? "is-compact pb-8 pt-6 " : "pb-14 pt-12 lg:pb-16 lg:pt-12 ") +
           (pinned ? "sticky top-[4.5rem]" : "")
         }
@@ -290,6 +365,7 @@ export function History({
             >
               {entries.map((entry, i) => {
                 const isActive = i === active;
+                const photos = photosOf(entry);
                 return (
                   <article
                     key={entry.year}
@@ -307,20 +383,45 @@ export function History({
                     <div className={compact ? "flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6" : ""}>
                       <div
                         className={
-                          "history-photo overflow-hidden rounded-2xl bg-navy/5 " +
+                          "history-photo relative overflow-hidden rounded-2xl bg-navy/5 " +
                           (compact
                             ? "h-28 w-full flex-shrink-0 sm:aspect-[4/3] sm:h-auto sm:w-[45%] "
                             : "h-[clamp(9rem,24vh,20rem)] ") +
                           (reached[i] ? "is-on" : "")
                         }
                       >
-                        <img
-                          src={entry.image}
-                          alt={entry.imageAlt ?? ""}
-                          loading="lazy"
-                          decoding="async"
-                          className="h-full w-full object-cover"
-                        />
+                        {photos.map((src, k) => (
+                          <img
+                            key={src}
+                            src={src}
+                            alt={k === shown[i] ? (entry.imageAlt ?? "") : ""}
+                            loading="lazy"
+                            decoding="async"
+                            className={
+                              "absolute inset-0 h-full w-full object-cover motion-safe:transition-opacity motion-safe:duration-700 " +
+                              (k === shown[i] ? "opacity-100" : "opacity-0")
+                            }
+                          />
+                        ))}
+                        {photos.length > 1 && (
+                          <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5 rounded-full bg-navy/35 px-2 py-1.5 backdrop-blur-sm">
+                            {photos.map((src, k) => (
+                              <button
+                                key={src}
+                                type="button"
+                                onClick={() => goTo(i, k)}
+                                aria-label={`Bilde ${k + 1} av ${photos.length}`}
+                                aria-current={k === shown[i] ? "true" : undefined}
+                                className={
+                                  "h-1.5 rounded-full transition-all duration-300 " +
+                                  (k === shown[i]
+                                    ? "w-4 bg-white"
+                                    : "w-1.5 bg-white/50 hover:bg-white/80")
+                                }
+                              />
+                            ))}
+                          </div>
+                        )}
                       </div>
                       <div className="min-w-0">
                         <p

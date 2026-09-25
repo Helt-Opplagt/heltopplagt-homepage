@@ -1,7 +1,7 @@
 import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import heroImg from "../../../images/renhold/renhold.png";
-import openingImg from "../../../images/hero/web/hero-renhold.jpg";
-import explainerImg from "../../../images/div/web/vinduspuss.jpg";
+import openingImg from "../../../images/hero/hero-renhold.jpg";
+import explainerImg from "../../../images/renhold/vinduspuss.jpg";
 
 const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 

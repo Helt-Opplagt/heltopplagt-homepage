@@ -1,8 +1,8 @@
 import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import packehallImg from "../../../images/frukt/frukt2.png";
 import pakkerImg from "../../../images/frukt/frukt.png";
-import heroFruktImg from "../../../images/hero/web/hero-frukt.jpg";
-import teamImg from "../../../images/hele_gjengen.png";
+import heroFruktImg from "../../../images/hero/hero-frukt.jpg";
+import teamImg from "../../../images/om-oss/hele-gjengen.png";
 import lunsjCardImg from "../../../images/lunsj/lunsj.png";
 import gokurvenImg from "../../../images/frukt/cards/gokurven.jpg";
 import knaskekurvenImg from "../../../images/frukt/cards/knaskekurven.jpg";

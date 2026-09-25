@@ -1,8 +1,8 @@
 import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import heroImg from "../../../images/lunsj/lunsj.png";
-import openingImg from "../../../images/hero/web/hero-lunsj.jpg";
-import explainerImg from "../../../images/div/web/fat-anretning.jpg";
-import fatHof3 from "../../../images/div/web/hof3.jpg";
+import openingImg from "../../../images/hero/hero-lunsj.jpg";
+import explainerImg from "../../../images/catering/fat-anretning.jpg";
+import fatHof3 from "../../../images/lunsj/hof3.jpg";
 import hverdagslunsjenImg from "../../../images/lunsj/cards/hverdagslunsjen.jpg";
 import golunsjenImg from "../../../images/lunsj/cards/golunsjen.jpg";
 import superlunsjenImg from "../../../images/lunsj/cards/superlunsjen.jpg";

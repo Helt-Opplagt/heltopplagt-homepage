@@ -375,10 +375,22 @@ function CatalogSectionView({ catalog }: { catalog: CatalogSection }) {
           )}
           {catalog.link && (
             <div className="mt-8">
-              <Pill to={catalog.link.to} variant="outline">
-                {catalog.link.label}
-                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-              </Pill>
+              {/^https?:/.test(catalog.link.to) ? (
+                <Pill
+                  href={catalog.link.to}
+                  variant="outline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {catalog.link.label}
+                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+                </Pill>
+              ) : (
+                <Pill to={catalog.link.to} variant="outline">
+                  {catalog.link.label}
+                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+                </Pill>
+              )}
             </div>
           )}
         </div>

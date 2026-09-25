@@ -40,13 +40,6 @@ export const reviews: Review[] = [
     text: "Vi har hatt Superlunsjen fra Helt Opplagt i 6 måneder som et spleiselag mellom bedriften og de ansatte. Vi ønsket en felles lunsjordning for å få et mer naturlig samlingspunkt for de ansatte. Det skaper en god mulighet for å snakke med kollegaer fra andre avdelinger som du ikke snakker med på daglig basis. Tjenesten oppleves veldig bra for de ansatte, og ikke minst kostnadseffektivt. Løsningen har fungert over forventning på alle punkt. Leveranse skjer daglig med godt pålegg, og dagsferskt brød er sammen med eplejuicen fra Askim høydepunktene blant produktene.",
   },
   {
-    name: "Tone Sandstå",
-    role: "Lysaker idrettsbarnehage",
-    company: "Lysaker idrettsbarnehage",
-    service: "Frukt",
-    text: "Vi bestiller frukt hos Helt Opplagt og er veldig fornøyd med det. Variert frukt med god kvalitet. Vi bestiller også en stor fruktkurv/knaskekurv hver mandag som står på pauserommet vårt. Ulempen er at den blir så fort tom. Jeg er også svært fornøyd med at vi kan legge inn en ekstra bestilling på kort varsel dersom vi ønsker en knaskekurv til diverse møter.",
-  },
-  {
     name: "Jorunn Kristiansen",
     role: "Vinmonopolet AS",
     company: "Vinmonopolet AS",

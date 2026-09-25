@@ -15,9 +15,28 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
-import logoSrc from "../../images/logo.png";
+import logoSrc from "../../images/logo/helt-opplagt.png";
 import { CONTAINER } from "./site";
 import { SERVICES } from "./livery";
+import heroFrukt from "../../images/hero/hero-frukt.jpg";
+import heroLunsj from "../../images/hero/hero-lunsj.jpg";
+import heroKantine from "../../images/hero/hero-kantine.jpg";
+import heroCatering from "../../images/hero/hero-catering.jpg";
+import heroInneklima from "../../images/hero/hero-inneklima-dno.jpg";
+import heroRenhold from "../../images/hero/hero-renhold.jpg";
+import kantineStaff from "../../images/kantine/sport-1-21.jpg";
+
+/** Photos the menu's picture panel cross-fades through. Decorative only. */
+const MENU_PHOTOS = [
+  kantineStaff,
+  heroFrukt,
+  heroLunsj,
+  heroInneklima,
+  heroKantine,
+  heroCatering,
+  heroRenhold,
+];
+const MENU_PHOTO_INTERVAL = 4000;
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
   Frukt: Apple,
@@ -58,6 +77,18 @@ export function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDetailsElement>(null);
   const [menuExpanded, setMenuExpanded] = useState(false);
+  const [photo, setPhoto] = useState(0);
+
+  /* Cross-fade the picture panel while the menu is open. */
+  useEffect(() => {
+    if (!menuExpanded) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(
+      () => setPhoto((i) => (i + 1) % MENU_PHOTOS.length),
+      MENU_PHOTO_INTERVAL
+    );
+    return () => window.clearInterval(timer);
+  }, [menuExpanded]);
 
   /* The <details>-based dropdown doesn't close on outside clicks by itself. */
   useEffect(() => {
@@ -193,7 +224,8 @@ export function Header() {
           </div>
 
           <div className="flex-1 overflow-y-auto px-6 py-6 sm:px-8 sm:py-14">
-            <div className="mx-auto grid max-w-[1000px] gap-6 sm:grid-cols-2 sm:gap-16">
+            <div className="mx-auto grid max-w-[1280px] gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+            <div className="grid gap-6 sm:grid-cols-2 sm:gap-16">
               <nav>
                 <p className="mb-2.5 flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-white/50 sm:mb-5">
                   <span aria-hidden="true" className="text-[14px] font-bold text-aqua">/</span>
@@ -269,6 +301,30 @@ export function Header() {
                   })}
                 </ul>
               </nav>
+            </div>
+
+            <div
+              aria-hidden="true"
+              style={{ transitionDelay: menuExpanded ? "200ms" : "0ms" }}
+              className={
+                "relative hidden aspect-[4/5] max-h-[65vh] w-full overflow-hidden rounded-[1.5rem] bg-white/5 transition-[translate,opacity] duration-500 ease-out lg:block " +
+                (menuExpanded ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0")
+              }
+            >
+              {MENU_PHOTOS.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className={
+                    "absolute inset-0 h-full w-full object-cover transition-[opacity,scale] duration-1000 ease-out " +
+                    (i === photo ? "scale-100 opacity-100" : "scale-105 opacity-0")
+                  }
+                />
+              ))}
+            </div>
             </div>
           </div>
 

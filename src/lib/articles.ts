@@ -1,4 +1,4 @@
-import grillingImg from "../images/garden/grilling.jpg";
+import grillingImg from "../images/aktuelt/grilling.jpg";
 /* Article images are self-hosted; hotlinking the CMS was flaky. */
 import fordEtransitImg from "../images/aktuelt/ford-etransit.jpg";
 import fordTilpassetImg from "../images/aktuelt/ford-tilpasset.jpg";

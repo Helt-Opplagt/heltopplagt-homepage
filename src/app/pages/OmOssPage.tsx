@@ -2,15 +2,23 @@ import { ArrowUpRight } from "lucide-react";
 import { CONTAINER, Pill } from "../components/site";
 import { PageHeader } from "../components/PageHeader";
 import { Head } from "../components/ServicePage";
-import buildingImg from "../../images/div/web/ho-015.jpg";
-import inneklimaImg from "../../images/div/web/inneklima.jpg";
-import fruktImg from "../../images/frukt/frukt.png";
-import lunsjImg from "../../images/div/web/lunsj.jpg";
-import kantineImg from "../../images/div/web/kantine.jpg";
-import cateringImg from "../../images/div/web/fat-anretning.jpg";
-import teamImg from "../../images/div/web/kokker.jpg";
+import buildingImg from "../../images/om-oss/bygg-bjornholt.jpg";
+import carFleetImg from "../../images/om-oss/photo-04-group-with-car-fleet.jpg";
+import euromateImg from "../../images/om-oss/photo-05-office-with-euromate-machine.jpg";
+import celebrationImg from "../../images/om-oss/photo-06-office-celebration.jpg";
+import fruitVanImg from "../../images/om-oss/photo-07-fruit-delivery-van.jpg";
+import warehouseImg from "../../images/om-oss/photo-08-warehouse-team.jpg";
+import lunsjImg from "../../images/lunsj/lunsj.jpg";
+import profilImg from "../../images/om-oss/ho-189.jpg";
+import rettHjemImg from "../../images/om-oss/rett-hjem.jpg";
+import teamImg from "../../images/catering/kokker.jpg";
+import renholdImg from "../../images/renhold/renhold-team.jpg";
+import njordImg from "../../images/inneklima/njord-lager.jpg";
 import { History, type HistoryEntry } from "../components/History";
 import { useDocumentMeta } from "../../lib/use-document-meta";
+
+/** Euromiljø, the group's first company, was founded in 1985. */
+const yearsOfExperience = new Date().getFullYear() - 1985;
 
 const stats = [
   { value: "320+", label: "Ansatte i konsernet" },
@@ -39,13 +47,13 @@ const timeline: HistoryEntry[] = [
   {
     year: "1985",
     title: "Euromiljø blir stiftet",
-    image: inneklimaImg,
+    image: [carFleetImg, euromateImg, celebrationImg],
     body: "Helt Opplagt-konsernets første selskap het Euromiljø AS og ble etablert i 1985. Siden den tid har vi jobbet med å øke trivsel og effektivitet, og for enda flere langtidsfriske mennesker hos bedrifter og offentlig sektor på Østlandet. Det startet med ren luft med rett temperatur; med luftrensere, kjøling og varmepumper med tilhørende leie- og serviceavtaler.",
   },
   {
-    year: "1995",
+    year: "1997",
     title: "Jobbfrukt",
-    image: fruktImg,
+    image: [fruitVanImg, warehouseImg],
     body: "Midt på nittitallet startet vi levering av fruktkurver, eller jobbfrukt; lett tilgjengelig frukt på arbeidsplassen. Tjenesten er i dag blitt vanlig og inngår hos svært mange bedrifter som en viktig faktor for de ansattes trivsel og helse.",
   },
   {
@@ -57,7 +65,7 @@ const timeline: HistoryEntry[] = [
   {
     year: "2007",
     title: "Helt Opplagt på jobben",
-    image: kantineImg,
+    image: profilImg,
     body: "Navnet Euromiljø er beholdt som firmanavn, men fra 2007 begynte vi å bruke profilnavnet Helt Opplagt på jobben.",
   },
   {
@@ -66,12 +74,24 @@ const timeline: HistoryEntry[] = [
     image: buildingImg,
     body: "I 2011 fikk vi ferdigstilt vårt nye bygg på Bjørnholt, bygget spesielt for våre virksomheter. Vi fikk med dette flotte vekstmuligheter.",
   },
+  {
+    year: "2013",
+    title: "Rene lokaler",
+    image: renholdImg,
+    body: "I 2012 startet vi med å tilby renholdstjenester til våre kunder. Dette ga oss nye muligheter for å utvide tjenestene våre og styrke samarbeidet med bedrifter.",
+  },
 
   {
     year: "2016",
-    title: "Rett Hjem",
-    image: cateringImg,
-    body: "I denne ånd kjøpte vi Rett Hjem i 2016 for å kunne tilby bedrifter også netthandel av lunsj, catering etc. Videre overtok vi også en «Seniortjeneste», nå kalt Rett Hjem PLUSS, med levering av dagligvarer og middagsmat til eldre.",
+    title: "Rett hjem",
+    image: rettHjemImg,
+    body: "Kjøpte opp Rett Hjem i 2016 for å kunne tilby bedrifter også netthandel av lunsj, catering etc. Videre overtok vi også en «Seniortjeneste», nå kalt Rett Hjem PLUSS, med levering av dagligvarer og middagsmat til eldre.",
+  },
+  {
+    year: "2022",
+    title: "Startet med lettindustri",
+    image: njordImg,
+    body: "I 2022 inngikk vi en avtale med Njord om å tilby luftrensere til lettindustrien. Nå leverer vi ren luft også til lager, verksteder og produksjonslokaler.",
   },
   {
     year: "I dag",
@@ -94,7 +114,7 @@ export function OmOssPage() {
         intro="Sammen skal vi være det Helt Opplagte valg for en sunnere, renere og enklere hverdag! Helt Opplagt på jobben er en markedsorientert leverandør av løpende abonnementsbaserte tjenester innen helse og trivsel på arbeidsplassen."
       />
 
-      <section className="bg-white py-10 lg:py-14">
+      <section className="border-t border-navy/[0.06] bg-stone py-10 lg:py-14">
         <div
           className={`${CONTAINER} grid items-center gap-12 lg:grid-cols-2 lg:gap-20`}
         >
@@ -139,7 +159,7 @@ export function OmOssPage() {
         </div>
       </section>
 
-      <section className="border-t border-navy/5 bg-white">
+      <section className="border-y border-navy/[0.06] bg-stone">
         <div className={`${CONTAINER} py-10 lg:py-12`}>
           <dl className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
             {stats.map((s) => (
@@ -156,7 +176,7 @@ export function OmOssPage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-16 lg:py-24">
+      <section className="relative isolate overflow-hidden bg-white py-16 lg:py-24">
         <span
           aria-hidden="true"
           className="livery-puzzle-outline aspect-[100/129] -left-14 -top-8 w-36 -rotate-[12deg] bg-brand/20 lg:-left-8 lg:w-52"
@@ -170,7 +190,7 @@ export function OmOssPage() {
             {values.map((v) => (
               <div
                 key={v.title}
-                className="rounded-[1.5rem] bg-white p-7 shadow-[0_1px_2px_rgba(13,43,64,0.06)]"
+                className="rounded-[1.5rem] bg-stone p-7"
               >
                 <h3 className="font-lato text-[20px] font-bold text-navy">
                   {v.title}
@@ -186,11 +206,12 @@ export function OmOssPage() {
 
       <History
         title="Historien vår"
-        proof="Helt Opplagt begynte som Euromiljø."
+        proof={`Vi har over ${yearsOfExperience} år med erfaring i å levere tjenester som fremmer trivsel, helse og effektivitet på arbeidsplassen.`}
         entries={timeline}
+        ground="stone"
       />
 
-      <section className="relative isolate overflow-hidden bg-stone border-y border-navy/[0.06] py-16 lg:py-20">
+      <section className="relative isolate overflow-hidden bg-white py-16 lg:py-20">
         <span
           aria-hidden="true"
           className="livery-puzzle aspect-[100/129] -right-16 -bottom-12 w-40 rotate-[15deg] bg-brand/10 lg:-right-8 lg:w-56"

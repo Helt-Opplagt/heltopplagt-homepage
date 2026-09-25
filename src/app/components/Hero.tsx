@@ -1,12 +1,12 @@
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import heroLunsj from "../../images/hero/web/hero-lunsj.jpg";
-import heroKantine from "../../images/hero/web/hero-kantine.jpg";
-import heroFrukt from "../../images/hero/web/hero-frukt.jpg";
-import heroCatering from "../../images/hero/web/hero-catering.jpg";
-import heroInneklima from "../../images/hero/web/hero-inneklima.jpg";
-import heroRenhold from "../../images/hero/web/hero-renhold.jpg";
+import heroLunsj from "../../images/hero/hero-lunsj.jpg";
+import heroKantine from "../../images/hero/hero-kantine.jpg";
+import heroFrukt from "../../images/hero/hero-frukt.jpg";
+import heroCatering from "../../images/hero/hero-catering.jpg";
+import heroInneklima from "../../images/hero/hero-inneklima-dno.jpg";
+import heroRenhold from "../../images/hero/hero-renhold.jpg";
 import { CONTAINER, Kicker, Pill } from "./site";
 
 const SLIDE_DURATION = 6000;

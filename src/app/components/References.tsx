@@ -1,8 +1,8 @@
-import intilityLogo from "../../images/logo/intility.png";
-import allianceLogo from "../../images/logo/alliance.png";
-import sporveienLogo from "../../images/logo/sporveien.png";
-import xxlLogo from "../../images/logo/xxl.png";
-import riksrevisjonenLogo from "../../images/logo/riksrevisjonen.png";
+import intilityLogo from "../../images/kunder/intility.png";
+import allianceLogo from "../../images/kunder/alliance.png";
+import sporveienLogo from "../../images/kunder/sporveien.png";
+import xxlLogo from "../../images/kunder/xxl.png";
+import riksrevisjonenLogo from "../../images/kunder/riksrevisjonen.png";
 import { CONTAINER } from "./site";
 import { Reveal } from "./Reveal";
 
