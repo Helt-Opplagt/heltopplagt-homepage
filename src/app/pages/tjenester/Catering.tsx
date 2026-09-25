@@ -1,7 +1,7 @@
 import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import heroImg from "../../../images/catering/catering.png";
-import openingImg from "../../../images/hero/web/hero-catering.jpg";
-import explainerImg from "../../../images/div/web/kokker.jpg";
+import openingImg from "../../../images/hero/hero-catering.jpg";
+import explainerImg from "../../../images/catering/kokker.jpg";
 import lunsjCardImg from "../../../images/lunsj/lunsj.png";
 import kantineCardImg from "../../../images/kantine/kantine.png";
 import fruktCardImg from "../../../images/frukt/frukt.png";

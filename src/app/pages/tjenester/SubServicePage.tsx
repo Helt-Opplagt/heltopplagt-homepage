@@ -75,7 +75,15 @@ export function SubServicePage() {
       ? "Flere produkter"
       : `Mer innen ${entry.label.toLowerCase()}`;
 
-  const showImage = Boolean(sub.image) && sub.content?.[0]?.type !== "image";
+  /* Every sub-page opens the same way: title and intro left, the page's
+     image right. Content that opens with that same photo would repeat it, so
+     it is dropped from the body. */
+  const showImage = Boolean(sub.image);
+  const first = sub.content?.[0];
+  const body =
+    first?.type === "image" && first.src === sub.image
+      ? sub.content!.slice(1)
+      : sub.content ?? [];
 
   return (
     <div className="min-h-dvh bg-white">
@@ -151,12 +159,21 @@ export function SubServicePage() {
         </div>
       </div>
 
-      {!hasVariants && sub.content && sub.content.length > 0 && (
+      {!hasVariants && body.length > 0 && (
         <section className="border-b border-navy/10 bg-white py-14">
-          <div className={`${CONTAINER} space-y-12`}>
-            {sub.content.map((block, i) => (
-              <ContentBlockView key={i} block={block} />
-            ))}
+          <div className={`${CONTAINER} space-y-14`}>
+            {pairImages(body).map((row, i) =>
+              row.kind === "pair" ? (
+                <ImageTextRow
+                  key={i}
+                  text={row.text}
+                  image={row.image}
+                  imageLeft={row.index % 2 === 1}
+                />
+              ) : (
+                <ContentBlockView key={i} block={row.block} />
+              )
+            )}
           </div>
         </section>
       )}
@@ -220,6 +237,66 @@ export function SubServicePage() {
       )}
 
       <ServiceFooter currentPath={entry.data.path} />
+    </div>
+  );
+}
+
+type ImageBlock = Extract<ContentBlock, { type: "image" }>;
+type Row =
+  | { kind: "single"; block: ContentBlock }
+  | { kind: "pair"; text: ContentBlock; image: ImageBlock; index: number };
+
+const pairable = (b?: ContentBlock) => b?.type === "text" || b?.type === "bullets";
+
+/** Sit each photo beside the text next to it, so no photo floats on its own. */
+function pairImages(blocks: ContentBlock[]): Row[] {
+  const rows: Row[] = [];
+  let pairs = 0;
+  for (let i = 0; i < blocks.length; i++) {
+    const block = blocks[i];
+    if (block.type !== "image") {
+      rows.push({ kind: "single", block });
+      continue;
+    }
+    const prev = rows[rows.length - 1];
+    if (prev?.kind === "single" && pairable(prev.block)) {
+      rows[rows.length - 1] = { kind: "pair", text: prev.block, image: block, index: pairs++ };
+    } else if (pairable(blocks[i + 1])) {
+      rows.push({ kind: "pair", text: blocks[i + 1], image: block, index: pairs++ });
+      i++;
+    } else {
+      rows.push({ kind: "single", block });
+    }
+  }
+  return rows;
+}
+
+/** Text and photo side by side; the photo alternates sides row by row. */
+function ImageTextRow({
+  text,
+  image,
+  imageLeft,
+}: {
+  text: ContentBlock;
+  image: ImageBlock;
+  imageLeft: boolean;
+}) {
+  return (
+    <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+      <ContentBlockView block={text} />
+      <div
+        className={
+          "overflow-hidden rounded-[1.5rem] " + (imageLeft ? "lg:order-first" : "")
+        }
+      >
+        <img
+          src={image.src}
+          alt={image.alt ?? ""}
+          loading="lazy"
+          decoding="async"
+          className="aspect-[4/3] w-full object-cover"
+        />
+      </div>
     </div>
   );
 }

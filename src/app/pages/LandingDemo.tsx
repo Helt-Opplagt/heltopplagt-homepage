@@ -14,19 +14,19 @@ import {
   EnvelopeSimple,
 } from "@phosphor-icons/react";
 
-import heroImg from "../../images/hero/web/hero-lunsj.jpg";
-import kantineImg from "../../images/hero/web/hero-kantine.jpg";
-import cateringImg from "../../images/hero/web/hero-catering.jpg";
-import fruktImg from "../../images/hero/web/hero-frukt.jpg";
-import lunsjImg from "../../images/hero/web/hero-lunsj.jpg";
-import inneklimaImg from "../../images/hero/web/hero-inneklima.jpg";
-import renholdImg from "../../images/hero/web/hero-renhold.jpg";
+import heroImg from "../../images/hero/hero-lunsj.jpg";
+import kantineImg from "../../images/hero/hero-kantine.jpg";
+import cateringImg from "../../images/hero/hero-catering.jpg";
+import fruktImg from "../../images/hero/hero-frukt.jpg";
+import lunsjImg from "../../images/hero/hero-lunsj.jpg";
+import inneklimaImg from "../../images/hero/hero-inneklima.jpg";
+import renholdImg from "../../images/hero/hero-renhold.jpg";
 
-import intilityLogo from "../../images/logo/intility.png";
-import allianceLogo from "../../images/logo/alliance.png";
-import sporveienLogo from "../../images/logo/sporveien.png";
-import xxlLogo from "../../images/logo/xxl.png";
-import riksrevisjonenLogo from "../../images/logo/riksrevisjonen.png";
+import intilityLogo from "../../images/kunder/intility.png";
+import allianceLogo from "../../images/kunder/alliance.png";
+import sporveienLogo from "../../images/kunder/sporveien.png";
+import xxlLogo from "../../images/kunder/xxl.png";
+import riksrevisjonenLogo from "../../images/kunder/riksrevisjonen.png";
 
 const CONTACT_CTA = "Få et tilbud";
 

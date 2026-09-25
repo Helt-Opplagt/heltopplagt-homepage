@@ -1,11 +1,98 @@
+import type { ReactNode } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { CONTAINER, Pill } from "../components/site";
 import { PageHeader } from "../components/PageHeader";
 import { Head } from "../components/ServicePage";
 import { useDocumentMeta } from "../../lib/use-document-meta";
+import skredderstuaImg from "../../images/ansvar/skredderstua-radarveien.jpg";
+import norskkursImg from "../../images/ansvar/norskkurs.jpg";
+import kurverImg from "../../images/ansvar/fruktpakking-kurver.jpg";
+import elbilerImg from "../../images/ansvar/elbiler-bilpark.jpg";
+import filtreImg from "../../images/ansvar/vaskbare-filtre.jpg";
 
-const miljoTiltak = [
+interface Tiltak {
+  title: string;
+  body: string;
+}
+
+interface Photo {
+  src: string;
+  alt: string;
+}
+
+/** The section's photos as one collage: a wide lead photo, the rest below it. */
+function Collage({ photos }: { photos: Photo[] }) {
+  const [lead, ...rest] = photos;
+  const img = "h-full w-full object-cover";
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      <div className="col-span-2 aspect-[16/10] overflow-hidden rounded-[1.25rem]">
+        <img src={lead.src} alt={lead.alt} loading="lazy" decoding="async" className={img} />
+      </div>
+      {rest.map((p) => (
+        <div
+          key={p.src}
+          className={
+            "overflow-hidden rounded-[1.25rem] " +
+            (rest.length === 1 ? "col-span-2 aspect-[16/10]" : "aspect-square")
+          }
+        >
+          <img src={p.src} alt={p.alt} loading="lazy" decoding="async" className={img} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Heading and photo collage in one column (sticky on desktop), every topic
+ * as plain text in the other. Photos illustrate the section as a whole, so
+ * no single topic looks like it is missing one.
+ */
+function TiltakSection({
+  title,
+  proof,
+  items,
+  photos,
+  reverse = false,
+  children,
+}: {
+  title: string;
+  proof: string;
+  items: Tiltak[];
+  photos: Photo[];
+  reverse?: boolean;
+  children?: ReactNode;
+}) {
+  return (
+    <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+      <div className={"lg:sticky lg:top-24 lg:self-start " + (reverse ? "lg:order-last" : "")}>
+        <Head title={title} proof={proof} />
+        <div className="mt-8">
+          <Collage photos={photos} />
+        </div>
+      </div>
+      <div>
+        <div className="border-b border-navy/10">
+          {items.map((t) => (
+            <div key={t.title} className="border-t border-navy/10 py-7 first:border-t-0 first:pt-0">
+              <h3 className="font-lato text-[19px] font-bold leading-snug text-navy">
+                {t.title}
+              </h3>
+              <p className="mt-2.5 text-[15px] leading-relaxed text-navy/70 lg:text-[16px]">
+                {t.body}
+              </p>
+            </div>
+          ))}
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+const miljoTiltak: Tiltak[] = [
   {
     title: "Miljøfyrtårn",
     body: "Et systematisk arbeid med miljøtiltak i hverdagen, samt et fokus på miljø fra alle våre ansatte, gjorde oss til en Miljøfyrtårn-sertifisert bedrift i 2014. Helt Opplagts miljøgruppe, bestående av ansatte fra alle avdelinger i organisasjonen, har i lengre tid jobbet med å kvalitetssikre våre miljøtiltak slik at vi til enhver tid reduserer vår virksomhets ytre miljøpåvirkninger.",
@@ -40,7 +127,7 @@ const miljoTiltak = [
   },
 ];
 
-const sosialt = [
+const sosialt: Tiltak[] = [
   {
     title: "Arbeidstrening",
     body: "I tråd med vår sosiale profil har vi utviklet et samarbeid med arbeidsmarkedsbedrifter på Østlandet. Dette gir deg som kunde muligheten til å få pakket dine fruktkurver av en bedrift med varig tilrettelagte arbeidsplasser (en VTA-bedrift), samtidig som våre svært høye krav på frukt-, temperatur- og kvalitetskontroll opprettholdes. Gjennom dette kan vi levere kurver pakket av Stiftelsen Radarveien avdeling Skredderstua arbeidssenter.",
@@ -53,10 +140,17 @@ const sosialt = [
     title: "Norskkurs hos Helt Opplagt",
     body: "Vi i Helt Opplagt ønsker at alle våre ansatte skal ha like forutsetninger på jobb og i samfunnet generelt. Derfor tilbyr vi sammen med Folkeuniversitetet norskkurs med gratis lærebøker til 45 av våre ansatte. I tillegg til språkkunnskaper ser man effekter som skaper et sterkt fellesskap mellom de ansatte imellom og oss i Helt Opplagt.",
   },
-  {
-    title: "Vi jobber for å rekke en hånd til de ukrainske flyktningene",
-    body: "Vi er i dialog med den ukrainske ambassade, NAV og europratsya.com for å hurtigst mulig kunne hjelpe de som nå krysser landegrensen vår ved å tilby arbeid, interne fadderordninger og norskkurs. Vi håper dette kan skape noe forutsigbarhet og trygghet. Vi kan ikke hjelpe alle, men vi skal gjøre vårt for å hjelpe de vi har ressurser til.",
-  },
+];
+
+const miljoPhotos: Photo[] = [
+  { src: elbilerImg, alt: "Helt Opplagts elektriske biler og varebiler foran bygget på Bjørnholt" },
+  { src: kurverImg, alt: "Kvalitetskontroll og pakking av frukt hos Helt Opplagt" },
+  { src: filtreImg, alt: "Vaskbare filtre fra Helt Opplagts inneklimaavdeling" },
+];
+
+const sosialtPhotos: Photo[] = [
+  { src: skredderstuaImg, alt: "Ansatte ved Skredderstua arbeidssenter med ferdigpakkede fruktkurver" },
+  { src: norskkursImg, alt: "Ansatte på norskkurs hos Helt Opplagt" },
 ];
 
 export function AnsvarPage() {
@@ -85,25 +179,12 @@ export function AnsvarPage() {
 
       <section className="bg-white py-16 lg:py-24">
         <div className={CONTAINER}>
-          <Head
+          <TiltakSection
             title="Miljø"
             proof="Vi søker hele tiden etter nye metoder for å gjøre miljøet enda bedre – det er vårt miljøansvar!"
-          />
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-7">
-            {miljoTiltak.map((t) => (
-              <div
-                key={t.title}
-                className="rounded-[1.5rem] bg-cloud/60 p-7"
-              >
-                <h3 className="font-lato text-[19px] font-bold text-navy">
-                  {t.title}
-                </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-navy/65">
-                  {t.body}
-                </p>
-              </div>
-            ))}
-          </div>
+            items={miljoTiltak}
+            photos={miljoPhotos}
+          >
           <div className="mt-8">
             <Link
               to="/aktuelt/helt-opplagt-samarbeider-med-ford-pa-veien-mot-nullutslipp"
@@ -113,6 +194,7 @@ export function AnsvarPage() {
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </Link>
           </div>
+          </TiltakSection>
         </div>
       </section>
 
@@ -122,25 +204,13 @@ export function AnsvarPage() {
           className="livery-puzzle aspect-[100/129] -left-16 -bottom-12 w-40 -rotate-[15deg] bg-brand/10 lg:-left-8 lg:w-60"
         />
         <div className={`${CONTAINER} relative z-10`}>
-          <Head
+          <TiltakSection
             title="Mennesker og samfunn"
             proof="Vi i Helt Opplagt har stor tro på mennesket, også de som trenger en ny sjanse."
+            items={sosialt}
+            photos={sosialtPhotos}
+            reverse
           />
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-7">
-            {sosialt.map((t) => (
-              <div
-                key={t.title}
-                className="rounded-[1.5rem] bg-white p-7 shadow-[0_1px_2px_rgba(13,43,64,0.06)]"
-              >
-                <h3 className="font-lato text-[19px] font-bold text-navy">
-                  {t.title}
-                </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-navy/65">
-                  {t.body}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -149,7 +219,7 @@ export function AnsvarPage() {
           <Head
             title="Sertifiseringer og medlemskap"
           />
-          <ul className="mt-8 grid max-w-[820px] grid-cols-1 gap-4 sm:grid-cols-3">
+          <ul className="mt-8 grid grid-cols-1 gap-x-14 gap-y-8 sm:grid-cols-3">
             {[
               {
                 name: "Miljøfyrtårn",
@@ -164,14 +234,11 @@ export function AnsvarPage() {
                 detail: "Fruktleverandørene våre er tilknyttet",
               },
             ].map((c) => (
-              <li
-                key={c.name}
-                className="rounded-[1.5rem] border border-navy/10 p-6 text-center"
-              >
-                <p className="font-lato text-[18px] font-bold text-navy">
+              <li key={c.name} className="border-t border-navy/10 pt-5">
+                <p className="font-lato text-[19px] font-bold text-navy">
                   {c.name}
                 </p>
-                <p className="mt-1 text-[13px] text-navy/55">{c.detail}</p>
+                <p className="mt-1 text-[15px] text-navy/60">{c.detail}</p>
               </li>
             ))}
           </ul>

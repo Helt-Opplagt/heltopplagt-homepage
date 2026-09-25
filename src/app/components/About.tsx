@@ -1,5 +1,5 @@
 import { ArrowRight, Check } from "lucide-react";
-import teamImg from "../../images/hele_gjengen.png";
+import teamImg from "../../images/om-oss/hele-gjengen.png";
 import { CONTAINER, Kicker, Pill } from "./site";
 import { Reveal } from "./Reveal";
 

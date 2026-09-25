@@ -4,18 +4,25 @@ import {
   ServicePageData,
 } from "../../components/ServicePage";
 import heroImg from "../../../images/inneklima/inneklima.png";
-import openingImg from "../../../images/hero/web/hero-inneklima.jpg";
-import explainerImg from "../../../images/div/web/tekniker.jpg";
+import openingImg from "../../../images/hero/hero-inneklima-dno.jpg";
+import explainerImg from "../../../images/inneklima/dno-moterom.jpg";
 import luftrensereImg from "../../../images/inneklima/luftrensere.jpg";
+import graceImg from "../../../images/inneklima/grace.jpg";
+import varmepumpeImg from "../../../images/inneklima/varmepumpe.jpg";
+import safelungsImg from "../../../images/inneklima/safelungs.jpg";
+import kontorImg from "../../../images/inneklima/dno-kontorlandskap.jpg";
+import industriImg from "../../../images/inneklima/njord-lager.jpg";
+import industri2Img from "../../../images/inneklima/njord-lager-2.jpg";
+import matproduksjonImg from "../../../images/inneklima/rystad-07.jpg";
+import helsesektorImg from "../../../images/inneklima/oris-klinikk.jpg";
 /* Njord Clean Air product photos (downloaded from njordcleanair.com). */
-import njordXpS from "../../../images/inneklima/njord/xp-s.jpg";
 import njordXpF from "../../../images/inneklima/njord/xp-f.jpg";
 import njordXp2 from "../../../images/inneklima/njord/xp-2.jpg";
 import njordXp4 from "../../../images/inneklima/njord/xp-4.jpg";
 
 const thumbs = "https://heltopplagt.no/application/files/cache/thumbnails";
 
-/* Shared Njord XP blocks, reused by the four Njord product pages. Facts from njordcleanair.com/no. */
+/* Shared Njord XP blocks, reused by the three Njord product pages. Facts from njordcleanair.com/no. */
 const njordPlattform: ContentBlock = {
   type: "text",
   heading: "Njord-plattformen",
@@ -70,34 +77,16 @@ export const inneklimaData: ServicePageData = {
     ],
 
     image: explainerImg,
-    imageAlt: "Servicetekniker fra Helt Opplagt med rensbare elektrofiltre",
+    imageAlt: "Møterom med luftrenser fra Helt Opplagt",
   },
   catalogs: [
     {
       heading: "Luftrenser for kontor og møterom",
       proof:
         "Vondt i hodet? Tung luft på kontoret? Se hvilke produkter som passer for din arbeidsplass.",
-      layout: "grid",
+      layout: "band",
       photo: true,
       items: [
-        {
-          name: "Njord XP-S",
-          tag: "Kontor og møterom",
-          spec: "1500 m³/h ved optimal drift",
-          description:
-            "Njords minste industrielle luftrenser: to luftinntak, filtre opptil H14, veier kun 16 kg og trenger bare en vanlig stikkontakt.",
-          image: njordXpS,
-          to: "/tjenester/inneklima/njord-xp-s",
-        },
-        {
-          name: "Njord XP-F",
-          tag: "Lav takhøyde",
-          spec: "1800 m³/h ved optimal drift",
-          description:
-            "«F for Flat» – ekstremt flatt design for lokaler med lav takhøyde, med doble luftutblås som styrer den rene luften dit du vil.",
-          image: njordXpF,
-          to: "/tjenester/inneklima/njord-xp-f",
-        },
         {
           name: "VisionAir Blue Line",
           tag: "Tak, vegg eller gulv",
@@ -105,6 +94,14 @@ export const inneklimaData: ServicePageData = {
             "VisionAir er perfekt for lokaler opptil ca 80 m2. Den kommer i to størrelser og kan plasseres i tak, vegg og/eller gulv. Perfekt for kopirom, kontorlandskap og fellesområder.",
           image: `${thumbs}/583c513de688c3e5727153b9ff5ad0e2.jpg`,
           to: "/tjenester/inneklima/visionair",
+        },
+        {
+          name: "Grace",
+          tag: "Gulvmodell",
+          description:
+            "Grace er gulvmodellen som fjerner opptil 99 % av den forurensede luften, den er perfekt for bruk i mindre rom opptil 25 m2. Som for eksempel cellekontorer, møterom og kopirom.",
+          image: graceImg,
+          to: "/tjenester/inneklima/grace",
         },
       ],
       link: { label: "Se alle produktene", to: "/tjenester/inneklima/luftrensere" },
@@ -116,6 +113,14 @@ export const inneklimaData: ServicePageData = {
       layout: "band",
       photo: true,
       items: [
+        {
+          name: "Njord XP-F",
+          tag: "Lav takhøyde",
+          description:
+            "«F for Flat» – ekstremt flatt design for lokaler med lav takhøyde, med doble luftutblås som styrer den rene luften dit du vil.",
+          image: njordXpF,
+          to: "/tjenester/inneklima/njord-xp-f",
+        },
         {
           name: "Njord XP-2",
           tag: "RISE-testet ytelse",
@@ -150,20 +155,35 @@ export const inneklimaData: ServicePageData = {
       ],
     },
     {
-      heading: "Varmepumpe og kjøling for næringsbygg",
+      heading: "Mål luftkvaliteten med sensorer fra SafeLungs",
       proof:
-        "Vi har i over 30 år levert varmepumper og kjøleutstyr slik at du opplever riktig temperatur på arbeidsplassen hele året. Vi har lang erfaring med å levere varmepumper og kjøling i kontorlokaler, data/serverrom, restauranter, butikker etc.",
-      layout: "band",
+        "Vi leier ut sensorer fra SafeLungs, og dere får tilgang til et dashbord der dere følger inneklimaet hver dag.",
+      layout: "feature",
+      reverse: true,
       items: [
         {
-          name: "Eurotemp",
-          tag: "Varmepumpe og air condition",
+          name: "Sensorer og dashbord fra SafeLungs",
           description:
-            "Vår egen varmepumpe og air condition. Ved å bruke Eurotemp som varmekilde vil du i gjennomsnitt få tilbake minimum tre ganger så mye varme som den forbruker i strøm.",
-          image: `${thumbs}/122ead3fdf0a04dad7c0f38c110fbba9.jpg`,
-          to: "/tjenester/inneklima/eurotemp",
+            "Sensorene måler CO₂, temperatur, luftfuktighet, svevestøv (PM2,5), VOC og NOx kontinuerlig. I dashbordet ser dere luftkvaliteten rom for rom i sanntid, utviklingen over tid og månedlige rapporter. Anbefalingene bygger på råd fra Folkehelseinstituttet og Arbeidstilsynet.",
+          image: safelungsImg,
         },
       ],
+      link: { label: "Les mer hos SafeLungs", to: "https://safelungs.no/" },
+    },
+    {
+      heading: "Varmepumpe og kjøling",
+      proof:
+        "Vi har i over 30 år levert varmepumper og kjøleutstyr slik at du opplever riktig temperatur på arbeidsplassen hele året. Vi har lang erfaring med å levere varmepumper og kjøling i kontorlokaler, data/serverrom, restauranter, butikker etc.",
+      layout: "feature",
+      items: [
+        {
+          name: "Varmepumpe og kjøling",
+          description:
+            "Vi har løsninger og produkter som gir deg rett temperatur, sommer som vinter. Vi har montert og utført service på denne type utstyr siden 1985, og våre montører er NOVAP/F-gass sertifisert.",
+          image: varmepumpeImg,
+        },
+      ],
+      link: { label: "Les mer om optimal temperatur", to: "/tjenester/inneklima/temperatur" },
     },
   ],
   hideSubServiceCards: true,
@@ -204,37 +224,37 @@ export const inneklimaData: ServicePageData = {
       label: "Luftmålinger",
       description: "Vi tilbyr å måle luftkvaliteten og analyserer resultatene.",
       to: "/tjenester/inneklima/luftmalinger",
-      image: `${thumbs}/7df36f969a7027bc26af0f321079c4bd.jpg`,
+      image: safelungsImg,
     },
     {
       label: "Luftrenser for kontor",
       description: "Vi løser alle utfordringer med dårlig luft på arbeidsplassen.",
       to: "/tjenester/inneklima/kontor",
-      image: `${thumbs}/121d42786d9d1762fab5c43850c2904e.jpg`,
+      image: kontorImg,
     },
     {
       label: "Få kontroll over luftkvaliteten i industribygg",
       description: "Vi har løsningene og produktene som løser alle utfordringer.",
       to: "/tjenester/inneklima/luftkvalitet-i-industribygg",
-      image: `${thumbs}/01563e1948803e9dc1608b0d1fea172c.jpg`,
+      image: industriImg,
     },
     {
       label: "Matproduksjon og HoReCa",
       description: "I nesten alle profesjonelle kjøkken vil det være mye fett og sotpartikler som blir frigitt.",
       to: "/tjenester/inneklima/matproduksjon-og-horeca",
-      image: `${thumbs}/b2c846886adfd43b6c09b7d45fc86082.jpg`,
+      image: matproduksjonImg,
     },
     {
       label: "Helsesektor, institusjoner og barnehager",
       description: "Helt Opplagt hjelper deg å skape et bedre inneklima som gir dine medarbeidere mer energi.",
       to: "/tjenester/inneklima/helsesektor-institusjoner-og-barnehager",
-      image: `${thumbs}/94206110460cfe5f947ad96596eaf304.jpg`,
+      image: helsesektorImg,
     },
     {
       label: "Optimal temperatur",
       description: "Vi har i over 30 år levert varmepumper og kjøleutstyr slik at du opplever riktig temperatur på arbeidsplassen hele året.",
       to: "/tjenester/inneklima/temperatur",
-      image: `${thumbs}/42cec552791f0c5edc00a8c5f69e51c6.jpg`,
+      image: varmepumpeImg,
     },
     {
       label: "Sesong for såre øyne og luftveisplager",
@@ -250,7 +270,7 @@ export const inneklimaData: ServicePageData = {
       title: "Kontor",
       description:
         "Vi løser alle utfordringer med dårlig luft på arbeidsplassen. Vi tar en befaring på ditt kontor og miljø og leverer løsninger som ikke krever noen byggtekniske endringer. Enkelt, effektivt og billig!",
-      image: `${thumbs}/121d42786d9d1762fab5c43850c2904e.jpg`,
+      image: kontorImg,
       content: [
         {
           type: "text",
@@ -305,7 +325,7 @@ export const inneklimaData: ServicePageData = {
       title: "Optimal temperatur",
       description:
         "Vi har i over 30 år levert varmepumper og kjøleutstyr slik at du opplever riktig temperatur på arbeidsplassen hele året.",
-      image: `${thumbs}/42cec552791f0c5edc00a8c5f69e51c6.jpg`,
+      image: varmepumpeImg,
       content: [
         {
           type: "text",
@@ -321,11 +341,6 @@ export const inneklimaData: ServicePageData = {
             "Vi er godkjent av Norsk Varmepumpeforening (NOVAP). Det betyr at vi har faglig kvalifisert personell og lovpålagte sertifiseringer. Vi har også kapasitet til å gjennomføre oppdrag på en forsvarlig måte, og vi sørger for at du som kunde får nødvendig dokumentasjon og opplæring.",
           ],
         },
-        {
-          type: "link",
-          label: "Se varmepumpen Eurotemp",
-          href: "/tjenester/inneklima/eurotemp",
-        },
       ],
     },
     {
@@ -334,7 +349,7 @@ export const inneklimaData: ServicePageData = {
       title: "Helsesektor, institusjoner og barnehager",
       description:
         "Mange har utfordringer med uønsket lukt på arbeidsplassen. Helt Opplagt hjelper deg å skape et bedre inneklima som gir dine medarbeidere mer energi.",
-      image: `${thumbs}/94206110460cfe5f947ad96596eaf304.jpg`,
+      image: helsesektorImg,
       content: [
         {
           type: "text",
@@ -347,8 +362,8 @@ export const inneklimaData: ServicePageData = {
           type: "text",
           heading: "Vi finner løsningen for deg",
           paragraphs: [
-            "Vi tilbyr bl.a. montering av VisionAir CarbonMax. VisionAir CarbonMax er designet for å passe inn i ethvert interiør, uten behov for byggtekniske endringer. Den er perfekt for å takle luftproblematikk som du finner i sykehjem, sykehus, dialysesentre, barnehager og toaletter. Skulle dere også oppleve ubehagelig ozonlukt i kopi- og printerrom eller luktspredning i forbindelse med matlaging er den utmerket til dette også.",
-            "VisionAir CarbonMax kan kombineres med elektrostatiske filtre dersom det også er et støvproblem i tillegg til lukt. Luftrenseren kan også utstyres med UV (SterilAir).",
+            "Vi tilbyr bl.a. montering av VisionAir. VisionAir er designet for å passe inn i ethvert interiør, uten behov for byggtekniske endringer. Den er perfekt for å takle luftproblematikk som du finner i sykehjem, sykehus, dialysesentre, barnehager og toaletter. Skulle dere også oppleve ubehagelig ozonlukt i kopi- og printerrom eller luktspredning i forbindelse med matlaging er den utmerket til dette også.",
+            "VisionAir kan kombineres med elektrostatiske filtre dersom det også er et støvproblem i tillegg til lukt. Luftrenseren kan også utstyres med UV (SterilAir).",
           ],
         },
         {
@@ -366,7 +381,7 @@ export const inneklimaData: ServicePageData = {
       title: "Matproduksjon og HoReCa",
       description:
         "I nesten alle profesjonelle kjøkken vil det være mye fett og sotpartikler som blir frigitt. Brannfaren øker med mer fett som legger seg i avtrekk og ventilatorer.",
-      image: `${thumbs}/b2c846886adfd43b6c09b7d45fc86082.jpg`,
+      image: matproduksjonImg,
       content: [
         {
           type: "text",
@@ -398,7 +413,7 @@ export const inneklimaData: ServicePageData = {
       title: "Få kontroll over luftkvaliteten i industribygg",
       description:
         "Det er vanskelig å få god luftkvalitet når du kombinerer store arealer, stor varebeholdning og mange ansatte under et og samme tak. Vi har løsningene og produktene som løser alle utfordringer.",
-      image: `${thumbs}/01563e1948803e9dc1608b0d1fea172c.jpg`,
+      image: industriImg,
       content: [
         {
           type: "text",
@@ -429,21 +444,27 @@ export const inneklimaData: ServicePageData = {
       title: "Luftmålinger",
       description:
         "Hvis et firma opplever at inneluften ikke er som den bør være, kan det være hensiktsmessig å måle luftkvaliteten. Vi tilbyr målinger med fokus på partikkeltetthet, CO2, relativ fuktighet og temperatur.",
-      image: `${thumbs}/7df36f969a7027bc26af0f321079c4bd.jpg`,
+      image: safelungsImg,
       content: [
-        {
-          type: "text",
-          heading: "Vi tilbyr å måle luftkvaliteten og analyserer resultatene",
-          paragraphs: [
-            "Hvis et firma opplever at inneluften ikke er som den bør være, kan det være hensiktsmessig å måle luftkvaliteten. Vi tilbyr målinger med fokus på partikkeltetthet, CO2, relativ fuktighet og temperatur. Dette gir i de fleste tilfeller et godt bilde av hvordan luften er og gir et godt grunnlag for å anbefale løsninger. Vi kan også tilby undersøkelser for å avdekke om det finnes sopp i lokalene, noe som kan være hensiktsmessig å gjennomføre dersom det har vært lekkasje i bygningen.",
-          ],
-        },
         {
           type: "text",
           heading: "Problemer med inneklima?",
           paragraphs: [
             "Vi har mulighet for å måle de luftbårne partikler og respirabelt svevestøv som finnes alle steder. Ved hjelp av en avansert laserpartikkelteller kan vi konstatere partikkeltetthet og størrelsen på partiklene som måtte være i luften. Hvis oppgaven krever at man også bør konstatere typen av partikler, kan det naturligvis også la seg gjøre ved hjelp av en laboratorietest.",
           ],
+        },
+        {
+          type: "text",
+          heading: "Mål luftkvaliteten med sensorer fra SafeLungs",
+          paragraphs: [
+            "Vi leier ut sensorer fra SafeLungs, og dere får tilgang til et dashbord der dere følger inneklimaet hver dag.",
+            "Sensorene måler CO₂, temperatur, luftfuktighet, svevestøv (PM2,5), VOC og NOx kontinuerlig. I dashbordet ser dere luftkvaliteten rom for rom i sanntid, utviklingen over tid og månedlige rapporter. Anbefalingene bygger på råd fra Folkehelseinstituttet og Arbeidstilsynet.",
+          ],
+        },
+        {
+          type: "link",
+          label: "Les mer hos SafeLungs",
+          href: "https://safelungs.no/",
         },
         {
           type: "text",
@@ -466,14 +487,7 @@ export const inneklimaData: ServicePageData = {
         {
           type: "cards",
           heading: "Våre produkter",
-          /* Grace er utgått (deadstock) og fjernet fra sortimentet. */
           items: [
-            {
-              title: "Njord XP-S",
-              description:
-                "Njords minste industrielle luftrenser – ideell for kontorer, møterom, butikker og helseinstitusjoner. To luftinntak, filtre opptil H14 og kun 16 kg.",
-              image: njordXpS,
-            },
             {
               title: "Njord XP-F",
               description:
@@ -495,14 +509,14 @@ export const inneklimaData: ServicePageData = {
             {
               title: "VisionAir Blue Line",
               description:
-                "VisionAir er perfekt for lokaler opptil ca 80 m2. Den kommer i to størrelser og kan plasseres i tak, vegg og/eller gulv. Vi tilpasser løsningen etter deres behov og lokaler, uten at dere trenger å gjøre noen byggtekniske endringer. VisionAir CarbonMax kan kombineres med elektrostatiske filtre dersom det også er et støvproblem i tillegg til lukt. Luftrenseren kan også utstyres med UV (SterilAir).",
+                "VisionAir er perfekt for lokaler opptil ca 80 m2. Den kommer i to størrelser og kan plasseres i tak, vegg og/eller gulv. Vi tilpasser løsningen etter deres behov og lokaler, uten at dere trenger å gjøre noen byggtekniske endringer. Luftrenseren kan også utstyres med UV (SterilAir).",
               image: `${thumbs}/583c513de688c3e5727153b9ff5ad0e2.jpg`,
             },
             {
-              title: "Eurotemp",
+              title: "Grace",
               description:
-                "Vår egen varmepumpe og air condition. Ved å bruke Eurotemp som varmekilde vil du i gjennomsnitt få tilbake minimum tre ganger så mye varme som den forbruker i strøm.",
-              image: `${thumbs}/122ead3fdf0a04dad7c0f38c110fbba9.jpg`,
+                "Grace er gulvmodellen som fjerner opptil 99 % av den forurensede luften, den er perfekt for bruk i mindre rom opptil 25 m2. Som for eksempel cellekontorer, møterom og kopirom.",
+              image: graceImg,
             },
             {
               title: "Kitchen Air Filtration (KAF)",
@@ -535,52 +549,6 @@ export const inneklimaData: ServicePageData = {
             "Vi løser utfordringer med pollen og annet som bidrar til dårlig luft på arbeidsplassen. Vi tar en uforpliktende befaring på din arbeidsplass og leverer løsninger som ikke krever byggtekniske endringer. Enkelt, effektivt og billig!",
             "Registrer deg under så tar vi snarlig kontakt for avtale.",
           ],
-        },
-      ],
-    },
-
-    {
-      slug: "njord-xp-s",
-      group: "Produkter",
-      title: "Njord XP-S",
-      description:
-        "Med sitt ekstremt kompakte design og doble filterflater er Njord XP-S, Njords minste industrielle luftrenser, effektiv, lett å plassere og ideell for små rom og trange områder.",
-      image: njordXpS,
-      content: [
-        {
-          type: "text",
-          paragraphs: [
-            "Njord XP-S skaper rene og sunne miljøer i rom og små områder: kontorer, møterom, butikker, treningsstudioer, garderober, klasserom, helseinstitusjoner, hoteller og restauranter.",
-            "Det første filtersteget består av et forfilter som effektivt fanger opp større partikler og støv. Det andre filtersteget fjerner mindre partikler, helt ned til de aller fineste og mest helseskadelige luftbårne forurensningene.",
-            "Njord XP-S produseres i Sverige og er bygget med høykvalitetskomponenter med lav miljøpåvirkning samt resirkulert aluminium. Luftrenseren kan installeres i tak, monteres på vegg eller utstyres med hjul for fleksibel plassering på gulv. En valgfri avlastningshylle kan også leveres i ønsket materiale.",
-          ],
-        },
-        {
-          type: "table",
-          heading: "Tekniske spesifikasjoner",
-          rows: [
-            ["Luftstrøm ved optimal drift", "1500 m³/h"],
-            ["Maksimal luftstrøm", "2200 m³/h"],
-            ["Luftinntak", "2 (fra to sider)"],
-            ["Total inntaksflate", "0,48 m²"],
-            ["Filter", "Totrinns, opptil H14 (ISO 16890 / EN 1822)"],
-            ["Mål (B×D×H)", "300 × 460 × 800 mm"],
-            ["Vekt", "16 kg"],
-            ["Elektrisk", "230 V, 50/60 Hz, 1,3 A, EC-motor"],
-            ["Motoreffekt", "165 W"],
-            ["Effektforbruk ved optimal drift", "ca. 90 W"],
-            ["Lydnivå", "30–55 dB(A)"],
-            ["Montering", "Tak, vegg eller gulv (evt. på hjul)"],
-          ],
-          footnote:
-            "Optimal drift er luftrensingsvolumet som gir best balanse mellom effektivitet, energiforbruk og lydnivå. Effektforbruket avhenger av filterkonfigurasjonen.",
-        },
-        njordPlattform,
-        njordTilvalg,
-        {
-          type: "link",
-          label: "Se Njord XP-S hos produsenten",
-          href: "https://njordcleanair.com/no/luftrenser-njord-xp-s/",
         },
       ],
     },
@@ -744,8 +712,7 @@ export const inneklimaData: ServicePageData = {
         {
           type: "text",
           paragraphs: [
-            "VisionAir Blue Line er Euromates resirkulerende luftrenser for kontorer, helsevirksomheter, barnehager og fellesarealer. Den kommer i to størrelser: VisionAir 1 for rom opptil 99 m³ og VisionAir 2 for rom opptil 199 m³ (omtrent 40 og 80 m² ved 2,5 meters takhøyde).",
-            "Luften renses i tre trinn: et forfilter fanger større partikler som hår og hudflak, kombinasjonsfilteret fjerner opptil 99,95 % av de mest gjennomtrengende partiklene (MPPS), og et aktivt kullfilter tar lukt og gasser. Filtrene tilfredsstiller ISO 16890, og effekten er SGS-sertifisert.",
+            "VisionAir Blue Line er Euromates resirkulerende luftrenser for kontorer, helsevirksomheter, barnehager og fellesarealer. Den kommer i to størrelser: VisionAir 1 og VisionAir 2. Vi dimensjonerer basert på dine behov.",
           ],
         },
         {
@@ -754,11 +721,9 @@ export const inneklimaData: ServicePageData = {
           items: [
             "DustFree – finstøv og svevestøv",
             "MicrobeFree – virus og bakterier",
-            "GasFree – skadelige gasser og «Sick Building»-plager",
             "SmokeFree – tobakksrøyk",
-            "OdourFree / CarbonMax – lukt, med stort V-formet kullfilter",
-            "SterilAir – UV-C-lampe mot bakterier, virus og muggsopp (kan ettermonteres)",
-            "AirMonitor og VisionDisplay",
+            "OdourFree – lukt, med stort V-formet kullfilter",
+            "SterilAir – UV-C-lampe mot bakterier, virus og muggsopp",
           ],
         },
         {
@@ -766,7 +731,6 @@ export const inneklimaData: ServicePageData = {
           heading: "Tekniske spesifikasjoner",
           rows: [
             ["Modell", "VisionAir 1", "VisionAir 2"],
-            ["Romvolum", "99 m³", "199 m³"],
             ["Luftstrøm", "180 m³/h", "360 m³/h"],
             ["Viftekapasitet", "1300 m³/h", "2600 m³/h"],
             ["Lydnivå", "40–62 dB(A)", "40–68 dB(A)"],
@@ -893,42 +857,30 @@ export const inneklimaData: ServicePageData = {
       ],
     },
     {
-      slug: "eurotemp",
-      title: "Eurotemp",
+      slug: "grace",
       group: "Produkter",
+      title: "Grace",
       description:
-        "Vår egen varmepumpe og air condition. Ved å bruke Eurotemp som varmekilde vil du i gjennomsnitt få tilbake minimum tre ganger så mye varme som den forbruker i strøm.",
-      image: `${thumbs}/122ead3fdf0a04dad7c0f38c110fbba9.jpg`,
+        "Grace er gulvmodellen som fjerner opptil 99 % av den forurensede luften, den er perfekt for bruk i mindre rom opptil 25 m2.",
+      image: graceImg,
       content: [
         {
           type: "text",
           paragraphs: [
-            "Norge er et land med store temperatursvingninger og været er vanskelig å forutse. Vi har løsninger og produkter som gir deg rett temperatur, sommer som vinter.",
-            "Vi har montert og utført service på denne type utstyr siden 1985, og våre montører er NOVAP/F-gass sertifisert, slik at du som kunde får en installasjon utført etter gjeldende forskrifter. I tillegg til montering gjør vi regelmessig service på ca 1200 anlegg i Østlandsområdet.",
+            "Grace er gulvmodellen som fjerner opptil 99 % av den forurensede luften, den er perfekt for bruk i mindre rom opptil 25 m2. Som for eksempel cellekontorer, møterom og kopirom. Grace har et diskret og tidløst design, og passer inn i et hvert (kontor)miljø. Grace kan leveres med forskjellige filter/filterløsninger tilpasset deres behov og lokaler.",
           ],
         },
         {
           type: "table",
-          heading: "Eurotemp DC 35 – tekniske data",
+          heading: "Tekniske spesifikasjoner",
           rows: [
-            ["Nominell varmekapasitet", "3,7 kW"],
-            ["Nominell kjølekapasitet", "3,4 kW"],
-            ["Energiklasse", "A"],
-            ["COP (varmefaktor)", "4,6"],
-            ["Luftmengde (høy/normal/lav)", "700 / 520 / 420 m³/h"],
-            ["Lydnivå innedel (høy/normal/lav)", "42 / 35 / 30 dB(A)"],
-            ["Lydnivå utedel", "55 dB(A)"],
-            ["Mål innedel (B×D×H)", "800 × 280 × 205 mm"],
-            ["Vekt innedel / utedel", "12 / 45 kg"],
-            ["Anbefalt sikring", "16 A"],
+            ["Romstørrelse", "Opptil ca. 25 m²"],
+            ["Filtertyper", "Forfilter / elektrostatisk filter / aktivt kullfilter / HEPA-filter"],
+            ["Monteringsmuligheter", "Frittstående"],
+            ["Mål", "850 × 380 × 290 mm"],
+            ["Vekt", "15 kg"],
+            ["Strømforbruk", "Maks 60 W"],
           ],
-          footnote:
-            "Ta kontakt med oss for et uforpliktende møte med en av våre erfarne konsulenter som vil gi deg et tilbud tilpasset dine behov og ønsker.",
-        },
-        {
-          type: "link",
-          label: "Les mer om optimal temperatur",
-          href: "/tjenester/inneklima/temperatur",
         },
       ],
     },

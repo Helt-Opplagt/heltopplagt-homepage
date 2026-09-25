@@ -1,7 +1,8 @@
 import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import heroImg from "../../../images/kantine/kantine.png";
-import openingImg from "../../../images/hero/web/hero-kantine.jpg";
-import explainerImg from "../../../images/div/web/kjokken.jpg";
+import openingImg from "../../../images/hero/hero-kantine.jpg";
+import explainerImg from "../../../images/kantine/sport-1-07.jpg";
+import utenKjokkenImg from "../../../images/kantine/sport-1-13.jpg";
 import lunsjCardImg from "../../../images/lunsj/lunsj.png";
 /* Module photos are Unsplash stock (free license); palegg.jpg is Helt Opplagt's own tray photo. */
 import modFrokost from "../../../images/kantine/moduler/frokost.jpg";
@@ -45,7 +46,7 @@ export const kantineData: ServicePageData = {
     ],
 
     image: explainerImg,
-    imageAlt: "Kokker fra Helt Opplagt anretter mat på eget kjøkken",
+    imageAlt: "Kantine med buffet levert av Helt Opplagt",
   },
   catalogs: [
     {
@@ -110,7 +111,7 @@ export const kantineData: ServicePageData = {
           name: "Ingen kjøkken? Ikke noe problem!",
           description:
             "Med oss trenger du ikke et stort kjøkken, men kommer langt med en komfyr, kjøleskap og oppvaskmaskin. Alt kommer klart til bruk, og våre kantineverter tar seg av oppdekking, rydding og etterarbeid – med et smil.",
-          image: `${thumbs}/bb139f5c56abdc875066d1f6e8ca80c3.jpg`,
+          image: utenKjokkenImg,
         },
       ],
       link: {
@@ -182,10 +183,10 @@ export const kantineData: ServicePageData = {
       image: `${thumbs}/1e7046a1804a25a379a1d086b08d75ee.jpg`,
     },
     {
-      label: "Kantine på jobben – uten kjøkken? Ja, Helt Opplagt!",
+      label: "Kantine på jobben – uten kjøkken?",
       description: "Vi leverer fullverdige kantineløsninger til bedrifter helt ned i 15 personer.",
       to: "/tjenester/kantine/kantine-pa-jobben-uten-kjokken",
-      image: `${thumbs}/bb139f5c56abdc875066d1f6e8ca80c3.jpg`,
+      image: utenKjokkenImg,
     },
     {
       label: "Verter og vertinner",
@@ -287,14 +288,14 @@ export const kantineData: ServicePageData = {
     },
     {
       slug: "kantine-pa-jobben-uten-kjokken",
-      title: "Kantine på jobben – uten kjøkken? Ja, Helt Opplagt!",
+      title: "Kantine på jobben – uten kjøkken?",
       description:
         "Når mange tenker på kantine, ser de for seg storkjøkken, industrioppvaskmaskiner og kokker i fullt firsprang. Men hva med de små bedriftene? Hva med kontorfellesskapet på 10–30 personer, uten eget kjøkken, men med like stort behov for sunn, fristende og praktisk lunsj?",
-      image: `${thumbs}/bb139f5c56abdc875066d1f6e8ca80c3.jpg`,
+      image: utenKjokkenImg,
       content: [
         {
           type: "image",
-          src: `${thumbs}/3a320259b5899c672ae58041a7efb3bd.jpg`,
+          src: utenKjokkenImg,
           alt: "Kantine på jobben uten kjøkken",
         },
         {

@@ -1,6 +1,6 @@
 import { ExternalLink, Mail, Phone } from "lucide-react";
 import { Link } from "react-router";
-import logoSrc from "../../images/logo.png";
+import logoSrc from "../../images/logo/helt-opplagt.png";
 import { CONTAINER, Pill } from "./site";
 import { SERVICES } from "./livery";
 
