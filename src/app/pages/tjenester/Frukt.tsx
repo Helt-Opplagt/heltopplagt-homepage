@@ -112,14 +112,14 @@ export const fruktData: ServicePageData = {
     {
       heading: "Jobbsmoothie",
       proof:
-        "Vi leverer to ulike varianter hver uke.",
+        "En ltt annerledes fruktkurv. Vi tilbyr abonment på næringsrike og ferske smoothies, laget fra bunnen av på vårt eget kjøkken og satt rett i deres kjøleskap.",
       layout: "feature",
       reverse: true,
       items: [
         {
           name: "Jobbsmoothie",
           description:
-            "Våre spennende, næringsrike og ferske smoothies er laget fra bunnen av på vårt eget kjøkken med ekte frukt og bær. De er utviklet med fokus på sunn energi, og er fulle av antioksidanter og vitaminer.",
+            "",
           image: `${thumbs}/84880641e437bfb7b441396f2b721a9d.jpg`,
         },
       ],
