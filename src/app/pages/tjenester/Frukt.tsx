@@ -26,7 +26,7 @@ export const fruktData: ServicePageData = {
   ),
   subtitle: "Et sunt gode levert til arbeidsplassen",
   intro:
-    "Helt Opplagt leverer fruktkurver og faste fruktabonnement til bedrifter i Oslo og Stor-Oslo. Vi hjelper dere å velge riktig kurv, mengde og leveringsrytme etter antall ansatte, budsjett og hvor ofte dere ønsker påfyll.",
+    "Helt Opplagt leverer fruktkurver og faste fruktabonnement til bedrifter i Oslo og Stor-Oslo. Vi hjelper dere å velge riktig kurv, mengde og leveringsfrekvens etter antall ansatte, budsjett og hvor ofte dere ønsker påfyll.",
   image: packehallImg,
   imageAlt: "Fruktkurv fra Helt Opplagt levert på et kontor",
   heroImage: heroFruktImg,
@@ -43,7 +43,7 @@ export const fruktData: ServicePageData = {
     heading: "Hva tilbyr vi?",
     body: [
       "Et fast fruktabonnement, der kurvtype, mengde og leveringsfrekvens tilpasses arbeidsplassen.",
-      "Frukt på jobben gir bedre helse, øker trivsel og sikrere et stabilt energinivå. For å sikre at frukten holder høy kvalitet, har vi strenge rutiner for pakking, kvalitetssikring og levering. Vi leverer all frukt i miljøvennlige flettekurver og har daglige utkjøringer til flere hundre bedrifter i Oslo og Stor-Oslo.",
+      "Frukt på jobben gir bedre helse, øker trivsel og sikrere et stabilt energinivå. For å sikre at frukten holder høy kvalitet, har vi gode rutiner for pakking, kvalitetssikring og levering. Vi leverer all frukt i miljøvennlige flettekurver og har daglige utkjøringer til flere hundre bedrifter i Oslo og Stor-Oslo.",
       "Leveringsområdet strekker seg fra Drammen - Asker - Bærum -  Fredrikstad - Moss - Gardermoen - Lillestrøm - Oslo og alt i mellom. ",
     ],
 
@@ -112,7 +112,7 @@ export const fruktData: ServicePageData = {
     {
       heading: "Jobbsmoothie",
       proof:
-        "En ltt annerledes fruktkurv. Vi tilbyr abonment på næringsrike og ferske smoothies, laget fra bunnen av på vårt eget kjøkken og satt rett i deres kjøleskap.",
+        "En ltt annerledes fruktkurv. Vi tilbyr abonnement på næringsrike og ferske smoothies, laget fra bunnen av på vårt eget kjøkken og satt rett i deres kjøleskap.",
       layout: "feature",
       reverse: true,
       items: [
@@ -153,7 +153,7 @@ export const fruktData: ServicePageData = {
     {
       question: "Hvor ofte kan vi få levert frukt?",
       answer:
-        "Vi har daglige utkjøringer og tilpasser leveringsrytmen etter behov og avtale.",
+        "Vi har daglige utkjøringer og tilpasser leveringfrekvens etter behov og avtale.",
     },
   ],
 
