@@ -119,7 +119,7 @@ export function ServiceFooter({
 
           <div className="flex flex-col gap-3 sm:flex-shrink-0 sm:flex-row sm:items-center">
             <Pill to="/kontakt">
-              Ta kontakt for tilbud
+              Kontakt oss
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </Pill>
             <a
@@ -750,54 +750,54 @@ export function ServicePage({ data }: { data: ServicePageData }) {
     const ex = data.explainer;
     blocks.push(
       <>
-      <div className="grid items-center gap-10 lg:grid-cols-[1fr_42%] lg:gap-16">
-        <div>
-          <h2 className="max-w-[20ch] font-lato text-[26px] font-light leading-[1.15] tracking-[-0.01em] text-navy sm:text-[32px] lg:text-[38px]">
-            {ex.heading ?? "Hva tilbyr vi"}
-          </h2>
-          {ex.body.map((p, n) => (
-            <p
-              key={n}
-              className="mt-5 max-w-[54ch] text-[16px] leading-relaxed text-navy/70"
-            >
-              {p}
-            </p>
-          ))}
-          {ex.points && ex.points.length > 0 && (
-            <ul className="mt-8 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
-              {ex.points.map((point) => (
-                <li key={point} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-lime/15">
-                    <Check
-                      className="h-3.5 w-3.5 text-lime"
-                      strokeWidth={3}
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="text-[15px] leading-relaxed text-navy/75">
-                    {point}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_42%] lg:gap-16">
+          <div>
+            <h2 className="max-w-[20ch] font-lato text-[26px] font-light leading-[1.15] tracking-[-0.01em] text-navy sm:text-[32px] lg:text-[38px]">
+              {ex.heading ?? "Hva tilbyr vi"}
+            </h2>
+            {ex.body.map((p, n) => (
+              <p
+                key={n}
+                className="mt-5 max-w-[54ch] text-[16px] leading-relaxed text-navy/70"
+              >
+                {p}
+              </p>
+            ))}
+            {ex.points && ex.points.length > 0 && (
+              <ul className="mt-8 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+                {ex.points.map((point) => (
+                  <li key={point} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-lime/15">
+                      <Check
+                        className="h-3.5 w-3.5 text-lime"
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span className="text-[15px] leading-relaxed text-navy/75">
+                      {point}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem]">
-          <img
-            src={ex.image}
-            alt={ex.imageAlt}
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem]">
+            <img
+              src={ex.image}
+              alt={ex.imageAlt}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
         </div>
-      </div>
-      {light && hasPoints && (
-        <div className="mt-14 lg:mt-16">
-          <HeroPointStrip points={data.heroPoints!} />
-        </div>
-      )}
+        {light && hasPoints && (
+          <div className="mt-14 lg:mt-16">
+            <HeroPointStrip points={data.heroPoints!} />
+          </div>
+        )}
       </>
     );
   }
