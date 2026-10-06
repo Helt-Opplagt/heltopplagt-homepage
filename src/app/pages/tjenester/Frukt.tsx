@@ -24,7 +24,7 @@ export const fruktData: ServicePageData = {
       Frukt
     </>
   ),
-  subtitle: "Fruktkurv og jobbfrukt levert på jobben i Oslo",
+  subtitle: "Et sunt gode levert til arbeidsplassen",
   intro:
     "Helt Opplagt leverer fruktkurver og faste fruktabonnement til bedrifter i Oslo og Stor-Oslo. Vi hjelper dere å velge riktig kurv, mengde og leveringsrytme etter antall ansatte, budsjett og hvor ofte dere ønsker påfyll.",
   image: packehallImg,
@@ -35,16 +35,16 @@ export const fruktData: ServicePageData = {
 
   heroPoints: [
     { label: "Gir umiddelbar energi og økt konsentrasjon" },
-    { label: "Et sunt gode til dine ansatte" },
-    { label: "Tilpass kurven etter behov" },
+    { label: "Reduserer kortidsfraværet" },
+    { label: "Et gode til dine ansatte" },
   ],
 
   explainer: {
     heading: "Hva tilbyr vi?",
     body: [
-      "Vi leverer først og fremst faste fruktavtaler, der kurvtype, mengde og leveringsfrekvens tilpasses arbeidsplassen.",
-      "Leveringsområdet strekker seg fra Drammen - Gardermoen - Lillestrøm - Fredrikstad - Sandvika - Oslo og alt i mellom. ",
-      "For å sikre kvalitet på frukten vår, vurderer smakspanelet vårt hver uke frukten som skal brukes i kommende leveranser. Frukten pakkes så tett opp mot levering som mulig, og kvaliteten kontrolleres underveis.",
+      "Et fast fruktabonnement, der kurvtype, mengde og leveringsfrekvens tilpasses arbeidsplassen.",
+      "Frukt på jobben gir bedre helse, øker trivsel og sikrere et stabilt energinivå. For å sikre at frukten holder høy kvalitet, har vi strenge rutiner for pakking, kvalitetssikring og levering. Vi leverer all frukt i miljøvennlige flettekurver og har daglige utkjøringer til flere hundre bedrifter i Oslo og Stor-Oslo.",
+      "Leveringsområdet strekker seg fra Drammen - Asker - Bærum -  Fredrikstad - Moss - Gardermoen - Lillestrøm - Oslo og alt i mellom. ",
     ],
 
     image: pakkerImg,
@@ -56,13 +56,13 @@ export const fruktData: ServicePageData = {
     {
       heading: "Hvilken fruktkurv passer bedriften deres?",
       proof:
-        "Det finnes ikke én fruktkurv som passer alle. Noen vil ha klassisk frukt til lavest mulig pris. Andre ønsker større variasjon, grønnsaker, nøtter eller smoothie.",
+        "Det finnes ikke én fruktkurv som passer alle. Noen vil ha klassisk frukt til lavest mulig pris. Andre ønsker en kurv med mer variasjon, grønnsaker, nøtter og eksotisk frukt.",
 
       layout: "grid",
       items: [
         {
           name: "Hverdagskurven",
-          tag: "Rimelig",
+
           description:
             "For bedrifter som ønsker klassisk basisfrukt til lavest mulig pris. Fra ca. 6 kr per person per dag.",
           image: hverdagskurvenImg,
@@ -70,7 +70,7 @@ export const fruktData: ServicePageData = {
         },
         {
           name: "Knaskekurven",
-          tag: "Spennende",
+
           description:
             "For dere som ønsker frukt kombinert med grønnsaker og nøtter. Fra ca. 11 kr per person per dag.",
           image: knaskekurvenImg,
@@ -78,7 +78,7 @@ export const fruktData: ServicePageData = {
         },
         {
           name: "Go'kurven",
-          tag: "Populær",
+
           description:
             "For bedrifter som ønsker god variasjon uten å gå opp til premiumutvalget. Fra ca. 8 kr per person per dag.",
           image: gokurvenImg,
@@ -87,7 +87,7 @@ export const fruktData: ServicePageData = {
 
         {
           name: "Superkurven",
-          tag: "Eksotisk",
+
           description:
             "For bedrifter som ønsker størst mulig variasjon med sesongvarer, mer eksotisk frukt, grønt og nøtter. Fra ca. 11 kr per person per dag.",
           image: superkurvenImg,
@@ -194,9 +194,28 @@ export const fruktData: ServicePageData = {
       slug: "jobbsmoothie",
       title: "Jobbsmoothie",
       description:
-        "Våre spennende, næringsrike og ferske smoothies er laget fra bunnen av på vårt eget kjøkken med ekte frukt og bær.",
+        "En litt annerledes fruktkurv. Vi tilbyr næringsrike og ferske smoothies, laget fra bunnen av på vårt eget kjøkken.",
       image: `${thumbs}/0f4e0649d2119d89e9f23b17cfc2ae78.jpg`,
       content: [
+        {
+          type: "text",
+          heading:
+            "Hva er et Smoothie-abonnement?",
+          paragraphs: [
+            "Fungerer akkurat som en fruktkurv, dere velger størrelse og frekvens. Velg mellom liten og stor Smoothie-pakke. Smoothiene leveres i 1-litersflasker som vi setter direkte inn i deres kjøleskap. På den måten kan dere forsyne dere når dere trenger en boost, både før og etter lunsj",
+
+            "Vi bruker ferskpresset sitron i våre smoothies for naturlig konservering og best smak, og bananer for naturlig fylde. For å oppnå den naturlig friske smaken bruker vi premium eplemost fra Askim Frukt- og Bærpresseri.",
+            "Vi varierer smoothiene fra uke til uke, slik at dere til enhver tid har noe nytt og spennende å tilby medarbeidere, kunder og gjester.",
+          ],
+        },
+        {
+          type: "bullets",
+          items: [
+            "Gir energi og lavere sykefravær",
+            "Perfekt hvis du vil imponere i møter",
+            "Del noe godt, erstatt litt av kaffedrikken",
+          ],
+        },
         {
           type: "text",
           paragraphs: [
@@ -235,24 +254,7 @@ export const fruktData: ServicePageData = {
             },
           ],
         },
-        {
-          type: "text",
-          heading:
-            "Hva vil det bety for din bedrift å ha et Smoothie-abonnement?",
-          paragraphs: [
-            "Vi bruker ferskpresset sitron i våre smoothies for naturlig konservering og best smak, og bananer for naturlig fylde. For å oppnå den naturlig friske smaken bruker vi premium eplemost fra Askim Frukt- og Bærpresseri.",
-            "Smoothiene leveres i 1-litersflasker som vi setter direkte inn i deres kjøleskap. På den måten kan dere forsyne dere når dere trenger en boost, både før og etter lunsj.",
-            "Vi varierer smoothiene fra uke til uke, slik at dere til enhver tid har noe nytt og spennende å tilby medarbeidere, kunder og gjester.",
-          ],
-        },
-        {
-          type: "bullets",
-          items: [
-            "Gir energi og lavere sykefravær",
-            "Perfekt hvis du vil imponere i møter",
-            "Del noe godt, erstatt litt av kaffedrikken",
-          ],
-        },
+
         {
           type: "text",
           heading: "Prøv oss!",
@@ -273,20 +275,20 @@ export const fruktData: ServicePageData = {
           type: "text",
           paragraphs: [
             "Hver tirsdag møtes Helt Opplagts smakspanel. Da skal frukt for neste ukes kurver velges ut.",
-            "Pakkingen utføres av et eget pakketeam nærmest mulig leveringstidspunkt. Hver enkelt frukt blir kontinuerlig sjekket. Det benyttes hansker, forklær og hårnett under pakking. Hygiene og temperatur i pakkelokalene kontrolleres og logges jevnlig i henhold til Mattilsynets regler. Helt Opplagt har daglige utkjøringer. Fruktkurvene leveres helt inn på ønsket avdeling/kontor.",
+            "Pakkingen utføres av et eget pakketeam nærmest mulig leveringstidspunkt. Hver enkelt frukt blir kontinuerlig sjekket. Det benyttes hansker, forklær og hårnett under pakking. Hygiene og temperatur i pakkelokalene kontrolleres og logges jevnlig i henhold til Mattilsynets regler.",
           ],
         },
         {
           type: "text",
           heading: "Fruktpakketeamet og sosialt ansvar",
           paragraphs: [
-            "Helt Opplagt er opptatt av å ta være på nærmiljøet. Derfor tilbyr vi arbeidsplasser og arbeidstrening til ungdommer i bydelen. Vi har også et samarbeid med arbeidsmarkedsbedrifter på Østlandet. Dette gir deg mulighet til å få pakket din fruktkurv av en bedrift med varig tilrettelagte arbeidsplasser (VTA). På denne måten gir vi også deg muligheten til å ta et sosialt ansvar rundt din leveranse.",
+            'Helt Opplagt er opptatt av å ta vare på nærmiljøet. Derfor tilbyr vi arbeidsplasser og arbeidstrening til ungdommer i bydelen. Vi har også et samarbeid med arbeidsmarkedsbedrifter på Østlandet. Dette gir deg mulighet til å få pakket din fruktkurv av en bedrift med varig tilrettelagte arbeidsplasser (VTA). På denne måten gir vi også deg muligheten til å ta et sosialt ansvar rundt din leveranse. Du kan lese mer om vårt samfunnsengasjement <a href="/ansvar">her</a>.',
           ],
         },
         {
           type: "bullets",
           heading:
-            "Vi er en miljøfyrtårnbedrift som prioriterer miljøet i alt vi gjør, som for eksempel:",
+            "Vi er en miljøfyrtårnbedrift som prioriterer miljøet i alt vi gjør:",
           items: [
             "Gjenbrukskurver brukes til alle leveranser.",
             "Bilparken er nøye planlagt i forhold til utslipp.",

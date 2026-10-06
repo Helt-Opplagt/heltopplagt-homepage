@@ -69,17 +69,17 @@ export function Services() {
       <div className={`${CONTAINER} relative z-10`}>
         <Reveal>
           <div id="tjenester-tittel">
-          <SectionHead
-            kicker="Våre tjenester"
-            title="Våre produkter og tjenester"
-            lede="Helt Opplagt tilbyr tjenester som skaper en bedre arbeidshverdag. Med samlevering blir det ofte synergier å tjene på, målet er å gjøre det enklere for våre kunder å levere et godt arbeidsmiljø til sine ansatte."
-            action={
-              <Pill to="/kontakt" variant="outline">
-                Ta kontakt for tilbud
-                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-              </Pill>
-            }
-          />
+            <SectionHead
+              kicker="Våre tjenester"
+              title="Våre produkter og tjenester"
+              lede="Les mer om våre tjenester og produkter, og hvordan vi kan hjelpe din bedrift med å skape en bedre arbeidsplass."
+              action={
+                <Pill to="/kontakt" variant="outline">
+                  Kontakt oss
+                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+                </Pill>
+              }
+            />
           </div>
         </Reveal>
 

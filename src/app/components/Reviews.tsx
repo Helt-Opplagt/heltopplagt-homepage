@@ -80,34 +80,34 @@ export function Reviews() {
       />
       <div className={`${CONTAINER} relative z-10`}>
         <Reveal>
-        <SectionHead
-          kicker="Referanser"
-          title="Se hva våre kunder mener om oss"
-          action={
-            <div className="flex items-center gap-3">
-              <Pill to="/referanser" variant="outline">
-                Referanser
-                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-              </Pill>
-              <button
-                type="button"
-                onClick={() => goTo(activeRef.current - 1)}
-                aria-label="Forrige"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy/20 text-navy transition-colors hover:border-brand hover:text-brand"
-              >
-                <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
-              </button>
-              <button
-                type="button"
-                onClick={() => goTo(activeRef.current + 1)}
-                aria-label="Neste"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy/20 text-navy transition-colors hover:border-brand hover:text-brand"
-              >
-                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-              </button>
-            </div>
-          }
-        />
+          <SectionHead
+            kicker="Referanser"
+            title="Les hva våre kunder mener om oss"
+            action={
+              <div className="flex items-center gap-3">
+                <Pill to="/referanser" variant="outline">
+                  Referanser
+                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+                </Pill>
+                <button
+                  type="button"
+                  onClick={() => goTo(activeRef.current - 1)}
+                  aria-label="Forrige"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy/20 text-navy transition-colors hover:border-brand hover:text-brand"
+                >
+                  <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => goTo(activeRef.current + 1)}
+                  aria-label="Neste"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy/20 text-navy transition-colors hover:border-brand hover:text-brand"
+                >
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                </button>
+              </div>
+            }
+          />
         </Reveal>
 
         <div

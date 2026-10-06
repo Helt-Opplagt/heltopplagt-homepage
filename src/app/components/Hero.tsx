@@ -14,7 +14,7 @@ const SLIDE_DURATION = 6000;
 /* Entrance on first paint: fades and lifts in, staggered per element via
    [transition-delay:…]. Users who prefer reduced motion see it at rest. */
 const ENTER =
-  "motion-safe:transition-[opacity,translate] motion-safe:duration-700 motion-safe:ease-out motion-safe:starting:translate-y-3 motion-safe:starting:opacity-0";
+  "motion-safe:transition-[opacity,translate] motion-safe:duration-1500 motion-safe:ease-out motion-safe:starting:translate-y-3 motion-safe:starting:opacity-0";
 
 const slides = [
   { src: heroFrukt, label: "Frukt", href: "/tjenester/frukt" },
@@ -57,7 +57,7 @@ export function Hero() {
           </h1>
 
           <p
-            className={`mt-6 max-w-[36rem] text-[15px] leading-relaxed text-navy/65 lg:text-[17px] xl:mt-7 ${ENTER} [transition-delay:160ms]`}
+            className={`mt-6 max-w-[36rem] bg-yellow-300 text-[15px] leading-relaxed text-navy/65 lg:text-[17px] xl:mt-7 ${ENTER} [transition-delay:160ms]`}
           >
             Helt Opplagt på jobben er en markedsorientert leverandør av løpende
             abonnementsbaserte tjenester innen helse og trivsel på arbeidsplassen.

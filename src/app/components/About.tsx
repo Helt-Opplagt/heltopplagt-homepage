@@ -4,7 +4,7 @@ import { CONTAINER, Kicker, Pill } from "./site";
 import { Reveal } from "./Reveal";
 
 const points = [
-  "En leverandør med bred kunnskap og lang erfaring, grunnlagt i 1985",
+
   "Bedrer arbeidsdagen til over 50 000 ansatte i Oslo-området",
   "1000+ bedrifter og organisasjoner",
   "Miljøfyrtårn-sertifisert og CO2-nøytral virksomhet",
@@ -41,9 +41,8 @@ export function About() {
           </h2>
 
           <p className="mt-4 text-[15px] leading-[1.7] text-navy/65 lg:text-[16px]">
-            Gjennom høy kvalitet, presise leveranser, nærhet til kundene, høy
-            servicegrad og riktige priser skal vi være markedets foretrukne
-            samarbeidspartner i våre nisjer.
+            Helt Opplagt er en totalleverandør av tjenester innen helse og trivsel på arbeidsplassen. Siden oppstarten i 1985 har vi hatt fokus på høy kvalitet, presise leveranser, nærhet til kundene, høy
+            servicegrad og riktige priser. Vi ønsker å være en leverandør som gjør arbeidsdagen enklere for våre kunder, og som alltid strekker seg det lille ekstra for å møte kundens behov.
           </p>
 
           <ul className="mt-8 flex flex-col gap-3.5">
