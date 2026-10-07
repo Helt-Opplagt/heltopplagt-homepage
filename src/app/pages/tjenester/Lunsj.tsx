@@ -20,7 +20,7 @@ export const lunsjData: ServicePageData = {
   ),
   subtitle: "Vår lunsj gjør arbeidsdagen hyggeligere",
   intro:
-    "Er du en bedrift med mellom 5–300 ansatte kan vi levere alt fra enkle lunsjbokser til proffkantine. Ta kontakt i dag og prøv våre velsmakende lunsjer.",
+    "Vi har over 25 års erfaring med å levere lunsj til store og små bedrifter i Oslo og Stor-Oslo. Vi leverer alt fra enkle lunsjesker til proffkantine, og er eksperter på å sikre en god og variert lunsj tilpasset bedriftens behov.",
   image: heroImg,
   imageAlt: "Lunsj fra Helt Opplagt",
   heroImage: openingImg,
@@ -34,8 +34,8 @@ export const lunsjData: ServicePageData = {
   explainer: {
     heading: "Hva tilbyr vi?",
     body: [
-      "Daglig levering av lunsj som inneholder ferskt brød, dagens pålegg, grønnsaker, frukt og drikke, alt etter hvilket utvalgsnivå dere ønsker.",
-      "Velg lunsjen som passer best for dere. Velg blant vår enkle Hverdagslunsj, populære Go'lunsj eller luksuriøse Superlunsj. Lunsjkurven leveres helt inn på deres spiserom, og våre kunder opplever at de sparer masse verdifull tid med våre løsninger.",
+      "Helt Opplagt leverer lunsjordninger for alle type arbeidsplasser. Start med en av våre ferdig komponerte lunsjesker, og tilpass etter ønske. Alle lunsjeskene har et basis innhold av fersk brød, utvalgt pålegg, grønnsaker, frukt og drikke. Vi varierer innholdet fra dag til dag, med over 50 ulike rullerende menyer. Lunsjeskene er tilpasset fra fem personer og oppover, og leveres hver dag helt inn til ønsket rom før kl. 11.00.",
+      "Vi leverer også varm lunsj på jobb, ferdige fat med pålegg og fullservice kantineordninger. Vi tilpasser lunsjordningen etter deres behov, og hjelper dere med å skape en hyggelig og sosial lunsjpause for alle ansatte.",
     ],
 
     image: explainerImg,
@@ -49,7 +49,7 @@ export const lunsjData: ServicePageData = {
       items: [
         {
           name: "Hverdagslunsjen",
-          tag: "Rimelig",
+          //tag: "Rimelig",
           description:
             "Vår enkleste og rimeligste lunsjordning. Passer for dere som ønsker å spare penger, men samtidig ha noe som er ferskere og friskere enn matpakke.",
           image: hverdagslunsjenImg,
@@ -57,7 +57,7 @@ export const lunsjData: ServicePageData = {
         },
         {
           name: "Go'lunsjen",
-          tag: "Populær",
+          //tag: "Populær",
           description:
             "Vår mest populære lunsjordning. God og variert, fersk og frisk. Et tidsbesparende og lønnsomt alternativ til å handle mat i butikken.",
           image: golunsjenImg,
@@ -65,7 +65,7 @@ export const lunsjData: ServicePageData = {
         },
         {
           name: "Superlunsjen",
-          tag: "Flaggskip",
+          //tag: "Flaggskip",
           description:
             "Vårt flaggskip blant selvbetjente lunsjordninger. Luksuriøst og velsmakende, godt og variert. Et fristende utvalg for dere som ønsker å gjøre noe ekstra ut av lunsjen.",
           image: superlunsjenImg,
@@ -83,7 +83,8 @@ export const lunsjData: ServicePageData = {
           name: "Leveres rett inn i deres kjøleskap",
           tag: "Passer best fra ca 10 pers og oppover",
           description:
-            "Kjøtt- og fiskepålegg, ost, egg, grønnsaker osv pakkes på fat. Drikke, smør, syltetøy og andre pålegg som ikke egner seg så godt på fat kommer ved siden av. Fatene setter vi rett inn i kjøleskapet hos dere ved våre daglige leveranser. Vi hjelper dere med å holde orden i kjøleskapet, noe som sikrer fersk mat og hindrer svinn.",
+
+            "Ønsker dere dagens meny lekkert dandert på fat? Kjøtt- og fiskepålegg, ost, egg, grønnsaker osv pakkes på fat. Drikke, smør, syltetøy og andre pålegg som ikke egner seg så godt på fat kommer ved siden av. Fatene setter vi rett inn i kjøleskapet hos dere ved våre daglige leveranser. ",
           image: fatHof3,
         },
       ],
@@ -98,7 +99,7 @@ export const lunsjData: ServicePageData = {
           name: "Stor variasjon og lang holdbarhet",
           tag: "Mer enn 50 retter",
           description:
-            "Vi har et stort utvalg av velsmakende retter, alle laget helt fra bunn av, med fokus på sunnhet og naturlige råvarer. Rettene leveres både porsjonspakkede og i storforpakninger, og kan raskt og enkelt varmes opp i komfyr eller mikrobølgeovn.",
+            "Vi har et stort utvalg av velsmakende varmretter, alle laget helt fra bunn av, med fokus på sunnhet og naturlige råvarer. Rettene leveres både porsjonspakkede og i storforpakninger, og kan raskt og enkelt varmes opp i komfyr eller mikrobølgeovn.",
           image: `${thumbs}/317b0d000b75625d1c6eea3f9a02a605.jpg`,
         },
       ],
@@ -167,19 +168,12 @@ export const lunsjData: ServicePageData = {
         {
           type: "text",
           paragraphs: [
-            "Vår enkleste og rimeligste lunsjordning. Passer for dere som ønsker å spare penger, men samtidig ha noe som er ferskere og friskere enn matpakke. Leveres i enheter tilpasset ca 5 pers.",
+            "Vår enkleste og rimeligste lunsjordning. Denne esken består av brød, smør, to-tre typer pålegg og juice/melk. I tillegg får dere kokte egg hver fredag.",
             "Hverdagslunsjen koster ca. 32 kr per person/dag. Lunsjesken leveres helt inn til ønsket rom, hver dag før kl 11.",
-            "Husk at det går an å gjøre tilleggsbestillinger ved behov/ønske.",
+
           ],
         },
-        {
-          type: "bullets",
-          items: [
-            "Variert og sunt brød + margarin. Brødet kan leveres ferskt oppskåret.",
-            "2–3 typer pålegg hver dag; enkle og rimelige kjøtt- og fiskepålegg, hel gulost/brunost, syltetøy, leverpostei, italiensk salat. I tillegg leverer vi kokte egg hver fredag.",
-            "Juice/melk.",
-          ],
-        },
+
       ],
     },
     {
@@ -194,22 +188,12 @@ export const lunsjData: ServicePageData = {
         {
           type: "text",
           paragraphs: [
-            "Vår mest populære lunsjordning. God og variert, fersk og frisk. Et tidsbesparende og lønnsomt alternativ til å handle mat i butikken. Passer fra ca 5 pers og oppover.",
+            "Vår mest populære lunsjordning. Dere får brød, smør, juice/melk og et stort utvalg av pålegg. Pålegget varieres daglig med blant annet kjøtt- og fiskepålegg, majones, kaviar, assorterte oster, italiensk salat, skalldyrsalater, syltetøy, leverpostei og mye mer. Dere får også friske grønnsaker. Hver fredag leverer vi i tillegg karbonader, kokte egg, fiskekaker eller kyllingvinger. En frukt til hver person er inkludert i lunsjesken. ",
             "Go'lunsjen koster ca. 50 kr per person/dag. Lunsjesken leveres helt inn til ønsket rom, hver dag før kl 11.",
-            "Husk at det går an å gjøre tilleggsbestillinger ved behov/ønske.",
+
           ],
         },
-        {
-          type: "bullets",
-          items: [
-            "Variert og sunt brød + margarin. Brødet kan leveres ferdig oppskåret.",
-            "Flere typer pålegg hver dag, varieres med 50 rullerende menyer. Her er vi innom de fleste kjente typer kjøtt- og fiskepålegg, majones, kaviar, assorterte skivede oster, smøre- og kremoster, italiensk- og skalldyrsalater, syltetøy, leverpostei og mye mer.",
-            "Ekstra fredagsmeny. Varierer mellom karbonader, roastbiff, kokte egg, fiskekaker og kyllingvinger.",
-            "Friske grønnsaker: tomat/agurk/salat/paprika.",
-            "Juice/melk.",
-            "1 frukt til hver er inkludert, men bytt gjerne ut med våre flotte fruktkurver.",
-          ],
-        },
+
       ],
     },
     {
@@ -224,21 +208,11 @@ export const lunsjData: ServicePageData = {
         {
           type: "text",
           paragraphs: [
-            "Vårt flaggskip blant selvbetjente lunsjordninger. Luksuriøst og velsmakende, godt og variert. Et fristende utvalg for dere som ønsker å gjøre noe ekstra ut av lunsjen. Passer fra ca 5 pers og oppover.",
+            "Vårt flaggskip blant selvbetjente lunsjordninger. Superlunsjen er vår mest lukseriøse og velsmakende, og inneholder mer eksklusive råvarer enn Go'lunsjen. Her får man for eksempel brie, røkt laks og rosatbiff i tillegg til kokte egg flere ganger i uken. Det er oftere tilpassede fredagsmenyer, og dere får flere gønnsaker og ferskpresset juice.",
             "Superlunsjen koster ca. 61 kr per person/dag. Lunsjesken leveres helt inn til ønsket rom, hver dag før kl 11.",
           ],
         },
-        {
-          type: "bullets",
-          items: [
-            "Inneholder kun våre flotteste brød- og påleggsvarianter.",
-            "Like variert, men mer eksklusive råvarer enn Go'lunsjen.",
-            "Med hyppige innslag av flott pålegg som karbonader, roastbiff, kokte egg, fiskekaker og kyllingvinger.",
-            "Godt og friskt utvalg av grønnsaker.",
-            "Ferskpresset juice, eventuelt melk.",
-            "Vi anbefaler å kombinere med våre flotte fruktkurver.",
-          ],
-        },
+
       ],
     },
     {
