@@ -1,5 +1,5 @@
 import { ArrowRight, Check } from "lucide-react";
-import teamImg from "../../images/om-oss/hele-gjengen.webp";
+import teamImg from "../../images/om-oss/fotballtroyefredag-2026.webp";
 import { CONTAINER, Kicker, LinePiece, Pill } from "./site";
 import { Reveal } from "./Reveal";
 
@@ -17,18 +17,19 @@ export function About() {
       <div
         className={`${CONTAINER} grid items-center gap-14 lg:grid-cols-2 lg:gap-20`}
       >
-        <Reveal className="relative order-2 mx-auto w-full max-w-[26rem] lg:order-1 lg:max-w-[30rem]">
-          <div className="aspect-[4/5] overflow-hidden rounded-[0.875rem]">
+        <Reveal className="relative order-2 mx-auto w-full max-w-[36rem] lg:order-1 lg:max-w-none">
+          <div className="aspect-[4/3] overflow-hidden rounded-[0.875rem]">
             <img
               src={teamImg}
-              alt="Teamet i Helt Opplagt"
+              alt="Teamet i Helt Opplagt på fotballtrøyefredag"
               loading="lazy"
               decoding="async"
               className="h-full w-full object-cover"
             />
           </div>
-          {/* Plain white card over the photo's right edge. */}
-          <div className="absolute -right-2 bottom-10 flex items-center gap-4 rounded-[0.875rem] bg-white px-5 py-4 shadow-[0_12px_32px_-16px_rgba(13,43,64,0.3)] ring-1 ring-navy/[0.06] sm:-right-6">
+          {/* Plain white card hanging over the photo's bottom-right corner,
+              so it covers floor rather than people in the group photo. */}
+          <div className="absolute -bottom-8 -right-2 flex items-center gap-4 rounded-[0.875rem] bg-white px-5 py-4 shadow-[0_12px_32px_-16px_rgba(13,43,64,0.3)] ring-1 ring-navy/[0.06] sm:-right-6">
             <p className="font-lato text-[38px] font-light leading-none tracking-[-0.02em] text-navy">
               40+
             </p>
