@@ -2,7 +2,7 @@ import { ServicePage, ServicePageData } from "../../components/ServicePage";
 import packehallImg from "../../../images/frukt/frukt2.webp";
 import pakkerImg from "../../../images/frukt/frukt.webp";
 import heroFruktImg from "../../../images/hero/hero-frukt.webp";
-import teamImg from "../../../images/om-oss/hele-gjengen.webp";
+import ansvarCardImg from "../../../images/ansvar/fruktpakking-kurver.webp";
 import lunsjCardImg from "../../../images/lunsj/lunsj.webp";
 import gokurvenImg from "../../../images/frukt/cards/gokurven.webp";
 import knaskekurvenImg from "../../../images/frukt/cards/knaskekurven.jpg";
@@ -185,7 +185,7 @@ export const fruktData: ServicePageData = {
       description:
         "Vi har alltid hatt stort fokus på miljøtiltak. Vi er en miljøfyrtårnbedrift som prioriterer miljøet i alt vi gjør.",
       to: "/ansvar",
-      image: teamImg,
+      image: ansvarCardImg,
     },
     {
       label: "Lunsj",

@@ -1,6 +1,5 @@
 import {
   ChevronDown,
-  ExternalLink,
   Mail,
   Menu,
   Phone,
@@ -220,8 +219,11 @@ export function Header() {
           </div>
           </div>
 
-          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain py-6 sm:py-14">
-            <div className={`${CONTAINER} grid gap-6 sm:grid-cols-2 sm:gap-16`}>
+          {/* The links and the contact row scroll together, so on short
+              phone screens the contact row follows the last link instead of
+              covering it. mt-auto keeps it at the bottom when there is room. */}
+          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain">
+            <div className={`${CONTAINER} grid gap-6 py-6 sm:grid-cols-2 sm:gap-16 sm:py-14`}>
               <nav>
                 <p className="mb-2.5 flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-white/50 sm:mb-5">
                   <span aria-hidden="true" className="text-[14px] font-bold text-aqua">/</span>
@@ -298,10 +300,9 @@ export function Header() {
                 </ul>
               </nav>
             </div>
-          </div>
 
-          <div className="flex-shrink-0 border-t border-white/10">
-          <div className={`${CONTAINER} flex flex-col items-start justify-between gap-4 py-6 sm:flex-row sm:items-center`}>
+          <div className="mt-auto border-t border-white/10">
+          <div className={`${CONTAINER} flex items-center justify-between gap-4 py-5 sm:py-6`}>
             <div className="flex flex-col gap-2 sm:flex-row sm:gap-6">
               <a
                 href="mailto:bli@heltopplagt.no"
@@ -318,15 +319,7 @@ export function Header() {
                 02346
               </a>
             </div>
-            <a
-              href="https://www.linkedin.com/company/helt-opplagt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-aqua hover:text-aqua"
-              aria-label="LinkedIn"
-            >
-              <ExternalLink className="h-4 w-4" />
-            </a>
+          </div>
           </div>
           </div>
         </div>
